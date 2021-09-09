@@ -1,7 +1,7 @@
 # Analysis Log for A Comparison of 25 RNA-seq Pipelines as an Educational Tool for Functional Genomics
 
 ## Description & Purpose
-words
+words<br/>
 are
 great
 so
@@ -10,8 +10,10 @@ this
 in.
 
 ## Abbreviations
-EAS = Easley HPC 
-FunGen = TSS Functional Genomics Class
+EAS = Easley HPC  
+
+FunGen = TSS Functional Genomics Class  
+
 
 ### 09-07-2021 Downloading Data; AC
 Downloaded 10 samples using sratoolkit on EAS.Used the prefetch/dump combination code from the utility of blood transcriptome repo. 
