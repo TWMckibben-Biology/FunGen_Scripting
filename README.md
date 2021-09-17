@@ -9,3 +9,9 @@ Code and Analysis Repository for data associated with testing 25 RNA-seq analysi
 ## Usage
 
 ## Citing this Code and Repository
+
+
+## TODO
+- [ ] fill in the readme for the project
+- [ ] generate repo DOI on zenodo
+- [ ] add collaborators as github ids roll in  
