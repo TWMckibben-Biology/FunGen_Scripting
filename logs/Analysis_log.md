@@ -40,5 +40,6 @@ Generated support scripts for:
 2. trimming adaptors and low quality sequences `run_trimmomatic.sh`
 
 ### 09-14-2021 Meeting and requesting software; AC
-Met with collaborators: requested github ids, code, and discussed adding new pipeline, salmon
+Met with collaborators: requested github ids, code, and discussed adding new pipeline, salmon  
+
 requested software on easley: stringtie, gffread, kallisto
