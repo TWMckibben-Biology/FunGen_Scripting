@@ -42,4 +42,4 @@ Generated support scripts for:
 ### 09-14-2021 Meeting and requesting software; AC
 Met with collaborators: requested github ids, code, and discussed adding new pipeline, salmon  
 
-requested software on easley: stringtie, gffread, kallisto
+requested software on easley: stringtie, gffread, kallisto, htseq, parallel
