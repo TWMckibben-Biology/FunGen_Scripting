@@ -33,10 +33,12 @@ Mapped out the analysis pipeline, indicating if the scripts for each step were p
 
 ### 09-13-2021 Writing support scripts ; AC
 revised `download_SRA_a.sh` to increase reproducibility. Organized for usage in an array or with the proper arguments at the command line. 
+
 Generated support scripts for:
 
 1. fastq file quality check `run_fastqc.sh`
 2. trimming adaptors and low quality sequences `run_trimmomatic.sh`
 
 ### 09-14-2021 Meeting and requesting software; AC
+Met with collaborators: requested github ids, code, and discussed adding new pipeline, salmon
 requested software on easley: stringtie, gffread, kallisto
