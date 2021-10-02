@@ -43,3 +43,9 @@ Generated support scripts for:
 Met with collaborators: requested github ids, code, and discussed adding new pipeline, salmon  
 
 requested software on easley: stringtie, gffread, kallisto, htseq, parallel
+
+### 09-20-2021 - 09-24-2021 HPC offline
+
+### 09-27-2021 
+Kallisto and HTseq added 
+need parallel for pipeline, but testing on HOPPER until installed on EASLEY
