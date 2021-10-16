@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#SBATCH -J DpulexCaloric_SRAtoolkit
+#SBATCH -J DpulexCaloric_prepreads
 #SBATCH -t 2-00:00:00
 #SBATCH -N 1
 #SBATCH -n 10
@@ -17,10 +17,10 @@
 dd="/home/adc0032/DpulexCaloricWD/Data" # may exclude because I will probably make this in script
 wd="/scratch/adc0032/DpulexCaloricWD"
 sd="/home/adc0032/DpulexCaloricSD"
-ref="${wd}/Dpulex.scaffolds.fa"
+ref="${wd}/Daphnia_pulex.scaffolds.fa"
 met="${wd}/dpulex.calor.meta"
 jf="${wd}/dpulex.calor.jf"
-rfp=`basename ${ref} | cut -d "." -f 1,2`
+rfp=`basename ${ref} | cut -d "." -f 1`
 
 ##Commands
 
@@ -36,10 +36,6 @@ fi
 # sample pulled from array task id (this should be the number of samples you have on your jf list and should be specified in the #SBATCH header)
 sm=$( head -n ${SLURM_ARRAY_TASK_ID} ${jf} | tail -n 1)
 
-# read prefix for file names
-rdpfx=`grep "${sm}" ${met} |awk '{print $1}'`
-
-
 # If the fastq data is not in a self-labeled directory in the wd, dump the data with sratools; see download_SRA_a.sh for more comments and details
 source ~/workflow/download_SRA_a.sh ${sm} ${wd} ${met}
 
@@ -47,7 +43,7 @@ source ~/workflow/download_SRA_a.sh ${sm} ${wd} ${met}
 mkdir -p ${wd}/${sm}/pretrim
 
 # make array of fq files
-fqs=(ls ${sm}/*.fastq.gz)
+fqs=(`ls ${sm}/*.fastq.gz`)
 
 # Run fastqc (pre-trim)
 printf '%s\n' "${fqs[@]}"|parallel "source ~/workflow/run_fastqc.sh {} ${wd} pretrim"
@@ -59,7 +55,7 @@ source ~/workflow/run_trimmomatic.sh ${sm} ${wd}
 mkdir -p ${wd}/${sm}/posttrim
 
 # make array of trimmed fq files
-tfqs=(ls ${sm}/*_trim_*P.fq.gz)
+tfqs=(`ls ${sm}/*_trim_*P.fq.gz`)
 
 # Run fastqc (post-trim)
 printf '%s\n' "${tfqs[@]}"|parallel "source ~/workflow/run_fastqc.sh {} ${wd} posttrim"
