@@ -14,8 +14,10 @@ adapters="${WD}/AdaptersToTrim.fa"
 if [ ! -s ${lft} ];then
 	echo "${lft} was not found, aborting..."
 	exit 1
+elif [ -s "${SM}/${SM}_trim_2P.fq.gz" ]; then
+	echo "${SM} reads have already been trimmed, moving on..."
 else
-	java -jar /tools/trimmomatic-0.39/bin/trimmomatic.jar PE -threads 6 -phred33 \
+	java -jar /tools/trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 6 -phred33 \
 	${lft} ${rgt} \
 	-baseout ${WD}/${SM}/${SM}_trim.fq.gz \
 	ILLUMINACLIP:${adapters}:2:20:10 HEADCROP:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:6:25 MINLEN:36
