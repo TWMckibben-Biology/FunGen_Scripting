@@ -19,7 +19,7 @@ STAR --genomeDir ${WD} --readFilesCommand gunzip -c \
 --readFilesIn ${WD}/${SM}/${SM}_trim_1P.fq.gz ${WD}/${SM}/${SM}_trim_2P.fq.gz \
 --runThreadN 12 --outFileNamePrefix ${WD}/${SM}/${SM}_star --outStd SAM | samtools sort -o ${WD}/${SM}/${SM}_star.srt.bam
 
-samtools index
+samtools index ${WD}/${SM}/${SM}_star.srt.bam
 fi
 
 

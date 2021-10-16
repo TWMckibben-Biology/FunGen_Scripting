@@ -37,7 +37,7 @@ fi
 sm=$( head -n ${SLURM_ARRAY_TASK_ID} ${jf} | tail -n 1)
 
 # If the fastq data is not in a self-labeled directory in the wd, dump the data with sratools; see download_SRA_a.sh for more comments and details
-source ~/workflow/download_SRA_a.sh ${sm} ${wd} ${met}
+source ~/workflow/download_SRA.sh ${sm} ${wd} ${met}
 
 # make pre-trim directory
 mkdir -p ${wd}/${sm}/pretrim
