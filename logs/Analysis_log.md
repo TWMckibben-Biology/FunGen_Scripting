@@ -11,7 +11,7 @@ in.
 
 ## Abbreviations
 EAS = Easley HPC  
-
+HOP = Hopper HPC
 FunGen = TSS Functional Genomics Class  
 
 
@@ -48,4 +48,36 @@ requested software on easley: stringtie, gffread, kallisto, htseq, parallel
 
 ### 09-27-2021 
 Kallisto and HTseq added 
-need parallel for pipeline, but testing on HOPPER until installed on EASLEY
+need parallel for pipeline, but testing on HOP until installed on EAS
+
+### 10-02-2021
+installed parallel on EAS locally, works just fine!
+
+### 10-12-2021
+Pulled down Daphnia_pulex.[scaffolds.fa && gff3] from TSS box folder (which should mirror google drive files from FunGen).  
+Ran `md5sum` to make sure everything was copacetic.   
+generated `prep_reference.sh` script: generates indicies for hisat and star; generates gtf .ss and .exon files from gff3  
+script submits to slurm using `prep_ref_slurm.sh`  
+Changes made from FunGen workflow and script files on google drive
+
+- using `--sjdbGTFtagExonParentTranscript transcript_id` to use transcript_id as tag name to be used as exons’ transcript-parents relationship in star
+- using `--sjdbGTFfile ${GTF}` to add annotation information to genome index; this step was done at the point of running star in the FunGen workflows; moved it to mirror hisat pipeline.
+- using `--genomeSAindexNbases 12` due to a warning in the test run of this script indicating that the default of 14 was too high and would likely result in segmentation errors in downstream mapping in star
+
+### 10-13-2021
+
+updated `download_SRA.sh` to be called within a slurm script `prep_reads_slurm.sh`. *note: `download_SRA_a.sh` was renamed to `download_SRA.sh`*
+generated `prep_reads_slurm.sh`: `download_SRA.sh` downloads reads from NCBI using SRR#'s (originally called SRA_Acc_List.txt; now dpulex.calor.jf); `run_fastqc.sh` runs twice, once after downloading and once after trimming; `run_trimmomatic.sh` trims reads 
+using the same parameters outlined in FunGen trimming workflow.
+
+### 10-14-2021
+
+generated `run_hisat2.sh` script: maps trimmed reads to reference using hisat2, output is piped from hisat2 into samtools to generate bams; indexes bams   
+generated `run_star.sh` script: maps trimmed reads to refernce using star, output is piped from star into samtools to generate bams; indexes bams  
+scripts submit to slurm using `map_reads_slurm.sh`  
+Changes made from FunGen workflow and script files on google drive:  
+
+- intermediate sam files are not generated, piping from mappers directly into samtools sort to output sorted bam
+- no longer indicating strandedness in `run_hisat2.sh` because we are not using this information during mapping for STAR (no way to indicate using STAR)
+- using `--readFilesCommand gunzip -c` to prevent having to uncompress fastq files in star
+- using `--outStd SAM` to send SAM output from star to stdout; this allows piping into samtools
