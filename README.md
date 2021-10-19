@@ -14,7 +14,7 @@ Code and Analysis Repository for data associated with testing 25 RNA-seq analysi
 ## TODO
 - [ ] fill in the readme for the project
 - [ ] generate repo DOI on zenodo
-- [ ] add collaborators as github ids roll in
+- [X] add collaborators as github ids roll in
 - [ ] compile resources for tutorial portion of repo (should this be separate?)
 - [ ] make tutorial pages for steps of the pipeline
 - [ ] make comparative result pages for different tools
