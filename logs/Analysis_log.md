@@ -81,3 +81,14 @@ Changes made from FunGen workflow and script files on google drive:
 - no longer indicating strandedness in `run_hisat2.sh` because we are not using this information during mapping for STAR (no way to indicate using STAR)
 - using `--readFilesCommand gunzip -c` to prevent having to uncompress fastq files in star
 - using `--outStd SAM` to send SAM output from star to stdout; this allows piping into samtools
+
+
+### 04-21-2022
+
+got lazy with my logging, but continued to work.
+generated coded for pseudomappers `run_salmon.sh` & `run_kallisto.sh`
+generated wrapper to run them in parallel `alt_counts_slurm.sh`
+generated script to run all pipeline scripts in sequence based on successful completion of previous job `rnapipe_wf_submit.sh`
+
+-comments from troubleshooting still in code. Need to log and remove from code
+-need to add paths and explain directory structure and necessary files for apply it to other systems

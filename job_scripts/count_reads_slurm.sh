@@ -36,7 +36,6 @@ fi
 # sample pulled from array task id (this should be the number of samples you have on your jf list and should be specified in the #SBATCH header)
 sm=$( head -n ${SLURM_ARRAY_TASK_ID} ${jf} | tail -n 1)
 
-
 bams=(${sm}_hisat2.srt.bam ${sm}_star.srt.bam )
 
 printf '%s\n' "${bams[@]}" |parallel "sh ~/workflow/run_stringtie.sh {} ${wd} ${rfp}"

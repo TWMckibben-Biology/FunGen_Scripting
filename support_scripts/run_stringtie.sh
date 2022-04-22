@@ -12,12 +12,12 @@ RFP=${3}
 MP=`echo ${SM}|awk -F"_" '{print $2}'|awk -F"." '{print $1}'`
 ID=`echo ${SM}|awk -F"_" '{print $1}'`
 
-# Stringtie Assembly: -e limits from making new transcripts, -B formats for ballgown
-stringtie -e -B -G ${WD}/${RFP}.gtf -o ${ID}/bg_${ID}_${MP}.gtf -l ${ID}_${MP} ${WD}/${ID}/${SM}
+if [ -s "${WD}/${ID}/bg_${ID}_${MP}/stringtie_${MP}_${ID}.gtf" ]; then 
+        echo "Stringtie counting has already been completed; moving on..."
+else
+# Stringtie Assembly: -e limits from making new transcripts, -B formats for ballgown, --rf reverse first stranded library
+stringtie -e --rf -B -G ${WD}/${RFP}.gtf -o ${WD}/${ID}/bg_${ID}_${MP}/stringtie_${MP}_${ID}.gtf ${WD}/${ID}/${SM}
 
-
-## Array with generated gtfs from stringtie assembly
-#GTFs=(`ls bg_${ID}/bg_${ID}_${MP}.gtf`)
-## Merge assembled transcripts from all samples to make non-redundant gtf of features
-#stringtie --merge -G ${WD}/${RFP}.gtf -o stringtie_${MP}_merged.gtf ${GTFs[@]}
-
+# Add GTF to file list for prepDE.py3 script to generate gene_count & transcript_count tables
+printf '%s\t%s\n' "${ID}" "${ID}/bg_${ID}_${MP}/stringtie_${MP}_${ID}.gtf" >> ${WD}/${MP}_list_prepDE.txt
+fi
