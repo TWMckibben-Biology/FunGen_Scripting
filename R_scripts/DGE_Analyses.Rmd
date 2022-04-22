@@ -1,0 +1,36 @@
+---
+title: "DGE_Analyses"
+output: html_notebook
+author: "Amanda D. Clark"
+---
+
+## Purpose
+WORDS   
+### Sources & Resources
+Sources and resources are linked where applicable
+
+### Setting Up Environment
+
+```{r}
+# clear workspace
+rm(list=ls(all.names=TRUE))
+
+library(devtools)
+library(tidyverse)
+library(readr)
+library(DESeq2)
+library(SummarizedExperiment)
+library(edgeR)
+library(limma)
+library(tools)
+
+
+# directory for input files
+dir <- "../R_outputs/"
+
+# make a directory for output files
+dir.create("../R_outputs/DGE_Analyses")
+```
+
+
+### Setting up Input Files
