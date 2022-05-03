@@ -1,6 +1,8 @@
 ---
-title: "DGE_Analyses"
-output: html_notebook
+title: "DGE Analyses"
+output: 
+  html_notebook:
+   code_folding: show
 author: "Amanda D. Clark"
 ---
 
@@ -8,29 +10,388 @@ author: "Amanda D. Clark"
 WORDS   
 ### Sources & Resources
 Sources and resources are linked where applicable
-
+## Setting Up
 ### Setting Up Environment
-
 ```{r}
 # clear workspace
 rm(list=ls(all.names=TRUE))
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
 
+#BiocManager::install("ballgown")
+#BiocManager::install("RNAseq123")
 library(devtools)
 library(tidyverse)
-library(readr)
+library(readr) #readr is faster, but makes tibbles...not sure how well tibbles work with programs expecting matrices. row names can't be specified with readr
 library(DESeq2)
 library(SummarizedExperiment)
 library(edgeR)
 library(limma)
 library(tools)
+library(RNAseq123)
+library(Glimma)
+library(ballgown)
+library(genefilter)
+library(RColorBrewer)
+library(cowplot)
+
+
 
 
 # directory for input files
-dir <- "../R_outputs/"
+indir <- "../R_outputs/QuantPrep_Filter/"
 
 # make a directory for output files
-dir.create("../R_outputs/DGE_Analyses")
+if (! dir.exists("../R_outputs/DGE_Analyses")) {
+ dir.create("../R_outputs/DGE_Analyses")
+}
+outdir <- "../R_outputs/DGE_Analyses"
 ```
 
 
 ### Setting up Input Files
+
+words
+
+```{r}
+# reading in count data
+hf_htsh <- read.csv(file.path(indir, "hard_filtered_htsh.csv"), header = T, row.names = 1 ) #Hard-filtered (see Purpose) count matrices
+hf_htss <- read.csv(file.path(indir,"hard_filtered_htss.csv"), header = T, row.names = 1 )
+hf_kall <- read.csv(file.path(indir,"hard_filtered_kallisto.csv"), header = T, row.names = 1 )
+hf_salm <- read.csv(file.path(indir,"hard_filtered_salmon.csv"), header = T, row.names = 1 )
+hf_strh <- read.csv(file.path(indir,"hard_filtered_strgtieh.csv"), header = T, row.names = 1 )
+hf_strs <- read.csv(file.path(indir,"hard_filtered_strgties.csv"), header = T, row.names = 1)
+
+sf_htsh <- read.csv(file.path(indir,"soft_filtered_htsh.csv"), header = T, row.names = 1)  #Soft-filtered count matrices
+sf_htss <- read.csv(file.path(indir,"soft_filtered_htss.csv"), header = T, row.names = 1)
+sf_kall <- read.csv(file.path(indir,"soft_filtered_kallisto.csv"), header = T, row.names = 1)
+sf_salm <- read.csv(file.path(indir,"soft_filtered_salmon.csv"), header = T, row.names = 1)
+sf_strh <- read.csv(file.path(indir,"soft_filtered_strgtieh.csv"), header = T, row.names = 1)
+sf_strs <- read.csv(file.path(indir,"soft_filtered_strgties.csv"), header = T, row.names = 1)
+
+# make list of dataframes
+datlist <- list(hf_htsh=hf_htsh,hf_htss=hf_htss,hf_kall=hf_kall,hf_salm=hf_salm,
+                hf_strh=hf_strh,hf_strs=hf_strs,sf_htsh=sf_htsh,sf_htss=sf_htss,
+                sf_kall=sf_kall,sf_salm=sf_salm,sf_strh=sf_strh,sf_strs=sf_strs)
+
+# adding in sample metadata
+samples <- read.table("../R_inputs/samples.txt", header = T) #Read in sample table
+  #make new column for treatment (control vs Experiment)
+samples <- samples %>% dplyr::select(SRRID, SAMPNAME) %>%  #select the sample ID and name
+  mutate(Treat = ifelse(grepl("C", samples$SAMPNAME), "Restricted", #make new column for treatment (restricted vs adlib)
+                            ifelse(grepl("E", samples$SAMPNAME), "AdLib", "Error")))
+## make a note to change 
+head(samples)
+
+```
+## Visualize Libraries
+
+words
+https://multithreaded.stitchfix.com/blog/2015/10/15/multiple-hypothesis-testing/ # explains MHT well, and in depth. pull what is needed, link the rest
+
+```{r}
+run.Vis <- function(x, y) {
+  cat("Currently visualizing libraries for pipeline:", y, "\n\n") #print which file is being processed
+  colnames(x) <- c(samples$SAMPNAME) #add column names
+  cat("\nColumn names:", names(x), "\n\n") #print column names
+  # possible issue, this object may not be the same across programs, but that shouldn't be a problem if it's just a data format. all information going into downstream programs are the same.
+  dat <- DGEList(x, group = as.factor(c(samples$Treat))) #create DGEList object, merging counts, metadata, and specifies the grouping variable for samples 
+  
+  print(dat)
+  # look at raw lib size in parallel
+  b.plot <- barplot(dat$samples$lib.size*1e-6, names = 1:10, ylab = "Library size (millions)", xlab = y) #Make barplot of the library sizes
+  b.plot
+  #return(bplot)
+  
+  cpm <- cpm(dat)
+  lcpm <- cpm(dat, log = TRUE)
+  L <- mean(dat$samples$lib.size) * 1e-6
+  M <- median(dat$samples$lib.size) * 1e-6
+  cat("\n", "Mean and Median Library Size in Millions:", c(L, M),"\n")
+  cnttab <- table(rowSums(dat$counts == 0) == 10) 
+  cnttab # I am not getting this table back... summary works, but not the table
+  # return(cnttab)
+  # MDS Plots
+  col.group <- as.factor(c(samples$Treat))
+  levels(col.group) <- brewer.pal(nlevels(col.group), "Set1")
+  col.group <- as.character(col.group)
+  mds.plot <- plotMDS(lcpm, labels = samples$SAMPNAME, col = col.group, main = paste0("Pipeline: ", y))
+  mds.plot
+  # Density Plots to observe filtering effects (may need to reformat output to a list and then organize them after running the function to compare hard/soft filters)
+  col.group <- brewer.pal(ncol(x), "Set3")
+  lcpm.cutoff <- log2(10/M + 2/L)
+  plot(density(lcpm[,1]), col = col.group[1], lwd = 2, ylim = c(0,0.26), las = 2, main = y)
+  for (i in 2:ncol(x)){
+  den <- density(lcpm[,i])
+  lines(den$x, den$y, col = col.group[i], lwd = 2)
+  }
+  legend("topright", samples$SAMPNAME, text.col = col.group, bty = "n")
+  abline(v = lcpm.cutoff, lty = 3)
+  # Saved in the object
+  res = recordPlot()
+  # Saved Plot
+  res
+  dev.off()
+  # Box Plots
+  dat2 <- calcNormFactors(dat, method = "TMM")
+  lcpm2 <- cpm(dat2, log=TRUE)
+  print(head(lcpm))
+  print(head(lcpm2))
+  dat$samples$norm.factors
+  dat2$samples$norm.factors
+  par(mfrow=c(1,2)) #getting 
+  boxplot(lcpm, las = 2, col = col.group, main = "Unnormalized data", ylab = "Log-CPM")
+  boxplot(lcpm2, las = 2, col = col.group, main = "Normalized data", ylab = "Log-CPM")
+  res = recordPlot()
+  res
+  dev.off()
+}
+```
+
+## DESeq2 DGE Function
+
+words
+
+```{r}
+run.DESeq <- function(x, y) {
+  cat("Currently proccessing:", y, "with DESeq \n") #print which file is being processed
+  colnames(x) <- c(samples$SAMPNAME) #add column names
+  cat("\nColumn names:", names(x), "\n\n") #print column names 
+  
+  dat <- DESeqDataSetFromMatrix(countData = x, colData = samples, 
+                                design = ~Treat) #create DESeq object, merging counts, metadata, and specifies the predictor variable for gene counts
+  print(dat)
+
+  mod <- DESeq(dat, minReplicatesForReplace = Inf) #running the DESeq function. minReplicatesForReplace=Inf prevents replacement of outlier counts
+  res <- results(mod, independentFiltering = FALSE,cooksCutoff = FALSE, contrast = c("Treat", "Restricted", "AdLib"),
+                 pAdjustMethod = "fdr") #store results table. skipping outlier adjustments and additional low count filtering. using a false discovery rate p-value adjustment
+  #print(head(res))
+  print(summary(res))
+
+  resOrdered <- res[order(res$padj),] #results reordered by the adjusted pvalue
+  #print(head (resOrdered))
+  print(summary(resOrdered))
+  
+  write.csv(as.data.frame(resOrdered),file=paste0(outdir,"/",y,"_DESeq2.csv")) #write results to a new csv
+
+  resSig <- subset(resOrdered, padj < 0.05)
+  print(summary(resSig))
+}
+```
+
+
+## edgeR DGE Function
+
+words
+
+```{r}
+run.EdgeR <- function(x, y) {
+  cat("Currently proccessing:", y, "with edgeR \n") #print which file is being processed
+  colnames(x) <- c(samples$SAMPNAME) #add column names
+  cat("\nColumn names:", names(x), "\n\n") #print column names 
+  
+  
+  dat <- DGEList(x, group = samples$Treat) #create DGEList object, merging counts, metadata, and specifies the grouping variable for samples 
+  
+
+  # est common & tagwise dispersion
+  mod <- estimateCommonDisp(dat)
+  mod <- estimateTagwiseDisp(mod)
+  
+  # perform exact test btwn caloric restriction & ad lib groups, store as 'res'
+  modTest <- exactTest(mod)
+  res <- topTags(modTest, n = nrow(modTest$table))
+  
+  # extract significant differentially expressed genes, sort, & write to csv
+  resSig <- res$table[res$table$FDR<0.05,]
+  resOrdered <- resSig[order(resSig$logFC),]
+  
+  write.csv(as.data.frame(resOrdered),file = paste0(outdir,"/",y,"_edgeR.csv")) #write results to a new csv
+  cat("The number of sig DE genes is: ", nrow(resOrdered),"\n\n")
+}
+```
+
+## LimmaVoom DGE Function
+
+words
+Summarize & simplify:
+"What is voom doing?
+Counts are transformed to log2 counts per million reads (CPM), where “per million reads” is defined based on the normalization factors we calculated earlier
+A linear model is fitted to the log2 CPM for each gene, and the residuals are calculated
+A smoothed curve is fitted to the sqrt(residual standard deviation) by average expression (see red line in plot above)
+The smoothed curve is used to obtain weights for each gene and sample that are passed into limma along with the log2 CPMs.
+More details at https://genomebiology.biomedcentral.com/articles/10.1186/gb-2014-15-2-r29"
+
+
+
+```{r}
+run.LimVoo <- function(x, y) {
+  cat("Currently proccessing:", y, "with Limma-Voom \n") #print which file is being processed by which function as a sanity check
+  colnames(x) <- c(samples$SAMPNAME) #add column names to the data object
+  cat("\nColumn names:", names(x), "\n\n") #print column names as a sanity check for order
+  
+  Treat <- c(samples$Treat)
+  group=Treat
+  dat <- DGEList(x, group = Treat) #create DGEList object, merging counts, metadata, and specifies the grouping variable for samples 
+  print(class(dat))
+  
+  # Normalization (based on the plots, is this necessary?)
+  dat <- calcNormFactors(dat, method = "TMM")
+  dat$samples$norm.factors
+  dat
+  
+  mod <- model.matrix(~0 + group)
+  mod
+  
+  varMod <- voom(dat, mod, plot = T) # Would be nice to stop and compare hard/soft filtering again here
+  
+  modFit <- lmFit(varMod, mod)
+  print(head(coef(modFit)))
+  
+  contr <- makeContrasts(groupAdLib - groupRestricted, levels = colnames(coef(modFit)))
+  print(head(contr))
+  
+  fitContr <- contrasts.fit(modFit, contr)
+  fitContr <- eBayes(fitContr)
+  res <- topTable(fitContr, sort.by = "P", n = Inf)
+  head(res, 20)
+  length(which(res$adj.P.Val < 0.05))
+  length(which(res$adj.P.Val < 0.1))
+  length(which(res$P.Value < 0.01))
+
+  res$Gene <- rownames(res)
+  res <- res[,c("Gene", names(res)[1:6])]
+  write.csv(as.data.frame(res),file = paste0(outdir,"/",y,"_LimmaVoom.csv")) #write results to a new csv
+  etRes <- decideTests(fitContr)
+  summary(etRes)
+  plotMD(fitContr, column = 1, status = etRes[,1], main = colnames(fitContr)[1], xlim = c(-0.1,20))
+}
+```
+
+## Apply DGE functions
+```{r}
+
+cnt <- 1
+for (i in datlist){
+run.Vis(i, names(datlist)[cnt])
+cnt <- cnt +1
+}
+
+cnt <- 1
+for (i in datlist){
+run.DESeq(i, names(datlist)[cnt])
+cnt <- cnt +1
+}
+
+cnt <- 1
+for (i in datlist){
+run.EdgeR(i, names(datlist)[cnt])
+cnt <- cnt +1
+}
+
+cnt <- 1
+for (i in datlist){
+run.LimVoo(i, names(datlist)[cnt])
+cnt <- cnt +1
+}
+```
+## Ballgown DGE 
+words
+Summarize & simplify:
+There are many ballgown specific input files that make it difficult to use the previously filtered data with these programs. Only things processed with stringtie with the for ballgown output are readily formatted for this program. These will not be run within a function.?
+Some resources: https://rnabio.org/module-03-expression/0003/04/01/DE_Visualization/ 
+https://rstudio-pubs-static.s3.amazonaws.com/289617_cb95459057764fdfb4c42b53c69c6d3f.html
+https://davetang.org/muse/2017/10/25/getting-started-hisat-stringtie-ballgown/
+```{r}
+
+# We loaded our "phenotype" data in the beginning, so we don't need to repeat this step. 
+# create a ballgown object for the star and hisat2 outputs; stringtie and ballgown are complementary programs
+
+bg_star <- ballgown(dataDir = "../R_inputs/ballgown_star/", samplePattern = "SRR", pData = samples)
+bg_hisat <- ballgown(dataDir = "../R_inputs/ballgown_hisat/", samplePattern = "SRR", pData = samples)
+
+# check out the objects
+class(bg_star)
+class(bg_hisat)
+
+bg_star
+bg_hisat
+
+# filtering, following previous logic for pipeline specific
+
+bg_star_f1 <- ballgown::subset(bg_star, 
+                               "rowSums(gexpr(bg_star)==0) <= 5", 
+                               genomesubset=TRUE) # first filter, remove rows with 6 or more 0s
+bg_star_f1
+bg_star_fltrd <- ballgown::subset(bg_star_f1, 
+                                  "rowSums(gexpr(bg_star_f1)) >= 21") # second filter, remove rows that sum to less than 21
+bg_star_fltrd
+
+
+bg_hisat_f1 <- ballgown::subset(bg_hisat, 
+                                "rowSums(gexpr(bg_hisat)==0) <= 5", 
+                                genomesubset=TRUE) # first filter, remove rows with 6 or more 0s
+bg_hisat_f1
+bg_hisat_fltrd <- ballgown::subset(bg_hisat_f1, 
+                                   "rowSums(gexpr(bg_hisat_f1)) >= 21") # second filter, remove rows that sum to less than 21
+bg_hisat_fltrd
+
+# run dge analysis and output data to file (should filter by qvalue? -- what did I filter by with other tables?)
+bg_star_genes <- stattest(bg_star_fltrd,
+                          feature="gene",
+                          covariate="Treat",
+                          getFC=TRUE, meas="FPKM")
+dim(bg_star_genes)
+table(bg_star_genes$qval<0.05)
+
+
+bg_hisat_genes <- stattest(bg_hisat_fltrd,
+                          feature="gene",
+                          covariate="Treat",
+                          getFC=TRUE, meas="FPKM")
+
+dim(bg_hisat_genes)
+table(bg_hisat_genes$qval<0.05)
+
+# output results
+# extract significant differentially expressed genes, sort, & write to csv
+
+bg_hisat_genes[,"de"] <- log2(bg_hisat_genes[,"fc"])
+sigpi = which(bg_hisat_genes[,"pval"]<0.05)
+sigp = bg_hisat_genes[sigpi,]
+sigde = which(abs(sigp[,"de"]) >= 2)
+sig_tn_de = sigp[sigde,]
+o = order(sig_tn_de[,"qval"], -abs(sig_tn_de[,"de"]), decreasing=FALSE)
+output = sig_tn_de[o,c("id","fc","pval","qval","de")]
+write.csv(as.data.frame(output),file = paste0(outdir,"/","hisat_Ballgown.csv")) #write results to a new csv
+
+bg_star_genes[,"de"] <- log2(bg_star_genes[,"fc"])
+sigpi = which(bg_hisat_genes[,"pval"]<0.05)
+sigp = bg_hisat_genes[sigpi,]
+sigde = which(abs(sigp[,"de"]) >= 2)
+sig_tn_de = sigp[sigde,]
+o = order(sig_tn_de[,"qval"], -abs(sig_tn_de[,"de"]), decreasing=FALSE)
+output = sig_tn_de[o,c("id","fc","pval","qval","de")]
+write.csv(as.data.frame(output),file = paste0(outdir,"/","star_Ballgown.csv")) #write results to a new csv
+
+# visualize results
+
+bg_star_genes$mean <- rowMeans(texpr(bg_star_fltrd))
+bg_star_plot <- ggplot(bg_star_genes, aes(log2(mean), log2(fc), colour = qval<0.05)) +
+  scale_color_manual(values=c("#999999", "#FF0000")) +
+  geom_point() +
+  geom_hline(yintercept=0)
+
+bg_hisat_genes$mean <- rowMeans(texpr(bg_hisat_fltrd))
+bg_hisat_plot <- ggplot(bg_hisat_genes, aes(log2(mean), log2(fc), colour = qval<0.05)) +
+  scale_color_manual(values=c("#999999", "#FF0000")) +
+  geom_point() +
+  geom_hline(yintercept=0)
+
+bg_star_plot
+bg_hisat_plot
+
+```
+
+
+

@@ -1,18 +1,26 @@
 ---
 title: "Quantification File Preparation and Filtering for DGE Analysis"
-output: html_notebook
 author: "Amanda D. Clark"
+output:
+  html_document:
+    df_print: paged
 ---
 
-## Purpose
+## Purpose  
+
 WORDS   
-### Sources & Resources
+
+### Sources & Resources  
+
 Sources and resources are linked where applicable
 
 ## Count file Preparation
 For Salmon output (but also works for stringtie and Kallisto outputs), best practices use `tximport` to merge counts from different samples and summarize them at a gene level (so this means it accepts transcript level counts) for downstream DGE analyses. Run `?tximport` in the console for more information about `tximport` or checkout [their site](https://bioconductor.org/packages/release/bioc/html/tximport.html).  
-Here is a [nice vignette](http://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html#Introduction) on using tximport from different quantification methods for different DGE pipelines. 
-### Setting Up Environment
+Here is a [nice vignette](http://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html#Introduction) on using tximport from different quantification methods for different DGE pipelines.  
+
+### Setting Up Environment  
+
+logox vnknon    
 
 ```{r}
 # clear workspace
@@ -41,7 +49,7 @@ library(edgeR)
 # directory for input files
 dir <- "../R_inputs"
 
-# check to see if make a directory for output files
+# Generating general outputs directory and sub-directory for filtering data
 if (! dir.exists("../R_outputs")) {
   dir.create("../R_outputs")  
 }
@@ -63,7 +71,8 @@ I found a [function](https://jmw86069.github.io/splicejam/reference/makeTx2geneF
 1. I am not specifying the necessary information (I think it needs a GTF, and what the values in column 9 and column 3 are for each sample)
 2. The gtf is not formatted in a recognizable way. This GTF was output from [RSEM](https://github.com/deweylab/RSEM) from a gff3 output from [Funannotate](https://funannotate.readthedocs.io/en/latest/)
 
-Well, either way, you'll notice that this is just a key of transcript and corresponding gene id's, which we could make from the GTF ourselves
+Well, either way, you'll notice that this is just a key of transcript and corresponding gene id's, which we could make from the GTF ourselves. 
+The GTF needs to be the exact same GTF you map to ---or you get weirdness when trying to import.
 
 ```{r}
 # GTF file to make required file "tx2gene" for tximport (Alternative Route)
@@ -78,6 +87,7 @@ gtfatr <- separate(gtfatr,1,c("gene_id", "transcript_id"), sep = ";") %>% select
 # isolating FUN# ID for each attribute
 gtfatr$gene_id<- gsub("gene_id \"(FUN_[0-9]+)\"","\\1", gtfatr$gene_id)
 gtfatr$transcript_id<- gsub("transcript_id \"(FUN_[0-9]+-T1)\"","\\1", gtfatr$transcript_id)
+gtfatr <- gtfatr[order(transcript_id)]
 head(gtfatr)
 
 # export file in case it is necessary downstream
@@ -95,8 +105,8 @@ samples <- read.table(file.path(dir, "samples.txt"), header = T)
 head(samples)
 
 # input tx2gene file if it wasn't already generated here
-#tx2gene <- read_csv(file.path(dir, "tx2gene_dpulex.csv"))
-tx2gene <- gtfatr
+tx2gene <- read_csv(file.path(dir, "tx2gene_dpulex.csv"))
+#tx2gene <- as.data.frame(gtfatr)
 head(tx2gene)
 length(tx2gene$gene_id)
 ```
@@ -121,6 +131,8 @@ head(txi.salmon$counts)
 ```
 
 #### Kallisto
+https://rnabio.org/module-04-kallisto/0004/02/01/Alignment_Free_Kallisto/
+
 ```{r}
 # make list of all abundance.h5 files for samples from the same project. 
 files <- file.path(dir, "kallisto_counts", samples$SRRID, "abundance.h5")
@@ -136,6 +148,7 @@ head(txi.kallisto$counts)
 ```
 
 #### Stringtie
+
 ```{r}
 ## Star
 # make list of all t_data.ctab files for samples from the same project. 
@@ -165,34 +178,6 @@ head(txi.stringtieh$counts)
 
 
 ```
-You will notice that some of these aren't integers, but they should be. This [tutorial resource](https://uclouvain-cbio.github.io/BSS2019/rnaseq_gene_summerschool_belgium_2019.html#summarizing-an-rna-seq-experiment-as-a-count-matrix) from a bioinformatics summer school suggests rounding these values.
-
-```{r}
-# round counts 
-txi.salmon$counts <- round(txi.salmon$counts)
-txi.kallisto$counts <- round(txi.kallisto$counts)
-txi.stringtieh$counts <- round(txi.stringtieh$counts)
-txi.stringties$counts <- round(txi.stringties$counts)
-
-# convert to matrix
-counts_salmon <- as.matrix(txi.salmon$counts)
-counts_kallisto <- as.matrix(txi.kallisto$counts)
-counts_strgtieh <- as.matrix(txi.stringtieh$counts)
-counts_strgties <- as.matrix(txi.stringties$counts)
-
-# check it out
-head(counts_salmon)
-head(counts_kallisto)
-head(counts_strgties)
-head(counts_strgtieh)
-
-# output pre-filtered files
-write_csv(rownames_to_column(data.frame(counts_kallisto, row.names = row.names(counts_kallisto)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_kallisto.csv")
-write_csv(rownames_to_column(data.frame(counts_salmon, row.names = row.names(counts_salmon)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_salmon.csv")
-write_csv(rownames_to_column(data.frame(counts_strgtieh, row.names = row.names(counts_strgtieh)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_strgtieh.csv")
-write_csv(rownames_to_column(data.frame(counts_strgties, row.names = row.names(counts_strgties)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_strgties.csv")
-```
-
 
 ### HTSeq File Import
 HTSeq generates gene level outputs, but tximport takes in transcript abundance data. Seeing as there is a single transcript per gene, this really shouldn't matter for the transcript to gene level conversion tximport does.
@@ -245,7 +230,38 @@ colnames(counts_htsh) <- NULL
 
 head(counts_htsh)
 
+```
+
+
+
+
+
+You will notice that some of these aren't integers, but they should be. This [tutorial resource](https://uclouvain-cbio.github.io/BSS2019/rnaseq_gene_summerschool_belgium_2019.html#summarizing-an-rna-seq-experiment-as-a-count-matrix) from a bioinformatics summer school suggests rounding these values.
+
+```{r}
+# round counts 
+txi.salmon$counts <- round(txi.salmon$counts)
+txi.kallisto$counts <- round(txi.kallisto$counts)
+txi.stringtieh$counts <- round(txi.stringtieh$counts)
+txi.stringties$counts <- round(txi.stringties$counts)
+
+# convert to matrix
+counts_salmon <- as.matrix(txi.salmon$counts)
+counts_kallisto <- as.matrix(txi.kallisto$counts)
+counts_strgtieh <- as.matrix(txi.stringtieh$counts)
+counts_strgties <- as.matrix(txi.stringties$counts)
+
+# check it out
+head(counts_salmon)
+head(counts_kallisto)
+head(counts_strgties)
+head(counts_strgtieh)
+
 # output pre-filtered files
+write_csv(rownames_to_column(data.frame(counts_kallisto, row.names = row.names(counts_kallisto)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_kallisto.csv")
+write_csv(rownames_to_column(data.frame(counts_salmon, row.names = row.names(counts_salmon)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_salmon.csv")
+write_csv(rownames_to_column(data.frame(counts_strgtieh, row.names = row.names(counts_strgtieh)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_strgtieh.csv")
+write_csv(rownames_to_column(data.frame(counts_strgties, row.names = row.names(counts_strgties)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_strgties.csv")
 write_csv(rownames_to_column(data.frame(counts_htss, row.names = row.names(counts_htss)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_htss.csv")
 write_csv(rownames_to_column(data.frame(counts_htsh, row.names = row.names(counts_htsh)), "gene_id"), "../R_outputs/QuantPrep_Filter/unfiltered_htsh.csv")
 ```
@@ -412,37 +428,37 @@ data3 %>% filter(!row.names(data3) %in% row.names(to_rm))
 data3[!row.names(data3) %in% row.names(to_rm), ] # baseR
 ```
 
-#### Method 1: Hard Filtering Individual Counts
+#### Method 1: Pipeline-Specific Filtering Individual Counts
 
-Now that I have observed the effects of the filtering logic on a smaller dataset, let's apply this to a pair of the gene matrices. Things to consider, I want to just filter all of the genes out that don't fit the parameters for one method, but for the other method i need all of the genes that get filtered from each gene matrix, get an intersection of those gene lists, and then only remove those genes from all matrices. 
+Now that I have observed the effects of the filtering logic on a smaller dataset, let's apply this to a pair of the gene matrices. Things to consider, I want to just filter all of the genes out that don't fit the parameters for one method. Each filtering will be specific to each pipeline.
 
 ```{r}
 rnames <- row.names(counts_kallisto)
-hf_kallisto <- data.frame(counts_kallisto, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
+ps_kallisto <- data.frame(counts_kallisto, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
   filter(rowSums(.) >= 21)
 
-hf_salmon <- data.frame(counts_salmon, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
+ps_salmon <- data.frame(counts_salmon, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
   filter(rowSums(.) >= 21)
 
-hf_strgtieh <- data.frame(counts_strgtieh, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
+ps_strgtieh <- data.frame(counts_strgtieh, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
   filter(rowSums(.) >= 21)
 
-hf_strgties <- data.frame(counts_strgties, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
+ps_strgties <- data.frame(counts_strgties, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
   filter(rowSums(.) >= 21)
 
-hf_htss <- data.frame(counts_htss, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
+ps_htss <- data.frame(counts_htss, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
   filter(rowSums(.) >= 21)
 
-hf_htsh <- data.frame(counts_htsh, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
+ps_htsh <- data.frame(counts_htsh, row.names = rnames) %>% filter(rowSums(.==0) <= 5) %>% 
   filter(rowSums(.) >= 21)
 
 # output filtered files
-write_csv(rownames_to_column(data.frame(hf_kallisto, row.names = row.names(hf_kallisto)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_kallisto.csv")
-write_csv(rownames_to_column(data.frame(hf_salmon, row.names = row.names(hf_salmon)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_salmon.csv")
-write_csv(rownames_to_column(data.frame(hf_strgtieh, row.names = row.names(hf_strgtieh)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_strgtieh.csv")
-write_csv(rownames_to_column(data.frame(hf_strgties, row.names = row.names(hf_strgties)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_strgties.csv")
-write_csv(rownames_to_column(data.frame(hf_htss, row.names = row.names(hf_htss)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_htss.csv")
-write_csv(rownames_to_column(data.frame(hf_htsh, row.names = row.names(hf_htsh)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_htsh.csv")
+write_csv(rownames_to_column(data.frame(ps_kallisto, row.names = row.names(ps_kallisto)), "gene_id"), "../R_outputs/QuantPrep_Filter/pipeline_filtered_kallisto.csv")
+write_csv(rownames_to_column(data.frame(ps_salmon, row.names = row.names(ps_salmon)), "gene_id"), "../R_outputs/QuantPrep_Filter/pipeline_filtered_salmon.csv")
+write_csv(rownames_to_column(data.frame(ps_strgtieh, row.names = row.names(ps_strgtieh)), "gene_id"), "../R_outputs/QuantPrep_Filter/pipeline_filtered_strgtieh.csv")
+write_csv(rownames_to_column(data.frame(ps_strgties, row.names = row.names(ps_strgties)), "gene_id"), "../R_outputs/QuantPrep_Filter/pipeline_filtered_strgties.csv")
+write_csv(rownames_to_column(data.frame(ps_htss, row.names = row.names(ps_htss)), "gene_id"), "../R_outputs/QuantPrep_Filter/pipeline_filtered_htss.csv")
+write_csv(rownames_to_column(data.frame(ps_htsh, row.names = row.names(ps_htsh)), "gene_id"), "../R_outputs/QuantPrep_Filter/pipeline_filtered_htsh.csv")
 
 #could loop through a list of the count frames 
 
@@ -450,7 +466,7 @@ write_csv(rownames_to_column(data.frame(hf_htsh, row.names = row.names(hf_htsh))
 
 #### Method 2: Soft Filtering Individual Counts From an Intersection of Genes
 
-Now that I have observed the effects of the filtering logic on a smaller dataset, let's apply this to a pair of the gene matrices. Things to consider, I want to just filter all of the genes out that don't fit the parameters for one method, but for the other method i need all of the genes that get filtered from each gene matrix, get an intersection of those gene lists, and then only remove those genes from all matrices. 
+Now that I have observed the effects of the filtering logic on a smaller dataset, let's apply this to a pair of the gene matrices. Things to consider, I want to just filter all of the genes that get filtered from each gene matrix, get an intersection of those gene lists, and then only remove those genes from all matrices. 
 
 ```{r}
 # Think about how to make this more efficient. Maybe a for loop? Maybe a function to then apply to each matrix would probably be better!
@@ -519,3 +535,32 @@ write_csv(rownames_to_column(data.frame(sfi_strgties, row.names = row.names(sfi_
 write_csv(rownames_to_column(data.frame(sfi_htss, row.names = row.names(sfi_htss)), "gene_id"), "../R_outputs/QuantPrep_Filter/soft_filtered_htss.csv")
 write_csv(rownames_to_column(data.frame(sfi_htsh, row.names = row.names(sfi_htsh)), "gene_id"), "../R_outputs/QuantPrep_Filter/soft_filtered_htsh.csv")
 ```
+
+#### Method 3: Hard Filtering Individual Counts From an Intersection of Genes
+Now that I have observed the effects of the filtering logic on a smaller dataset, let's apply this to a pair of the gene matrices. Things to consider, I want to just filter all of the genes that get filtered from each gene matrix, get any genes that would be removed from each of these pipelines, and then remove those genes from all matrices. 
+
+```{r}
+
+# Using the sf_{pipeline} objects to full join the lists, instead of inner joining them for a comprehensive list of genes that would be filtered out across any dataset
+
+hf_compilation <- sf_kallisto %>% full_join(sf_salmon,by = "gene_id") %>% 
+  full_join(sf_strgtieh,by = "gene_id") %>% full_join(sf_strgties,by = "gene_id") %>% 
+  full_join(sf_htss,by = "gene_id") %>% full_join(sf_htsh,by = "gene_id")
+
+# Need to remove these > 2,000 genes and output hard - filtered data
+hfc_kallisto <- data.frame(counts_kallisto, row.names = rnames) %>% filter(!row.names(.) %in% hf_compilation$gene_id)
+hfc_salmon <- data.frame(counts_salmon, row.names = rnames) %>% filter(!row.names(.) %in% hf_compilation$gene_id)
+hfc_strgtieh <- data.frame(counts_strgtieh, row.names = rnames) %>% filter(!row.names(.) %in% hf_compilation$gene_id)
+hfc_strgties <- data.frame(counts_strgties, row.names = rnames) %>% filter(!row.names(.) %in% hf_compilation$gene_id)
+hfc_htss <- data.frame(counts_htss, row.names = rnames) %>% filter(!row.names(.) %in% hf_compilation$gene_id)
+hfc_htsh <- data.frame(counts_htsh, row.names = rnames) %>% filter(!row.names(.) %in% hf_compilation$gene_id)
+
+write_csv(rownames_to_column(data.frame(hfc_kallisto, row.names = row.names(hfc_kallisto)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_kallisto.csv")
+write_csv(rownames_to_column(data.frame(hfc_salmon, row.names = row.names(hfc_salmon)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_salmon.csv")
+write_csv(rownames_to_column(data.frame(hfc_strgtieh, row.names = row.names(hfc_strgtieh)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_strgtieh.csv")
+write_csv(rownames_to_column(data.frame(hfc_strgties, row.names = row.names(hfc_strgties)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_strgties.csv")
+write_csv(rownames_to_column(data.frame(hfc_htss, row.names = row.names(hfc_htss)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_htss.csv")
+write_csv(rownames_to_column(data.frame(hfc_htsh, row.names = row.names(hfc_htsh)), "gene_id"), "../R_outputs/QuantPrep_Filter/hard_filtered_htsh.csv")
+
+```
+

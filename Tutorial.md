@@ -9,6 +9,10 @@ ECSeq has a [really nice post](https://www.ecseq.com/support/ngs/how-do-strand-s
 
 ![from ECSeq Figure 2](https://www.ecseq.com/support/ngs/img/Strand-Specific-Protocols-1.jpg)
 
+
+
+
+  
 The figure above depicts two overlapping genes on opposite strands of DNA. How can you tell if sequencing reads from this region belong to the gene on located on the sense strand vs the gene on the antisense strand?  
 **The short answer: if the library isn't stranded (or you aren't using software that incorporates that information) YOU CAN'T!**
 
