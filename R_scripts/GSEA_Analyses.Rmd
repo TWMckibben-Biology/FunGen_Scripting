@@ -1,0 +1,184 @@
+---
+title: "GSEA Analyses"
+output: html_notebook
+author: "Amanda D. Clark"
+---
+
+## Purpose
+WORDS   
+### Sources & Resources
+Sources and resources are linked where applicable
+
+Make this a loop using the "assign" function
+https://thomasadventure.blog/posts/a-case-for-the-assign-function/
+
+## Setting Up
+### Setting Up Environment
+```{r}
+# clear workspace
+rm(list=ls(all.names=TRUE))
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+#BiocManager::install("ballgown")
+#BiocManager::install("RNAseq123")
+#BiocManager::install("Biobase")
+#BiocManager::install("fgsea")
+#install.packages(c("GSA","bitops","Cairo"), repos = "https://cran.rstudio.com")
+library(devtools)
+library(tidyverse)
+library(readr) #readr is faster, but makes tibbles...not sure how well tibbles work with programs expecting matrices. row names can't be specified with readr
+library(tools)
+library(RColorBrewer)
+library(fgsea)
+
+
+# directory for input files
+indir <- "../25_RNA-seq_Pipelines/R_outputs/DGE_Analyses"
+
+# make a directory for output files
+if (! dir.exists("../R_outputs/GSEA_Analyses")) {
+ dir.create("../R_outputs/GSEA_Analyses")
+}
+outdir <- "../R_outputs/GSEA_Analyses"
+```
+
+## Merging Gene Names
+
+WORDS: why are we doing this? annotation names in the form of gene symbols are necessary for GSEA. DE genes are tested for enrichment of specific pathways
+
+```{r}
+# Loading data; results should be the ordered output from DGE_Analyses; geneAnno should be the annotation file with gene symbols OR entrez ids
+results <- as.data.frame(read.csv("../R_outputs/DGE_Analyses/hf_htsh_DESeq2.csv"))
+geneAnno <- as.data.frame(read.delim("../R_inputs/Daphnia_pulex.annotations.txt", sep = "\t"))
+
+# updating column name in results to merge with gene symbols in annotation file
+results <- results %>% rename(GeneID = X)
+
+# look at your data! 
+dim(results) # does it have the number of records and variables you expect?
+summary(results) # are the variable names correct? What about the class? We expect all variables to be numerical except the ID
+  #change key columns to class = numeric
+results <- results %>% mutate(log2FoldChange = as.numeric(log2FoldChange),
+                              pvalue = as.numeric(pvalue), 
+                              padj = as.numeric(padj))
+  # Let's apply the class function to our dataframe to verify our update worked!
+lapply(results, class)
+
+# Let's make a ranked gene list by using 'Rank =  sign(logFC) * -log10(P.Value)'
+resultsRanked <-  within(results, Rank <- sign(log2FoldChange) * -log10(pvalue))
+head(resultsRanked)
+
+# Merge annotation file with results, completely
+resultAnno <- merge(resultsRanked,geneAnno, by = "GeneID", all = T)
+head(resultAnno)
+
+# drop NA's, select desired columns (rank and gene names), filter out missing gene names, and remove duplicated rows
+rankFile <- resultAnno %>% drop_na() %>% select(Rank, Name) %>% filter(Name != "") %>% distinct()
+
+# Can create an output file for GSEA online, but planning to run GSEA within R
+write.table(rankFile, file="../R_outputs/GSEA_Analyses/hf_htsh_DESeq2.rnk", sep="\t", row.names=FALSE, quote = FALSE)
+```
+
+```{r}
+files <- list.files("../R_outputs/DGE_Analyses/", pattern = ".csv", full.names = F)
+
+for (file in files) {
+  file_name <- tools::file_path_sans_ext(file)
+  cat(file_name,"\n")
+  full_path_to_file <- file.path(indir, file)
+  cat(full_path_to_file,"\n")
+}
+
+```
+
+Can add a section in with information about accessing annotations through bioconductor
+https://bioconductor.org/packages/release/data/annotation/manuals/org.Dm.eg.db/man/org.Dm.eg.db.pdf (fly)
+org.Hs.eg.db (human)
+
+https://www.r-bloggers.com/2016/07/converting-gene-names-in-r-with-annotationdbi/
+
+can take gene symbol or ensembl or flybase id and convert to entrez! would want a logical operator starting from database ids (gene names get tricky because you need to know if fly or human or you get no results main difference is all caps vs not in fly gene names--but not very parsible). 
+
+# resources on this topic
+
+https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Main_Page
+
+https://stephenturner.github.io/deseq-to-fgsea/
+
+https://github.com/kelseykeith/coriell_server_lessons/blob/master/rnaseq/week6/gene_set_enrichment_analysis.Rmd
+
+https://bioconductor.org/packages/release/bioc/vignettes/fgsea/inst/doc/fgsea-tutorial.html
+
+http://www.gsea-msigdb.org/gsea/downloads.jsp#msigdb
+
+## GSEA Analyses
+
+```{r}
+# Prepare your rank file for fgsea
+diff_exp_res <- rankFile %>% group_by(Name) %>% summarize(Rank = mean(Rank)) %>% deframe()
+
+# Prepare your pathway file for fgsea; retreived this file from the GSEA website
+pathways.msigdb <- gmtPathways("../R_inputs/msigdb.v7.5.1.symbols.gmt") # full collection of pathways
+pathways.hallmark <- gmtPathways("../R_inputs/h.all.v7.5.1.symbols.gmt") # hallmark pathways
+
+# What is in the pathway objects?
+pathways.msigdb %>% 
+  head() %>% 
+  lapply(head)
+
+pathways.hallmark %>% 
+  head() %>% 
+  lapply(head)
+
+# Run fgsea with 1000 permutations for the full and hallmark pathways
+
+fgsea_msig <- fgsea(pathways = pathways.msigdb, stats = diff_exp_res, nperm = 1000)
+fgsea_msig_multi <- fgsea(pathways = pathways.msigdb, stats = diff_exp_res)
+
+fgsea_hallmark <- fgsea(pathways = pathways.hallmark, stats = diff_exp_res, nperm = 1000)
+fgsea_halmk_multi <- fgsea(pathways = pathways.hallmark, stats = diff_exp_res)
+```
+Notes about metrics obtained... Need to look into difference between Multilevel and Simple fgsea. 
+Let's work on some summaries and plots in the next block
+
+```{r}
+# reordering by NES (define)
+
+fgsea_msig <- fgsea_msig %>% arrange(desc(NES))
+fgsea_msig_multi <- fgsea_msig_multi %>% arrange(desc(NES))
+fgsea_hallmark <- fgsea_hallmark %>% arrange(desc(NES))
+fgsea_halmk_multi <- fgsea_halmk_multi %>% arrange(desc(NES))
+
+
+# Let's make some plots (i suspect this plot won't work for the full dataset--too many results)!
+plotMsig <- ggplot(fgsea_msig, aes(reorder(pathway, NES), NES)) +
+  geom_col(aes(fill=padj<0.05)) +
+  coord_flip() +
+  labs(x="Pathway", y="Normalized Enrichment Score",
+       title="All pathways NES from GSEA") + 
+  theme_minimal()
+
+plotHallmark <- ggplot(fgsea_hallmark, aes(reorder(pathway, NES), NES)) +
+  geom_col(aes(fill=padj<0.05)) +
+  coord_flip() +
+  labs(x="Pathway", y="Normalized Enrichment Score",
+       title="Hallmark pathways NES from GSEA") + 
+  theme_minimal()
+
+
+# Pathway Specific Plots
+head(fgsea_hallmark[order(pval), ])
+plotEnrichment(pathways.hallmark[["HALLMARK_COAGULATION"]],
+               diff_exp_res) + labs(title="Coagulation") # this is upside down??
+
+
+
+topPathwaysUp <- fgsea_hallmark[ES > 0][head(order(pval), n=10), pathway]
+topPathwaysDown <- fgsea_hallmark[ES < 0][head(order(pval), n=10), pathway]
+topPathways <- c(topPathwaysUp, rev(topPathwaysDown))
+gseaTable <- plotGseaTable(pathways.hallmark[topPathways], diff_exp_res, fgsea_hallmark, 
+              gseaParam=0.5)
+```
+
+
