@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#SBATCH -J DpulexCaloric_countreads
+#SBATCH -J DpulexCaloric_altcount
 #SBATCH -t 4-00:00:00
 #SBATCH -N 1
 #SBATCH -n 18
@@ -34,10 +34,10 @@ fi
 
 
 # sample pulled from array task id (this should be the number of samples you have on your jf list and should be specified in the #SBATCH header)
-sm=$( head -n ${SLURM_ARRAY_TASK_ID} ${jf} | tail -n 1)
+sm=$(head -n ${SLURM_ARRAY_TASK_ID} ${jf} | tail -n 1)
 
-bams=(${sm}_hisat2.srt.bam ${sm}_star.srt.bam )
+# array of alternative programs for mapping and counting in one swoop
+altprog=(salmon kallisto)
 
-printf '%s\n' "${bams[@]}" |parallel "sh ~/workflow/run_stringtie.sh {} ${wd} ${rfp}"
-
-printf '%s\n' "${bams[@]}" |parallel "sh ~/workflow/run_htseq.sh {} ${wd} ${rfp}"
+# run trimmed samples through salmon and kallisto
+printf '%s\n' "${altprog[@]}" | parallel "sh ~/workflow/run_{}.sh ${sm} ${wd}"
