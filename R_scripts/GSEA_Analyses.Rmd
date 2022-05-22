@@ -31,16 +31,20 @@ library(readr) #readr is faster, but makes tibbles...not sure how well tibbles w
 library(tools)
 library(RColorBrewer)
 library(fgsea)
+library(stringr)
 
 
 # directory for input files
-indir <- "../25_RNA-seq_Pipelines/R_outputs/DGE_Analyses"
+indir <- "../R_outputs/DGE_Analyses"
 
 # make a directory for output files
 if (! dir.exists("../R_outputs/GSEA_Analyses")) {
  dir.create("../R_outputs/GSEA_Analyses")
 }
 outdir <- "../R_outputs/GSEA_Analyses"
+
+# genome annotation data for matching annotation IDs with gene names
+geneAnno <- as.data.frame(read.delim("../R_inputs/Daphnia_pulex.annotations.txt", sep = "\t"))
 ```
 
 ## Merging Gene Names
@@ -50,7 +54,6 @@ WORDS: why are we doing this? annotation names in the form of gene symbols are n
 ```{r}
 # Loading data; results should be the ordered output from DGE_Analyses; geneAnno should be the annotation file with gene symbols OR entrez ids
 results <- as.data.frame(read.csv("../R_outputs/DGE_Analyses/hf_htsh_DESeq2.csv"))
-geneAnno <- as.data.frame(read.delim("../R_inputs/Daphnia_pulex.annotations.txt", sep = "\t"))
 
 # updating column name in results to merge with gene symbols in annotation file
 results <- results %>% rename(GeneID = X)
@@ -81,14 +84,27 @@ write.table(rankFile, file="../R_outputs/GSEA_Analyses/hf_htsh_DESeq2.rnk", sep=
 ```
 
 ```{r}
-files <- list.files("../R_outputs/DGE_Analyses/", pattern = ".csv", full.names = F)
+# List with DGE outputs
+files <- list() #empty list for file names
+gsea_input <- vector("list", 3) #empty list with 3 fields for gsea_input 
+files <- list.files(indir, pattern = ".csv", full.names = T) # in the input directory, grab anything that ends in .csv and add it to our files list
+gsea_input <- list(f_name = c(file_path_sans_ext(basename(files))), f_path = c(file.path(indir,files)), content = files %>% map(read.csv) %>% map(as.data.frame)) #gsea_input becomes a list of lists, first list has file names, next file paths, and then the data is in content
+names(gsea_input$content) <- c(gsea_input$f_name) # If you ran `>names(gsea$content)` before and after running this line you will notice that the list of dfs in this field are now also named (vs being NULL)
 
-for (file in files) {
-  file_name <- tools::file_path_sans_ext(file)
-  cat(file_name,"\n")
-  full_path_to_file <- file.path(indir, file)
-  cat(full_path_to_file,"\n")
+
+plots <- mtcars %>% split(.$cyl)
+save_plots <- stringr::str_c(outdir,gsea_input$f_name, ".pdf") # can use pwalk to output data with specific names
+
+for (i in seq_along(gsea_input$content)) {
+print(head(gsea_input$content[i]))
 }
+
+
+```
+
+Next my logic here is that I have all of these csv files that I want to take in and output a ranked file list for (** as a note, the columns are not uniform. Need to return to DGE_Analyses.Rmd to output columns with the same names). I can apply a function that does those things. 
+
+```{r}
 
 ```
 
