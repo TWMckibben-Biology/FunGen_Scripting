@@ -2,37 +2,61 @@
 title: "GSEA Analyses"
 output: html_notebook
 author: "Amanda D. Clark"
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-## Purpose
-WORDS   
-### Sources & Resources
+# Purpose
+WORDS
+## Sources & Resources 
 Sources and resources are linked where applicable
+<https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Main_Page>
+
+<https://stephenturner.github.io/deseq-to-fgsea/>
+
+<https://github.com/kelseykeith/coriell_server_lessons/blob/master/rnaseq/week6/gene_set_enrichment_analysis.Rmd>
+
+<https://bioconductor.org/packages/release/bioc/vignettes/fgsea/inst/doc/fgsea-tutorial.html>
+
+<http://www.gsea-msigdb.org/gsea/downloads.jsp#msigdb>
+
 
 Make this a loop using the "assign" function
-https://thomasadventure.blog/posts/a-case-for-the-assign-function/
+<https://thomasadventure.blog/posts/a-case-for-the-assign-function/>
 
-## Setting Up
-### Setting Up Environment
+# Setting Up
+## Setting Up Environment 
+
 ```{r}
 # clear workspace
 rm(list=ls(all.names=TRUE))
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
 
-#BiocManager::install("ballgown")
-#BiocManager::install("RNAseq123")
-#BiocManager::install("Biobase")
-#BiocManager::install("fgsea")
-#install.packages(c("GSA","bitops","Cairo"), repos = "https://cran.rstudio.com")
-library(devtools)
-library(tidyverse)
-library(readr) #readr is faster, but makes tibbles...not sure how well tibbles work with programs expecting matrices. row names can't be specified with readr
-library(tools)
-library(RColorBrewer)
-library(fgsea)
-library(stringr)
+# Function to check for a package host on CRAN, then install (if needed) and library the package
+prep_cranpack <- function (x){
+if (!requireNamespace(x, quietly = TRUE)) {
+  install.packages(x)
+  library(x, character.only = TRUE, quietly = TRUE)
+} else {
+  library(x, character.only = TRUE, quietly = TRUE)
+}}
 
+# Function to check for a package host on bioconductor, then install (if needed) and library the package
+prep_biocpack <- function (x){
+if (!requireNamespace(x, quietly = TRUE)) {
+  BiocManager::install(x)
+  library(x, character.only = TRUE, quietly = TRUE)
+} else {
+  library(x, character.only = TRUE, quietly = TRUE)
+}}
+
+# loading list of CRAN packages
+cranpacks <- c("BiocManager", "tools", "devtools", "tidyverse", "RColorBrewer", "stringr", "msigdbr")
+invisible(lapply(cranpacks, prep_cranpack))
+
+# loading list of Bioconductor packages
+biocpacks <- c("ballgown", "RNAseq123", "fgsea")
+invisible(lapply(biocpacks, prep_biocpack))
 
 # directory for input files
 indir <- "../R_outputs/DGE_Analyses"
@@ -47,29 +71,52 @@ outdir <- "../R_outputs/GSEA_Analyses"
 geneAnno <- as.data.frame(read.delim("../R_inputs/Daphnia_pulex.annotations.txt", sep = "\t"))
 ```
 
-## Merging Gene Names
-
-WORDS: why are we doing this? annotation names in the form of gene symbols are necessary for GSEA. DE genes are tested for enrichment of specific pathways
+## Setting Up Data
 
 ```{r}
+# List with DGE outputs
+files <- list() #empty list for file names
+gsea_input <- vector("list", 3) #empty list with 3 fields for gsea_input 
+files <- list.files(indir, pattern = ".csv", full.names = T) # in the input directory, grab anything that ends in .csv and add it to our files list
+gsea_input <- list(f_name = c(file_path_sans_ext(basename(files))), f_path = c(file.path(indir,files)), content = files %>% map(read.csv, header = T) %>% map(as.data.frame)) #gsea_input becomes a list of lists, first list has file names, next file paths, and then the data is in content
+names(gsea_input$content) <- c(gsea_input$f_name) # If you ran `>names(gsea$content)` before and after running this line you will notice that the list of dfs in this field are now also named (vs being NULL)
+
+# Prepare your pathway file for fgsea; retreived this file from the GSEA website
+pathways.hallmark <- gmtPathways("../R_inputs/h.all.v7.5.1.symbols.gmt") # hallmark pathways
+
+```
+
+
+
+# Preparing Rank File & Running fGSEA in R
+
+WORDS: why are we doing this? annotation names in the form of gene
+symbols are necessary for GSEA. DE genes are tested for enrichment of
+specific pathways
+
+Going through rank file creation with a single example. Doing this made
+me realize that the inputs were not formatted the same, so I went back
+and updated the output from DGE_Analyses.Rmd to a uniform setup.
+## Prepare Rank File
+```{r echo=F, eval=F}
 # Loading data; results should be the ordered output from DGE_Analyses; geneAnno should be the annotation file with gene symbols OR entrez ids
-results <- as.data.frame(read.csv("../R_outputs/DGE_Analyses/hf_htsh_DESeq2.csv"))
+results <- as.data.frame(read.csv("../R_outputs/error/hf_htsh_DESeq2.csv"))
 
 # updating column name in results to merge with gene symbols in annotation file
-results <- results %>% rename(GeneID = X)
+#results <- results %>% rename(GeneID = X)
 
 # look at your data! 
 dim(results) # does it have the number of records and variables you expect?
 summary(results) # are the variable names correct? What about the class? We expect all variables to be numerical except the ID
-  #change key columns to class = numeric
-results <- results %>% mutate(log2FoldChange = as.numeric(log2FoldChange),
-                              pvalue = as.numeric(pvalue), 
-                              padj = as.numeric(padj))
-  # Let's apply the class function to our dataframe to verify our update worked!
+#change key columns to class = numeric
+results <- results %>% mutate(logFC = as.numeric(logFC),
+                              pval = as.numeric(pval), 
+                              adj.pval = as.numeric(adj.pval))
+# Let's apply the class function to our dataframe to verify our update worked!
 lapply(results, class)
 
 # Let's make a ranked gene list by using 'Rank =  sign(logFC) * -log10(P.Value)'
-resultsRanked <-  within(results, Rank <- sign(log2FoldChange) * -log10(pvalue))
+resultsRanked <-  within(results, Rank <- sign(logFC) * -log10(pval))
 head(resultsRanked)
 
 # Merge annotation file with results, completely
@@ -77,60 +124,16 @@ resultAnno <- merge(resultsRanked,geneAnno, by = "GeneID", all = T)
 head(resultAnno)
 
 # drop NA's, select desired columns (rank and gene names), filter out missing gene names, and remove duplicated rows
-rankFile <- resultAnno %>% drop_na() %>% select(Rank, Name) %>% filter(Name != "") %>% distinct()
+rankFile <- resultAnno %>% drop_na() %>% dplyr::select(Rank, Name) %>% filter(Name != "") %>% distinct()
 
 # Can create an output file for GSEA online, but planning to run GSEA within R
-write.table(rankFile, file="../R_outputs/GSEA_Analyses/hf_htsh_DESeq2.rnk", sep="\t", row.names=FALSE, quote = FALSE)
+#write.table(rankFile, file="../R_outputs/GSEA_Analyses/hf_htsh_DESeq2.rnk", sep="\t", row.names=FALSE, quote = FALSE)
 ```
-
-```{r}
-# List with DGE outputs
-files <- list() #empty list for file names
-gsea_input <- vector("list", 3) #empty list with 3 fields for gsea_input 
-files <- list.files(indir, pattern = ".csv", full.names = T) # in the input directory, grab anything that ends in .csv and add it to our files list
-gsea_input <- list(f_name = c(file_path_sans_ext(basename(files))), f_path = c(file.path(indir,files)), content = files %>% map(read.csv) %>% map(as.data.frame)) #gsea_input becomes a list of lists, first list has file names, next file paths, and then the data is in content
-names(gsea_input$content) <- c(gsea_input$f_name) # If you ran `>names(gsea$content)` before and after running this line you will notice that the list of dfs in this field are now also named (vs being NULL)
-
-
-plots <- mtcars %>% split(.$cyl)
-save_plots <- stringr::str_c(outdir,gsea_input$f_name, ".pdf") # can use pwalk to output data with specific names
-
-for (i in seq_along(gsea_input$content)) {
-print(head(gsea_input$content[i]))
-}
-
-
-```
-
-Next my logic here is that I have all of these csv files that I want to take in and output a ranked file list for (** as a note, the columns are not uniform. Need to return to DGE_Analyses.Rmd to output columns with the same names). I can apply a function that does those things. 
-
-```{r}
-
-```
-
-Can add a section in with information about accessing annotations through bioconductor
-https://bioconductor.org/packages/release/data/annotation/manuals/org.Dm.eg.db/man/org.Dm.eg.db.pdf (fly)
-org.Hs.eg.db (human)
-
-https://www.r-bloggers.com/2016/07/converting-gene-names-in-r-with-annotationdbi/
-
-can take gene symbol or ensembl or flybase id and convert to entrez! would want a logical operator starting from database ids (gene names get tricky because you need to know if fly or human or you get no results main difference is all caps vs not in fly gene names--but not very parsible). 
-
-# resources on this topic
-
-https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Main_Page
-
-https://stephenturner.github.io/deseq-to-fgsea/
-
-https://github.com/kelseykeith/coriell_server_lessons/blob/master/rnaseq/week6/gene_set_enrichment_analysis.Rmd
-
-https://bioconductor.org/packages/release/bioc/vignettes/fgsea/inst/doc/fgsea-tutorial.html
-
-http://www.gsea-msigdb.org/gsea/downloads.jsp#msigdb
 
 ## GSEA Analyses
 
-```{r}
+
+```{r echo=F, eval=F}
 # Prepare your rank file for fgsea
 diff_exp_res <- rankFile %>% group_by(Name) %>% summarize(Rank = mean(Rank)) %>% deframe()
 
@@ -155,10 +158,11 @@ fgsea_msig_multi <- fgsea(pathways = pathways.msigdb, stats = diff_exp_res)
 fgsea_hallmark <- fgsea(pathways = pathways.hallmark, stats = diff_exp_res, nperm = 1000)
 fgsea_halmk_multi <- fgsea(pathways = pathways.hallmark, stats = diff_exp_res)
 ```
-Notes about metrics obtained... Need to look into difference between Multilevel and Simple fgsea. 
-Let's work on some summaries and plots in the next block
+Notes about metrics obtained... Need to look into difference between
+Multilevel and Simple fgsea. Let's work on some summaries and plots in
+the next block
 
-```{r}
+```{r echo=F, eval=F}
 # reordering by NES (define)
 
 fgsea_msig <- fgsea_msig %>% arrange(desc(NES))
@@ -196,5 +200,112 @@ topPathways <- c(topPathwaysUp, rev(topPathwaysDown))
 gseaTable <- plotGseaTable(pathways.hallmark[topPathways], diff_exp_res, fgsea_hallmark, 
               gseaParam=0.5)
 ```
+
+
+Next my logic here is that I have all of these csv files that I want to
+take in and output a ranked file list for (as a note, the columns
+are not uniform. Need to return to DGE_Analyses.Rmd to output columns
+with the same names). I can apply a function that does those things.
+
+# GSEA Functions
+```{r}
+
+get_rankFile <- function(df, prfx){
+  cat("Currently Processing: ", prfx, "\n")
+  prfx <- prfx[[1]][1]
+
+  #print(names(df))
+  names(df)[1] <- gsub("X", "GeneID", names(df)[1])
+  results <- as_tibble(df) 
+  
+  #print(head(results))
+  #print(dim(results))
+  results <- results %>% mutate(., logFC = as.numeric(logFC),
+                                meanExpr = as.numeric(meanExpr),
+                                pval = as.numeric(pval), 
+                                adj.pval = as.numeric(adj.pval))
+  
+  #print(summary(results))
+  resultsRanked <- as.data.frame(within(results, Rank <- sign(logFC) * -log10(pval)))
+  #print(head(resultsRanked))
+  #print(summary(resultsRanked))
+  
+  resultAnno <- merge(resultsRanked,geneAnno, by = "GeneID", all = T)
+  #print(head(resultAnno))
+  #print(summary(resultAnno))
+  
+  rankFile <- resultAnno %>% drop_na() %>% dplyr::select(Rank, Name) %>% filter(Name != "") %>% distinct()
+  #print(head(rankFile))
+  cat("Writing rnk table to output file: ", paste0(outdir,"/",prfx,"gsea.rnk"),"\n")
+  write.table(rankFile,file=paste0(outdir,"/",prfx,"gsea.rnk"), 
+              sep="\t", row.names=FALSE, quote = FALSE)
+  
+  
+  # Prepare your rank file for fgsea
+  diff_exp_res <- rankFile %>% group_by(Name) %>% summarize(Rank = mean(Rank)) %>% deframe()
+
+  # Run fgsea for the full and hallmark pathways
+  fgsea_halmk <- fgsea(pathways = pathways.hallmark, stats = diff_exp_res)
+  
+  # reordering by NES (define)
+  fgsea_halmk <- fgsea_halmk %>% arrange(desc(NES))
+  
+  
+  plotHallmark <- ggplot(fgsea_halmk, aes(reorder(pathway, NES), NES)) +
+    geom_col(aes(fill=padj<0.05)) + coord_flip() + 
+    labs(x="Pathway", y="Normalized Enrichment Score",title="Hallmark pathways NES from GSEA") + 
+    theme_minimal()
+  
+  topPathwaysUp <- fgsea_halmk[ES > 0][head(order(pval), n=10), pathway]
+  topPathwaysDown <- fgsea_halmk[ES < 0][head(order(pval), n=10), pathway]
+  topPathways <- c(topPathwaysUp, rev(topPathwaysDown))
+  gseaTable <- plotGseaTable(pathways.hallmark[topPathways], diff_exp_res, fgsea_halmk, 
+              gseaParam=0.5)
+  
+  pdf(file = paste0(outdir, "/", prfx, "_gseaExploration.pdf"))
+  plotGseaTable(pathways.hallmark[topPathways], diff_exp_res, fgsea_halmk, 
+              gseaParam=0.5)
+  print(plotHallmark)
+  dev.off()
+}
+  
+```
+
+
+
+```{r echo=F, eval=F}
+
+
+# Pathway Specific Plots
+head(fgsea_hallmark[order(pval), ])
+plotEnrichment(pathways.hallmark[["HALLMARK_COAGULATION"]],
+               diff_exp_res) + labs(title="Coagulation") # this is upside down??
+
+
+
+
+```
+
+Applying the function to all of the .csv files in the indir
+```{r}
+
+mapply(get_rankFile, gsea_input$content, gsea_input$f_name)
+
+
+
+```
+
+Can add a section in with information about accessing annotations
+through bioconductor
+<https://bioconductor.org/packages/release/data/annotation/manuals/org.Dm.eg.db/man/org.Dm.eg.db.pdf>
+(fly) org.Hs.eg.db (human)
+
+<https://www.r-bloggers.com/2016/07/converting-gene-names-in-r-with-annotationdbi/>
+
+can take gene symbol or ensembl or flybase id and convert to entrez!
+would want a logical operator starting from database ids (gene names get
+tricky because you need to know if fly or human or you get no results
+main difference is all caps vs not in fly gene names--but not very
+parsible).
 
 

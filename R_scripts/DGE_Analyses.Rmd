@@ -15,26 +15,32 @@ Sources and resources are linked where applicable
 ```{r}
 # clear workspace
 rm(list=ls(all.names=TRUE))
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
 
-#BiocManager::install("ballgown")
-#BiocManager::install("RNAseq123")
-library(devtools)
-library(tidyverse)
-library(readr) #readr is faster, but makes tibbles...not sure how well tibbles work with programs expecting matrices. row names can't be specified with readr
-library(DESeq2)
-library(SummarizedExperiment)
-library(edgeR)
-library(limma)
-library(tools)
-library(RNAseq123)
-library(Glimma)
-library(ballgown)
-library(genefilter)
-library(RColorBrewer)
-library(cowplot)
+# Function to check for a package host on CRAN, then install (if needed) and library the package
+prep_cranpack <- function (x){
+if (!requireNamespace(x, quietly = TRUE)) {
+  install.packages(x)
+  library(x, character.only = TRUE, quietly = TRUE)
+} else {
+  library(x, character.only = TRUE, quietly = TRUE)
+}}
 
+# Function to check for a package host on bioconductor, then install (if needed) and library the package
+prep_biocpack <- function (x){
+if (!requireNamespace(x, quietly = TRUE)) {
+  BiocManager::install(x)
+  library(x, character.only = TRUE, quietly = TRUE)
+} else {
+  library(x, character.only = TRUE, quietly = TRUE)
+}}
+
+# loading list of CRAN packages
+cranpacks <- c("BiocManager", "tools", "devtools", "tidyverse", "RColorBrewer", "cowplot")
+lapply(cranpacks, prep_cranpack)
+
+# loading list of Bioconductor packages
+biocpacks <- c("ballgown", "RNAseq123", "edgeR", "DESeq2", "limma", "Glimma")
+lapply(biocpacks, prep_biocpack)
 
 
 
@@ -54,7 +60,7 @@ outdir <- "../R_outputs/DGE_Analyses"
 words
 
 I can individual load the data for each pipeline separately, and add them to a list 
-```{r}
+```{r eval=F, echo=F}
 # reading in count data
 hf_htsh <- read.csv(file.path(indir, "hard_filtered_htsh.csv"), header = T, row.names = 1 ) #Hard-filtered (see Purpose) count matrices
 hf_htss <- read.csv(file.path(indir,"hard_filtered_htss.csv"), header = T, row.names = 1 )
@@ -204,7 +210,7 @@ run.DESeq <- function(x, y) {
   print(summary(res))
   
   # make data frame output, reorder, and filter
-  reslist <- list( GeneID = res@rownames, meanExpr = res@listData$baseMean, logFC = res@listData$log2FoldChange, 
+  reslist <- list(X = res@rownames,logFC = res@listData$log2FoldChange, meanExpr = res@listData$baseMean,
                    pval = res@listData$pvalue, adj.pval = res@listData$padj)
   resdf <- as.data.frame(do.call(cbind, reslist)) %>% mutate(meanExpr = as.numeric(meanExpr), pval = as.numeric(pval), 
                                                              adj.pval = as.numeric(adj.pval))
@@ -216,7 +222,7 @@ run.DESeq <- function(x, y) {
   
   out <- resSig
   
-  write.csv(as.data.frame(out),file=paste0(outdir,"/",y,"_DESeq2.csv")) #write results to a new csv
+  write.csv(as.data.frame(out),file=paste0(outdir,"/",y,"_DESeq2.csv"), row.names = F) #write results to a new csv
   
   pdf(file = paste0(outdir,"/",y,"_DESeq.pdf"))
   DESeq2::plotMA(res)
@@ -260,7 +266,6 @@ run.EdgeR <- function(x, y) {
   
   pdf(file = paste0(outdir,"/",y,"_edgeR.pdf"))
   edgeR::plotMD.DGEExact(modTest)
-  #plotMD(res, column = 5, main = paste(colnames(res)[1],y,sep = "_"), xlim = c(-0.1,20))
   dev.off()
   
   
@@ -340,7 +345,8 @@ There are many ballgown specific input files that make it difficult to use the p
 Some resources: https://rnabio.org/module-03-expression/0003/04/01/DE_Visualization/ 
 https://rstudio-pubs-static.s3.amazonaws.com/289617_cb95459057764fdfb4c42b53c69c6d3f.html
 https://davetang.org/muse/2017/10/25/getting-started-hisat-stringtie-ballgown/
-```{r}
+
+```{r eval=F, echo=F}
 
 # We loaded our "phenotype" data in the beginning, so we don't need to repeat this step. 
 # create a ballgown object for the star and hisat2 outputs; stringtie and ballgown are complementary programs
@@ -437,7 +443,7 @@ bg_hisat_plot
 ## Apply DGE functions
 
 I am applying each function in loop here
-```{r}
+```{r eval=F, echo=F}
 
 cnt <- 1
 for (i in datlist){
@@ -475,5 +481,4 @@ mapply(func, count_data$f_content, count_data$f_name)
 }
 
 ```
-It would be great to hold all plots for each data set until the end (exploratory and mean difference plots)
 

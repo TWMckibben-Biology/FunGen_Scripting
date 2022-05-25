@@ -26,25 +26,32 @@ logox vnknon
 # clear workspace
 rm(list=ls(all.names=TRUE))
 
-# install BiocManager if not installed
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-# install tximport
-#BiocManager::install("tximport")
-# install rhdf5 for kallisto files
-#BiocManager::install("rhdf5")
-# install DESeq2
-#BiocManager::install("DESeq2")
-# install edgeR
-#BiocManager::install("edgeR")
-library(devtools)
-library(tidyverse)
-library(readr)
-library(tximport)
-library(rhdf5)
-library(DESeq2)
-library(SummarizedExperiment)
-library(edgeR)
+# Function to check for a package host on CRAN, then install (if needed) and library the package
+prep_cranpack <- function (x){
+if (!requireNamespace(x, quietly = TRUE)) {
+  install.packages(x)
+  library(x, character.only = TRUE, quietly = TRUE)
+} else {
+  library(x, character.only = TRUE, quietly = TRUE)
+}}
+
+# Function to check for a package host on bioconductor, then install (if needed) and library the package
+prep_biocpack <- function (x){
+if (!requireNamespace(x, quietly = TRUE)) {
+  BiocManager::install(x)
+  library(x, character.only = TRUE, quietly = TRUE)
+} else {
+  library(x, character.only = TRUE, quietly = TRUE)
+}}
+
+# loading list of CRAN packages
+cranpacks <- c("BiocManager", "tools", "devtools", "tidyverse", "RColorBrewer")
+lapply(cranpacks, prep_cranpack)
+
+# loading list of Bioconductor packages
+biocpacks <- c("tximport", "rhdf5", "edgeR", "DESeq2")
+lapply(biocpacks, prep_biocpack)
+
 
 # directory for input files
 dir <- "../R_inputs"
