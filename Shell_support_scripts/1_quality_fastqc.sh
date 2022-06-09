@@ -1,7 +1,7 @@
 #! /bin/bash
 
 ## Purpose: The purpose of this script is to gain a sense of quality of the raw data.
-## Input Data: Raw fastq R1 & R2 
+## Input Data: Raw R1 & R2 reads (FASTQ)
 ## Output Data: Sample-specific directory with ZIP & HTML files; Download HTML files to view QC results in a web browser
 ## More Information: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/INSTALL.txt
 
