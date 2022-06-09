@@ -1,7 +1,7 @@
 # Draft Tutorial 
 
 #### Trimming RNA-Seq Reads
-Raw data is messy, with errors and left over adapters from sequencing that will cause spurious mapping results. Cleaning your data by trimming the reads for non-adaptor, high-quality score reads with reasonable lengths is important for downstream data processing steps and result interpretation. Stuart Davis has a really nice [data-centric blog](https://www.basepairtech.com/blog/trimming-for-rna-seq-data/#:~:text=Quality%20trimming%20decreases%20the%20overall,useful%20data%20for%20downstream%20analyses.&text=Too%20aggressive%20quality%20trimming%20can,%2C%20estimation%20of%20gene%20expression) on trimming RNA-seq reads (the why and when)   
+Raw data is messy, with errors and left over adapters from sequencing that will cause spurious mapping results. Cleaning your data by trimming the reads for non-adaptor, high-quality score reads with reasonable lengths is important for downstream data processing steps and result interpretation. Stuart Davis has a really nice [data-centric blog](https://www.basepairtech.com/blog/trimming-for-rna-seq-data/#:~:text=Quality%20trimming%20decreases%20the%20overall,useful%20data%20for%20downstream%20analyses.&text=Too%20aggressive%20quality%20trimming%20can,%2C%20estimation%20of%20gene%20expression) on trimming RNA-seq reads (the why and when).    
 
 #### Library Quality
 
