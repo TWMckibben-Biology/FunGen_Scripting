@@ -4,16 +4,11 @@ output:
   html_notebook:
    code_folding: show
 author: "Amanda D. Clark"
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
-## Purpose
+## Setting Up
 
-WORDS\
-\### Sources & Resources Sources and resources are linked where
-applicable \## Setting Up \### Setting Up Environment
+### Setting Up Environment
 
 ```{r}
 # clear workspace
@@ -39,11 +34,11 @@ if (!requireNamespace(x, quietly = TRUE)) {
 
 # loading list of CRAN packages
 cranpacks <- c("BiocManager", "tools", "devtools", "tidyverse", "RColorBrewer", "cowplot")
-lapply(cranpacks, prep_cranpack)
+invisible(lapply(cranpacks, prep_cranpack))
 
 # loading list of Bioconductor packages
 biocpacks <- c("ballgown", "RNAseq123", "edgeR", "DESeq2", "limma", "Glimma")
-lapply(biocpacks, prep_biocpack)
+invisible(lapply(biocpacks, prep_biocpack))
 
 
 
@@ -61,10 +56,9 @@ outdir <- "../R_outputs/DGE_Analyses"
 
 words
 
-I can individual load the data for each pipeline separately, and add
-them to a list
+I can individual load the data for each pipeline separately, and add them to a list
 
-```{r eval=F, echo=F}
+```{r eval=F, echo=F, collapse=T}
 # reading in count data
 hf_htsh <- read.csv(file.path(indir, "hard_filtered_htsh.csv"), header = T, row.names = 1 ) #Hard-filtered (see Purpose) count matrices
 hf_htss <- read.csv(file.path(indir,"hard_filtered_htss.csv"), header = T, row.names = 1 )
@@ -115,13 +109,77 @@ count_data <- list(f_name = c(file_path_sans_ext(basename(files))), f_content = 
 names(count_data$f_content) <- count_data$f_name # name matrices based on file names
 ```
 
+## Purpose
+
+At this point in our analyses, we have filtered our raw abundance data and we want to understand the differences in gene expression between our two experimental treatments (Caloric Restriction [C] vs. Ad lib [E]). As you can imagine, we are comparing our biological replicates from each treatment for each of the genes remaining after filtering. (Visualization here?)
+
+Even if we consider our most stringently filtered data sets (hard_filtered), there is still on average X genes to compare between treatments. The more significance testing we perform (asking gene by gene - is this gene expressed differently between our C & E treatments), the more likely, by chance, that we will have false positives (differences detected when there are none) or statistically known as type I error (falsely rejecting the null that there is no difference).
+
+Let's demonstrate this by looking at the probability of seeing a significant result by chance, based on the number of tests run at a significance level of 0.05:
+
+```{r}
+# Calculate the probability of one significant test (false positive) for a certain number of tests at a certain significance level
+
+alpha=0.05 #significance level
+tests=10 #number of significance tests
+
+calc_falsep <- round((1 - (1 - alpha)^tests)*100,2) #calculation with conversion to percentage rounded to 2 digits 
+
+cat("At a significance level of",alpha,"the probability of 1 in", tests,"tests being significant by chance is",calc_falsep,"%.\n")
+
+# Visualize this calculation across different numbers of tests
+
+falsepos <- data.frame(numbtest = c(seq(0,100,5))) %>% mutate(chanceprob = 1 - (0.95)^numbtest) #df with number of tests up to 100 and probability of 1 false positive based on the calculation above (significance level 0.05)
+
+
+falseposplot <- ggplot(data = falsepos, mapping = aes(numbtest, chanceprob)) + geom_point(color = "orange", size = 3.5) + labs(x="Number of Tests", y="Chance of False Positive") + theme_minimal() #plot relationship of variables in the df above
+falseposplot #check it out
+
+```
+
+*To think about:* This was only 100 tests (Remember we have **X** genes in our smallest comparison)! Try these calculations at different levels of significance and number of tests.
+
+In multiple testing methodology, there is a fine balance between capturing true positives without accumulating false positives (difference found when not true/incorrectly rejecting the null) OR losing information by accumulating false negatives (not finding a difference when there is one/incorrectly NOT rejecting the null). This balance is usually found by making adjustments to p-value estimates to control false positive rates also called type I error.
+
+Once such method is the false discovery rate (FDR), which estimates the proportion of expected false positives given the number of genes identified as being differentially expressed. Setting a cut-off for this value allows for the awareness of the estimated amount of error in the final results. Check out the Sources & Resources for more information and practice with the statistics underlying gene expression analyses.
+
+### Sources & Resources
+
+[Sven Schmit's blog on Multiple Hypothesis Testing (MHT)](https://multithreaded.stitchfix.com/blog/2015/10/15/multiple-hypothesis-testing/)
+
+[Harvard Chen Bioinformatics Core Training Tutorials](https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/schedule/links-to-lessons.md)
+
 ## DGE Functions
+
+Let's start thinking about the algorithms behind DGE programs. Here I've written functions that visualize the count data and run 3 different DGE methods that all take slightly different approaches to estimate differential gene expression. This will be a very simplified explanation, but there are more in-depth resources above to help with the underlying statistical methods used.
+
+DGE programs aim to understand the differences in gene expression in response to, let's say, different experimental treatments. To understand TRUE differences, there are many factors that have to be accounted for, like:
+
+1.  What does RNA-seq data looks like (How can you measure unexpected/unknown differences in expression without a base expectation)?
+
+2.  What are the differences that will arise due to technical variation (Using different sequencers, flowcells, or RNA library prep methods)?
+
+3.  What are the differences that will arise due to inherent biological variation (different individuals means an increase in heterogeneity)?
+
+![Figure from Harvard Chan Bioinformatics Core Tutorial](https://hbctraining.github.io/DGE_workshop_salmon_online/img/de_variation.png)
+
+A way to account for these complexities is by modeling the nature of RNA-seq data and the variation sourced from technical and biological heterogeneity. There are several types of models and accompanying distributions that mirror measured occurrences and/or pattern of RNA-seq data (or other data types). These models are often simpler than the complexities of real-life, but can provide a basis of expectation so that we can identify interesting deviations (not violations) from the expectations. It is amazing how close these approximations can get when you have sufficient data (and estimates of uncertainty)!
+
+Let's think about an experiment with only technical replicates (the same pool of RNA sequenced multiple, independent times - like across multiple flow cells or lanes).
+
+If you know the probability of a read being assigned to a specific region of the genome/transcriptome and the total number of reads, you can estimate the number of reads that will be aligned to that given region using a Poisson distribution (at really large numbers of total reads to align and a small probability of being aligned to a specific region, the Poisson matches the binomial distribution so we are just counting outcomes here).
+
+While a Poisson distribution seems to be a good model of RNA-seq data, it usually holds only for comparisons between technical replicates where the variance should equal the mean (there should be little difference between multiple replicates of the same sample). When this is not true, that is an indication that there may be problems due to technical errors/issues.
+
+*To think about:* What are some possible sources of variation between technical replicates?
+
+You realistically don't have the exact same sample sequenced (unless you're interested in technical factors and have lots of money), but have samples from different biological replicates (different cultures, mice, humans, etc.) for each treatment. When you consider an experiment including different individuals or biological replicates, a Poisson distribution is no longer appropriate due to the fact that there will be overdispersion (that the variance between biological replicates will exceed the mean; i.e., the mean will not equal the variance). Modeling overdispersed counts requires adding a random effect term (pulled from a gamma distribution) that helps model the heterogeneity due to biological replicates - this is a negative binomial distribution (the smaller the dispersion in the data between biological replicates, the closer a negative binomial distribution will be to a Poisson).
+
+Deseq2, EdgeR, and Limma Voom are similar in that they all use this negative bionomial distribution to model RNA-seq data to detect meaningful differences between groups. Above each function below, I provide some detail of the specifics for methods used in each function.
 
 ### Library Visualization Function
 
-words
-<https://multithreaded.stitchfix.com/blog/2015/10/15/multiple-hypothesis-testing/>
-\# explains MHT well, and in depth. pull what is needed, link the rest
+Quality control and check is an essential step of RNA-seq analysis. Checking your data will allow you to detect technical issues driving patterns in your data. This will help you make choices about omitting samples (if you have sufficient samples) or additional model parameters. 
 
 ```{r}
 run.Vis <- function(x, y) {
@@ -216,10 +274,9 @@ run.DESeq <- function(x, y) {
   # make data frame output, reorder, and filter
   reslist <- list(X = res@rownames,logFC = res@listData$log2FoldChange, meanExpr = res@listData$baseMean,
                    pval = res@listData$pvalue, adj.pval = res@listData$padj)
-  resdf <- as.data.frame(do.call(cbind, reslist)) %>% mutate(meanExpr = as.numeric(meanExpr), pval = as.numeric(pval), 
-                                                             adj.pval = as.numeric(adj.pval))
+  resdf <- as.data.frame(do.call(cbind, reslist)) %>% mutate(meanExpr = as.numeric(meanExpr), pval = as.numeric(pval),adj.pval = as.numeric(adj.pval))
   
-  resOrdered <- resdf[order(as.numeric(resdf$adj.pval)),] #results reordered by the adjusted pvalue
+  resOrdered <- resdf[order(as.numeric(resdf$logFC)),] #results reordered by the adjusted pvalue
   resSig <- subset(resOrdered, as.numeric(adj.pval) < 0.05)
   print(head (resSig))
   print(summary(resSig))
@@ -259,8 +316,8 @@ run.EdgeR <- function(x, y) {
   
   # extract significant differentially expressed genes, sort, & write to csv
   resOrdered <- res$table[order(res$table$logFC),]
-  resSig <- resOrdered[resOrdered$FDR<0.05,]
-  print(head(resOrdered))
+  resSig <- subset(resOrdered, as.numeric(FDR) < 0.05)
+  print(head(resSig))
   
   out <- resSig %>% dplyr::select(logFC, logCPM, PValue, FDR) %>% dplyr::rename(meanExpr = logCPM, pval = PValue, adj.pval = FDR)
   write.csv(as.data.frame(out),file = paste0(outdir,"/",y,"_edgeR.csv")) #write results to a new csv
@@ -277,15 +334,7 @@ run.EdgeR <- function(x, y) {
 
 ### LimmaVoom DGE Function
 
-words Summarize & simplify: "What is voom doing? Counts are transformed
-to log2 counts per million reads (CPM), where "per million reads" is
-defined based on the normalization factors we calculated earlier. A
-linear model is fitted to the log2 CPM for each gene, and the residuals
-are calculated A smoothed curve is fitted to the sqrt(residual standard
-deviation) by average expression (see red line in plot above) The
-smoothed curve is used to obtain weights for each gene and sample that
-are passed into limma along with the log2 CPMs. More details at
-<https://genomebiology.biomedcentral.com/articles/10.1186/gb-2014-15-2-r29>"
+words Summarize & simplify: "What is voom doing? Counts are transformed to log2 counts per million reads (CPM), where "per million reads" is defined based on the normalization factors we calculated earlier A linear model is fitted to the log2 CPM for each gene, and the residuals are calculated A smoothed curve is fitted to the sqrt(residual standard deviation) by average expression (see red line in plot above) The smoothed curve is used to obtain weights for each gene and sample that are passed into limma along with the log2 CPMs. More details at <https://genomebiology.biomedcentral.com/articles/10.1186/gb-2014-15-2-r29>"
 
 ```{r}
 run.LimVoo <- function(x,y) {
@@ -318,13 +367,14 @@ run.LimVoo <- function(x,y) {
   fitContr <- contrasts.fit(modFit, contr)
   fitContr <- eBayes(fitContr)
   
-  res <- topTable(fitContr, sort.by = "P", n = Inf)
+  res <- topTable(fitContr, sort.by = "logFC", n = Inf)
   print(head(res, 8)) 
   cat("Results where FDR is less than 0.01: ", length(which(res$adj.P.Val < 0.01)), "\n")
   cat("Results where FDR is less than 0.05: ", length(which(res$adj.P.Val < 0.05)), "\n")
   cat("Results where FDR is less than 0.1: ", length(which(res$adj.P.Val < 0.1)), "\n")
   
-  out <- res %>% dplyr::select(logFC, AveExpr, P.Value, adj.P.Val) %>% dplyr::rename(meanExpr = AveExpr, pval = P.Value, adj.pval = adj.P.Val)
+  resSig <- subset(res, as.numeric(adj.P.Val) < 0.05)
+  out <- resSig %>% dplyr::select(logFC, AveExpr, P.Value, adj.P.Val) %>% dplyr::rename(meanExpr = AveExpr, pval = P.Value, adj.pval = adj.P.Val)
   print(head(out))
   
   etRes <- decideTests(fitContr)
@@ -342,14 +392,7 @@ run.LimVoo <- function(x,y) {
 
 ## Ballgown DGE
 
-words Summarize & simplify: There are many ballgown specific input files
-that make it difficult to use the previously filtered data with these
-programs. Only things processed with stringtie with the for ballgown
-output are readily formatted for this program. These will not be run
-within a function.? Some resources:
-<https://rnabio.org/module-03-expression/0003/04/01/DE_Visualization/>
-<https://rstudio-pubs-static.s3.amazonaws.com/289617_cb95459057764fdfb4c42b53c69c6d3f.html>
-<https://davetang.org/muse/2017/10/25/getting-started-hisat-stringtie-ballgown/>
+words Summarize & simplify: There are many ballgown specific input files that make it difficult to use the previously filtered data with these programs. Only things processed with stringtie with the for ballgown output are readily formatted for this program. These will not be run within a function.? Some resources: <https://rnabio.org/module-03-expression/0003/04/01/DE_Visualization/> <https://rstudio-pubs-static.s3.amazonaws.com/289617_cb95459057764fdfb4c42b53c69c6d3f.html> <https://davetang.org/muse/2017/10/25/getting-started-hisat-stringtie-ballgown/>
 
 ```{r eval=F, echo=F}
 
@@ -473,8 +516,7 @@ cnt <- cnt +1
 }
 ```
 
-I can also map or mapply over the data set, looping over each DEseq
-function
+I can also map or mapply over the data set, looping over each DEseq function
 
 ```{r}
 # List of functions needed to run on count matrices

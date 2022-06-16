@@ -1,0 +1,109 @@
+---
+title: "Pipeline Comparisons"
+author: "Amanda D. Clark"
+output: html_notebook
+---
+# Purpose
+WORDS
+## Sources & Resources 
+Sources and resources are linked where applicable
+https://rdrr.io/cran/FactoMineR/man/coeffRV.html
+https://cran.r-project.org/web/packages/UpSetR/vignettes/basic.usage.html
+
+# Setting Up
+## Setting Up Environment 
+
+```{r}
+# clear workspace
+rm(list=ls(all.names=TRUE))
+
+# Function to check for a package host on CRAN, then install (if needed) and library the package
+prep_cranpack <- function (x){
+if (!requireNamespace(x, quietly = TRUE)) {
+  install.packages(x)
+  library(x, character.only = TRUE, quietly = TRUE)
+} else {
+  library(x, character.only = TRUE, quietly = TRUE)
+}}
+
+# Function to check for a package host on bioconductor, then install (if needed) and library the package
+prep_biocpack <- function (x){
+if (!requireNamespace(x, quietly = TRUE)) {
+  BiocManager::install(x)
+  library(x, character.only = TRUE, quietly = TRUE)
+} else {
+  library(x, character.only = TRUE, quietly = TRUE)
+}}
+
+# loading list of CRAN packages
+cranpacks <- c("BiocManager", "tools", "devtools", "tidyverse", "RColorBrewer", "stringr", "UpSetR", "FactoMineR", "corrplot")
+invisible(lapply(cranpacks, prep_cranpack))
+
+# loading list of Bioconductor packages
+#biocpacks <- c("ballgown", "RNAseq123", "fgsea")
+#invisible(lapply(biocpacks, prep_biocpack))
+
+# directory for input files
+indir <- "../R_outputs/DGE_Analyses"
+
+# make a directory for output files
+if (! dir.exists("../R_outputs/Compare_Pipelines")) {
+ dir.create("../R_outputs/Compare_Pipelines")
+}
+outdir <- "../R_outputs/Compare_Pipelines"
+
+```
+
+## Setting Up Data
+Wonder if i should look at filtering effects holding pipeline stagnant and then across pipelines holding filtering stagnant? Need to get DEG across pipelines.In addition, I would like to compare these pipelines at several other levels.
+
+I have the upset plot that will allow me to observe the intersection of gene sets across different categories. I also wanted to look at the matrix correlations using RV coefficients (which can be bootstrapped for confidence estimates). I think these two ways to look at the data will tell me the same things, but one is more quantitative. 
+
+### Mapping Data
+```{r}
+
+
+
+```
+
+
+### DEG data
+
+```{r}
+# Empty list
+files <- list()
+# Populate list with file names; including paths
+files <- list.files(path = indir, pattern = ".csv", full.names = T)
+
+# Make list containing data from each file in files
+count_data <- list(f_name = c(file_path_sans_ext(basename(files))), f_content = files %>% map(read.csv, header = T)) # populate list with file names, paths, and content
+names(count_data$f_content) <- count_data$f_name # name matrices based on file names
+
+```
+
+## Upset Plots
+
+### DEG 
+```{r}
+## Plots with hard filtered data
+# Empty List
+hardflist <- list()
+# Add gene IDs from each of the hard filtered pipelines
+for (i in 1:18) {
+  hardflist <- c(hardflist, c(count_data$f_content[i][[1]][1]))
+}
+# Grab Relevant List Names
+hardfnames <- count_data$f_name[1:18]
+# Add List Names
+names(hardflist) <- hardfnames
+
+upset(fromList(hardflist), mainbar.y.label = "Intersections", sets.x.label = "# of Genes", order.by = "freq", empty.intersections = "on", nsets = 14, group.by = "sets")
+
+
+# Plots with soft filtered data
+
+# Plots with pipeline filtered data
+
+
+```
+

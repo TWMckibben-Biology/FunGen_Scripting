@@ -22,9 +22,6 @@ Sources and resources are linked where applicable
 <http://www.gsea-msigdb.org/gsea/downloads.jsp#msigdb>
 
 
-Make this a loop using the "assign" function
-<https://thomasadventure.blog/posts/a-case-for-the-assign-function/>
-
 # Setting Up
 ## Setting Up Environment 
 
@@ -210,7 +207,7 @@ with the same names). I can apply a function that does those things.
 # GSEA Functions
 ```{r}
 
-get_rankFile <- function(df, prfx){
+get_FunctEnrich <- function(df, prfx){
   cat("Currently Processing: ", prfx, "\n")
   prfx <- prfx[[1]][1]
 
@@ -289,7 +286,7 @@ plotEnrichment(pathways.hallmark[["HALLMARK_COAGULATION"]],
 Applying the function to all of the .csv files in the indir
 ```{r}
 
-mapply(get_rankFile, gsea_input$content, gsea_input$f_name)
+mapply(get_FunctEnrich, gsea_input$content, gsea_input$f_name)
 
 
 
