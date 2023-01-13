@@ -1,14 +1,17 @@
 #! /bin/bash
 
-## Purpose: The purpose of this script is to evaluate the quality of the raw sequencing data.
-## Input: Raw Paired End (R1 & R2) sequence read files (.FASTQ)
+## Purpose: The purpose of this script is to evaluate the quality of the raw Illumina sequencing data.
+## Input: Two raw paired-end (PE)sequece read files, typically referred to as R1 & R2)(.fastq or .fq)
 ## Output: A directory for each sample with ZIP & HTML files; Download HTML files to view QC results in a web browser
 ## More Information: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/INSTALL.txt
+## Recommended Run Parameters on Alabama Super Computer: 
 
 # Modules
 module load fastqc/0.11.9
 
-# Define Your Variables: replace these numers with your working directory(WD), Read file(RD), pre or post clean status(CS), run id(ID)
+# Define Your Variables: replace these numbers with your working directory(WD), read file name (RD), pre or post clean status (CS), run id(ID)
+## for example
+	## WD=${/
 WD=${2}
 RD=${1}
 CS=${3}
