@@ -8,25 +8,30 @@
 # Modules
 module load trimmomatic/0.39
 
-# Variables: working directory(WD), sample(SM), forward read(lft), reverse read(rgt)
-WD=${2}
+# Variables: working directory(WD), sample(SM), forward read(FR), reverse read(RR)
+DD=${2}
+CS=${3)
 SM=${1}
-lft="${WD}/${SM}/${SM}_1.fastq.gz"
-rgt="${WD}/${SM}/${SM}_2.fastq.gz"
+FR="${WD}/${SM}/${SM}_1.fastq.gz"
+RR="${WD}/${SM}/${SM}_2.fastq.gz"
 adapters="${WD}/AdaptersToTrim.fa"
 
-# Sanity Check that the left read (R1) exists in the indicated directory
-if [ ! -s ${lft} ];then
-	echo "${lft} was not found, aborting..."
-	exit 1
-# Sanity Check that the trimmed reads (by checking for the trimmed right (R2) read) 
-elif [ -s "${SM}/${SM}_trim_2P.fq.gz" ]; then
-	echo "${SM} reads have already been trimmed, moving on..."
-else
+mkdir $WD/$CS
+
 # Run trimmomatic in paired end mode with 6 threads using phred 33 quality score format. 
 #Check out the trimmomatic documentation to understand the parameters in line 30
 	java -jar /tools/trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 6 -phred33 \
-	${lft} ${rgt} \ 
-	-baseout ${WD}/${SM}/${SM}_trim.fq.gz \ 
-	ILLUMINACLIP:${adapters}:2:20:10 HEADCROP:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:6:25 MINLEN:36 
-fi
+	$FR $RR \ 
+	-baseout $WD/$CS/$SM_trim.fq.gz \ 
+	ILLUMINACLIP:$adapters:2:20:10 HEADCROP:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:6:25 MINLEN:36 
+
+############## FASTQC to assess quality of the Cleaned sequence data
+## FastQC: run on each of the data files that have 'All' to check the quality of the data
+## The output from this analysis is a folder of results and a zipped file of results
+
+cd $WD/$CS
+fastqc *.trim.fq.gz --outdir=$WD/$CS
+
+#######  Tarball the directory containing the FASTQC results so we can easily bring it back to our computer to evaluate.
+## when finished use scp or rsync to bring the .gz file to your computer and open the .html file to evaluate
+tar cvzf $CS.gz $WD/$CS/*
