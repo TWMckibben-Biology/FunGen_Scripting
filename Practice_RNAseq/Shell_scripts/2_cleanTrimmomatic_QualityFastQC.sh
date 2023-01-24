@@ -9,13 +9,19 @@
 module load trimmomatic/0.39
 
 # Variables: working directory(WD), sample(SM), forward read(FR), reverse read(RR)
-DD=${2}
-CS=${3)
-SM=${1}
-FR="${WD}/${SM}/${SM}_1.fastq.gz"
-RR="${WD}/${SM}/${SM}_2.fastq.gz"
-adapters="${WD}/AdaptersToTrim.fa"
+WD={1}
+DD=
+CS={2}
+SM={3}
+FR="$DD/$SM_1.fastq.gz"
+RR="$DD/$SM_2.fastq.gz"
+adapters="$WD/AdaptersToTrim.fa"
 
+## Change to the working directory
+cd $WD
+
+### Copy over the list of Sequencing Adapters that we want Trimmomatic to look for (along with its default adapters)
+cp /home/aubtss/class_shared/AdaptersToTrim_All.fa . 
 mkdir $WD/$CS
 
 # Run trimmomatic in paired end mode with 6 threads using phred 33 quality score format. 
@@ -34,4 +40,4 @@ fastqc *.trim.fq.gz --outdir=$WD/$CS
 
 #######  Tarball the directory containing the FASTQC results so we can easily bring it back to our computer to evaluate.
 ## when finished use scp or rsync to bring the .gz file to your computer and open the .html file to evaluate
-tar cvzf $CS.gz $WD/$CS/*
+tar cvzf $CS/*.gz $WD/$CS/*
