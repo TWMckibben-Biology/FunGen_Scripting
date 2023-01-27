@@ -1,4 +1,4 @@
-# 25_RNA-seq_Pipelines *UPDATE TITLE*
+# Functional Genomics Coures *UPDATE TITLE*
 
 ## Background
 
