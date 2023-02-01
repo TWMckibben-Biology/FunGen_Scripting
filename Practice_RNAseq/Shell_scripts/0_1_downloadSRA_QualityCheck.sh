@@ -2,24 +2,24 @@
 
 ######### FunGen Course Instructions ############
 ## Purpose: The purpose of this script is to 
-	# learn to make scratch directory
-	# lean to define variables
-	# download data from NCBI SRA using the SRAtoolkit and the SRA run IDs: https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/
-	# use FASTQC to evaluate the quality of the data: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
-## Input Data: NA
-## Output: 
-		# Downloaded read files, R1 and R2 files for each sample if paired-end data (FASTQ)
-		# FASTQC output is a folder for each file. The last line of this script will make a tarball of the output directory to bring back to your computer
+## 	learn to make scratch directory
+## 	learn to define variables
+## 	download data from NCBI SRA using the SRAtoolkit and the SRA run IDs: https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/
+## 	use FASTQC to evaluate the quality of the data: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+## Download from SRA: Input Data: NA
+## 			Output: Downloaded read files, R1 and R2 files for each sample if paired-end data (FASTQ)
+## FASTQC 	InPut: Downloade SRA files .fastq
+##		Output: is a folder for each file. The last line of this script will make a tarball of the output directory to bring back to your computer
 ## For running the script on the Alabama Super Computer.
-		##For more information: https://hpcdocs.asc.edu/content/slurm-queue-system
-	## After you have this script in your home directory and you have made it executable using  "chmod +x [script name]", 
-	## then run the script by using "run_script [script name]"
-	## suggested paramenters are below to submit this script.
-		## queue: class
-		## core: 1
-		## time limit (HH:MM:SS): 04:00:00 
- 		## Memory: 4gb
-		## run on dmc
+##	For more information: https://hpcdocs.asc.edu/content/slurm-queue-system
+## 	After you have this script in your home directory and you have made it executable using  "chmod +x [script name]", 
+## 	then run the script by using "run_script [script name]"
+## 	suggested paramenters are below to submit this script.
+## 		queue: class
+##		core: 1
+##		time limit (HH:MM:SS): 04:00:00 
+##		Memory: 4gb
+##		run on dmc
 ###############################################
 
 
@@ -31,15 +31,15 @@ module load fastqc/0.10.1
 ##########  Define variables and make directories
 ## Replace the numbers in the curly brackets with Your specific information
   ## make variable for your ASC ID so the directories are automatically made in YOUR directory
-MyID=aubtss           ## Example: MyID=${aubtss}
+MyID=[1]          ## Example: MyID=${aubtss}
 
   ## Make variable that represents YOUR working directory(WD) in scratch, your Raw data directory (DD) and the pre or postcleaned status (CS).
-DD=/scratch/$MyID/PracticeRNAseq/RawData   	## Example: WD=/scratch/${MyID}/PracticeRNAseq/RawData
-WD=/scratch/$MyID/PracticeRNAseq   				## Example: WD=/scratch/${MyID}/PracticeRNAseq
-
+DD=[2]   			## Example: WD=/scratch/${MyID}/PracticeRNAseq/RawData
+WD=[3]				## Example: WD=/scratch/${MyID}/PracticeRNAseq
 CS=PreCleanQuality
  
-##  make the directories in SCRATCH for holding the raw data
+##  make the directories in SCRATCH for holding the raw data 
+## -p tells it to make any upper level directories that are not there. Notice how this will also make the WD.
 mkdir -p $DD
 ## move to the Data Directory
 cd $DD
@@ -55,21 +55,18 @@ cd $DD
 ## https://www.ncbi.nlm.nih.gov/bioproject?LinkName=sra_bioproject&from_uid=5206312
 ## For class only do the 6 that you are assigned, delete the other 4 from this list
 
-#vdb-config --interactive
+vdb-config --interactive
 
-#fastq-dump -F --split-files SRR6819014
-#fastq-dump -F --split-files SRR6819015
-#fastq-dump -F --split-files SRR6819016
-#fastq-dump -F --split-files SRR6819017
-#fastq-dump -F --split-files SRR6819018
-#fastq-dump -F --split-files SRR6819019
-#fastq-dump -F --split-files SRR6819020
-#fastq-dump -F --split-files SRR6819021
-#fastq-dump -F --split-files SRR6819022
-#fastq-dump -F --split-files SRR6819023
-
-# verify download not corrupted by checking your output stats against the stats stored in SRA using
-sra-stat -x  >> sraStat.txt
+fastq-dump -F --split-files SRR6819014
+fastq-dump -F --split-files SRR6819015
+fastq-dump -F --split-files SRR6819016
+fastq-dump -F --split-files SRR6819017
+fastq-dump -F --split-files SRR6819018
+fastq-dump -F --split-files SRR6819019
+fastq-dump -F --split-files SRR6819020
+fastq-dump -F --split-files SRR6819021
+fastq-dump -F --split-files SRR6819022
+fastq-dump -F --split-files SRR6819023
 
 ##### Extra ####
 ## If you are downloaded data from a sequencing company instead of NCBI, using wget for example, then calculate the md5sum values of all the files in the folder (./*), and read into a text file.
@@ -90,5 +87,6 @@ mkdir $WD/$CS
 fastqc *.fastq --outdir=$WD/$CS
 
 #######  Tarball the directory containing the FASTQC results so we can easily bring it back to our computer to evaluate.
-## when finished use scp or rsync to bring the .gz file to your computer and open the .html file to evaluate
-tar cvzf PreCleaned.tar.gz $WD/$CS/*
+## when finished use scp or rsync to bring the tarballed .gz results file to your computer and open the .html file to evaluate the quality of your raw data.
+cd $WD/$CS
+tar cvzf $CS.gz $WD/$CS/*. 
