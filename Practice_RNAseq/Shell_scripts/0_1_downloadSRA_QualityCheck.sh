@@ -29,13 +29,13 @@ module load sra
 module load fastqc/0.10.1
 
 ##########  Define variables and make directories
-## Replace the numbers in the curly brackets with Your specific information
+## Replace the numbers in the brackets with Your specific information
   ## make variable for your ASC ID so the directories are automatically made in YOUR directory
-MyID=[1]          ## Example: MyID=${aubtss}
+MyID=[1]          ## Example: MyID=aubtss
 
   ## Make variable that represents YOUR working directory(WD) in scratch, your Raw data directory (DD) and the pre or postcleaned status (CS).
-DD=[2]   			## Example: WD=/scratch/${MyID}/PracticeRNAseq/RawData
-WD=[3]				## Example: WD=/scratch/${MyID}/PracticeRNAseq
+DD=[2]   			## Example: DD=/scratch/$MyID/PracticeRNAseq/RawData
+WD=[3]				## Example: WD=/scratch/$MyID/PracticeRNAseq
 CS=PreCleanQuality
  
 ##  make the directories in SCRATCH for holding the raw data 
