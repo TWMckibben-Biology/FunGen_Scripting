@@ -84,15 +84,16 @@ do
                 ## SLIDINGWINDOW:<windowSize>:<requiredQuality>  #windowSize: specifies the number of bases to average across  
                 ## requiredQuality: specifies the average quality required.
 
+	############## FASTQC to assess quality of the Cleaned sequence data
+	## FastQC: run on each of the data files that have 'All' to check the quality of the data
+	## The output from this analysis is a folder of results and a zipped file of results
+
 fastqc $CD/"$i"_1_paired.fastq --outdir=$WD/$CS
 fastqc $CD/"$i"_2_paired.fastq --outdir=$WD/$CS
 
-done<list
+done<list			# This is the end of the loop
 
-############## FASTQC to assess quality of the Cleaned sequence data
-## FastQC: run on each of the data files that have 'All' to check the quality of the data
-## The output from this analysis is a folder of results and a zipped file of results
-
+#########################  Now compress your results files from the Quality Assessment by FastQC 
 ## move to the directory with the cleaned data
 cd $WD/$CS
 
