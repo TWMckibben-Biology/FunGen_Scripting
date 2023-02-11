@@ -90,4 +90,4 @@ fastqc *.fastq --outdir=$WD/$CS
 #######  Tarball the directory containing the FASTQC results so we can easily bring it back to our computer to evaluate.
 ## when finished use scp or rsync to bring the tarballed .gz results file to your computer and open the .html file to evaluate the quality of your raw data.
 cd $WD/$CS
-tar cvzf $CS.gz $WD/$CS/*. 
+tar cvzf $CS.tar.gz $WD/$CS/*
