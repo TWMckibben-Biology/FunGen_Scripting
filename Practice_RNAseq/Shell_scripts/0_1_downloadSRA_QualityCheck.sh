@@ -9,7 +9,8 @@
 ## Download from SRA: Input Data: NA
 ## 			Output: Downloaded read files, R1 and R2 files for each sample if paired-end data (FASTQ)
 ## FASTQC 	InPut: Downloade SRA files .fastq
-##		Output: is a folder for each file. The last line of this script will make a tarball of the output directory to bring back to your computer
+##		Output: is a folder for each file that contains a .html file to visualize the quality, and .txt files of quality statistics.
+##			The last line of this script will make a tarball of the output directory to bring back to your computer
 ## For running the script on the Alabama Super Computer.
 ##	For more information: https://hpcdocs.asc.edu/content/slurm-queue-system
 ## 	After you have this script in your home directory and you have made it executable using  "chmod +x [script name]", 
