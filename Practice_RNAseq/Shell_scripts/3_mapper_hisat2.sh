@@ -132,7 +132,7 @@ cp *.txt $RESULTSD
 
 ### The prepDE.py is a python script that converts the files in your ballgown folder to a count matrix
 cd $COUNTSD
-python /home/aubtss/class_shared/prepDE.py -i $COUNTSD
+python /home/$MyID/class_shared/prepDE.py -i $COUNTSD
 
 ### copy the final results files (the count matricies that are .cvs to your home directory)
 cp *.csv $RESULTSD
