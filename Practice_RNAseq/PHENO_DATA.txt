@@ -1,0 +1,11 @@
+,treatment,type
+SRR6819014, Caloric_Restriction
+SRR6819015, Caloric_Restriction
+SRR6819016, Caloric_Restriction
+SRR6819017, Caloric_Restriction
+SRR6819018, Ad_lib
+SRR6819019, Ad_lib
+SRR6819020, Caloric_Restriction
+SRR6819021, Ad_lib
+SRR6819022, Ad_lib
+SRR6819023, Ad_lib
