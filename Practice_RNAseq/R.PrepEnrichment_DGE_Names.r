@@ -22,6 +22,7 @@ DGE_Anno <- merge(Anno,DGEresults,by="gene_id",all.y = FALSE)
 dim(DGE_Anno)
 summary(DGE_Anno)
 
+write.csv(as.data.frame(DGE_Anno), file="DGE_results_GeneName.csv", row.names=FALSE)  
 
 ############################# Make ranked list for GSEA ####################
 ## Here we are calculating a rank for each gene, and adding that column
