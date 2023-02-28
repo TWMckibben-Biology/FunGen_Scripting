@@ -39,7 +39,9 @@ DGErank_withName <- na.omit(DGErank)
 DGErank_withName
 dim(DGErank_withName)
 
-write.csv(as.data.frame(DGErank_withName), file="DGErankName.csv", row.names=FALSE)  
+#write.csv(as.data.frame(DGErank_withName), file="DGErankName.csv", row.names=FALSE) 
+## for use in GSEA preranked analysis, the file must be tab delimitied and end in .rnk
+write.table(DGErank_withName, file="DGErankName.rnk", sep = "\t", row.names=FALSE)  
 
 ####  We also need the normalized count data. Here we are going back to the dds object
 nt <- normTransform(dds) # defaults to log2(x+1)
