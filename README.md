@@ -14,15 +14,18 @@ This project aims to provide the necessary scripts for testing a data set throug
 ## General Workflow:
 
 Step 1: Perform a quality check on your fastq files using fastQC
+- 0_1_DownloadSRA_QualityCheck.sh
 
-Step 2: Trim adapter sequences (specific to illumina adapters)
+Step 2: Trim adapter sequences and clean with fastQC (specific to illumina adapters)
+- 2_cleanTrimmomatic_QaulityFasstQC.sh
 
 Step 3: Alignment/Assembly and file compression
+- mapper_hisat2.sh OR
+- mapper_salmon.sh
 
 Step 4: Post-CLI Analysis
-  
-      - Differential Gene Expression
-      - Functional Enrichment
+- Differential Gene Expression
+- Functional Enrichment
       
 ## Required materials
 
@@ -33,3 +36,17 @@ Step 4: Post-CLI Analysis
     - To reduce run time for reproducibility, delete all but 3 "SRR" numbers from script 0_1_DownloadSRA_QualityCheck.sh
 - All filepaths are currently set to my own account, but are referenced as the variable $MyID when possible. Simply change that variable to match your own account
     - If you encounter problems, check further down the script to ensure that there arent any hardcoded references that need to be changed
+
+## Description of Scripts
+
+### 0_1_DownloadSRA_QualityCheck.sh
+This script downloads RNAseq accessions, converts them to fastq, and performs a quality check on them; uses fastQC package
+
+### 2_cleanTrimmomatic_QualityFastQC.sh
+This script takes the fastq output from script 1 and uses trimmomatic to remove illumina adaptors and then filters data again based on quality; uses Trimmomatic and fastQC packages
+
+### mapper_hisat2
+This script performs a reference-based alignment/mapping of the transcript sequences and then converts the output as a read count table csv
+
+### mapper_salmon
+This script performs a de novo assmebly (or pseudoassembly) using the transcript sequences and converts the output as a read count table csv
