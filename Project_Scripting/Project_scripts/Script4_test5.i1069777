@@ -1,0 +1,19 @@
+ 
+============================================================
+=====     Queued job information at submit time        =====
+============================================================
+  The submitted file is: mapper_trinity.sh
+  The time limit is 12:00:00 HH:MM:SS.
+  The target directory is: /home/aubclsb0323/FunGen_Scripting/Project_Scripting/Project_scripts
+  The memory limit is: 12gb
+  The job will start running after: 2023-04-16T16:15:29
+  Job Name: Script4_test5
+  Virtual queue: class
+  QOS: --qos=class
+  Constraints: --constraint=dmc
+  Command typed:
+/apps/scripts/run_script mapper_trinity.sh     
+  Queue submit command:
+sbatch --qos=class -J Script4_test5 --begin=2023-04-16T16:15:29 --requeue --mail-user=twm0009@auburn.edu -o Script4_test5.o$SLURM_JOB_ID -t 12:00:00 -N 1-1 -n 6 --mem-per-cpu=2000mb --constraint=dmc 
+  Job number: 1069777
+ 

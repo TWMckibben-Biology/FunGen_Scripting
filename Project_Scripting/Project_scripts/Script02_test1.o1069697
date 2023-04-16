@@ -1,0 +1,1298 @@
+setting dmc scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: 2_cleanTrimmomatic_QualityFastQC.sh
+  The time limit is 12:00:00 HH:MM:SS.
+  The target directory is: /home/aubclsb0323/FunGen_Scripting/Project_Scripting/Project_scripts
+  The working directory is:  /scratch-local/aubclsb0323.Script02_test1.1069697
+  The memory limit is: 12gb
+  The job will start running after: 2023-04-16T08:07:27
+  Job Name: Script02_test1
+  Virtual queue: class
+  QOS: --qos=class
+  Constraints: --constraint=dmc
+  Using  6  cores on master node  dmc78
+  Node list:  dmc78
+  Nodes:  dmc78 dmc78 dmc78 dmc78 dmc78 dmc78
+  Command typed:
+/apps/scripts/run_script 2_cleanTrimmomatic_QualityFastQC.sh     
+  Queue submit command:
+sbatch --qos=class -J Script02_test1 --begin=2023-04-16T08:07:27 --requeue --mail-user=twm0009@auburn.edu -o Script02_test1.o1069697 -t 12:00:00 -N 1-1 -n 6 --mem-per-cpu=2000mb --constraint=dmc 
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819014_1.fastq SRR6819014_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819014_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819014_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819014_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819014_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 21979294 Both Surviving: 16556373 (75.33%) Forward Only Surviving: 1147271 (5.22%) Reverse Only Surviving: 775269 (3.53%) Dropped: 3500381 (15.93%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819014_1_paired.fastq
+Approx 5% complete for SRR6819014_1_paired.fastq
+Approx 10% complete for SRR6819014_1_paired.fastq
+Approx 15% complete for SRR6819014_1_paired.fastq
+Approx 20% complete for SRR6819014_1_paired.fastq
+Approx 25% complete for SRR6819014_1_paired.fastq
+Approx 30% complete for SRR6819014_1_paired.fastq
+Approx 35% complete for SRR6819014_1_paired.fastq
+Approx 40% complete for SRR6819014_1_paired.fastq
+Approx 45% complete for SRR6819014_1_paired.fastq
+Approx 50% complete for SRR6819014_1_paired.fastq
+Approx 55% complete for SRR6819014_1_paired.fastq
+Approx 60% complete for SRR6819014_1_paired.fastq
+Approx 65% complete for SRR6819014_1_paired.fastq
+Approx 70% complete for SRR6819014_1_paired.fastq
+Approx 75% complete for SRR6819014_1_paired.fastq
+Approx 80% complete for SRR6819014_1_paired.fastq
+Approx 85% complete for SRR6819014_1_paired.fastq
+Approx 90% complete for SRR6819014_1_paired.fastq
+Approx 95% complete for SRR6819014_1_paired.fastq
+Approx 100% complete for SRR6819014_1_paired.fastq
+Analysis complete for SRR6819014_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819014_2_paired.fastq
+Approx 5% complete for SRR6819014_2_paired.fastq
+Approx 10% complete for SRR6819014_2_paired.fastq
+Approx 15% complete for SRR6819014_2_paired.fastq
+Approx 20% complete for SRR6819014_2_paired.fastq
+Approx 25% complete for SRR6819014_2_paired.fastq
+Approx 30% complete for SRR6819014_2_paired.fastq
+Approx 35% complete for SRR6819014_2_paired.fastq
+Approx 40% complete for SRR6819014_2_paired.fastq
+Approx 45% complete for SRR6819014_2_paired.fastq
+Approx 50% complete for SRR6819014_2_paired.fastq
+Approx 55% complete for SRR6819014_2_paired.fastq
+Approx 60% complete for SRR6819014_2_paired.fastq
+Approx 65% complete for SRR6819014_2_paired.fastq
+Approx 70% complete for SRR6819014_2_paired.fastq
+Approx 75% complete for SRR6819014_2_paired.fastq
+Approx 80% complete for SRR6819014_2_paired.fastq
+Approx 85% complete for SRR6819014_2_paired.fastq
+Approx 90% complete for SRR6819014_2_paired.fastq
+Approx 95% complete for SRR6819014_2_paired.fastq
+Approx 100% complete for SRR6819014_2_paired.fastq
+Analysis complete for SRR6819014_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819015_1.fastq SRR6819015_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819015_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819015_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819015_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819015_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 24674550 Both Surviving: 19869563 (80.53%) Forward Only Surviving: 1359507 (5.51%) Reverse Only Surviving: 969292 (3.93%) Dropped: 2476188 (10.04%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819015_1_paired.fastq
+Approx 5% complete for SRR6819015_1_paired.fastq
+Approx 10% complete for SRR6819015_1_paired.fastq
+Approx 15% complete for SRR6819015_1_paired.fastq
+Approx 20% complete for SRR6819015_1_paired.fastq
+Approx 25% complete for SRR6819015_1_paired.fastq
+Approx 30% complete for SRR6819015_1_paired.fastq
+Approx 35% complete for SRR6819015_1_paired.fastq
+Approx 40% complete for SRR6819015_1_paired.fastq
+Approx 45% complete for SRR6819015_1_paired.fastq
+Approx 50% complete for SRR6819015_1_paired.fastq
+Approx 55% complete for SRR6819015_1_paired.fastq
+Approx 60% complete for SRR6819015_1_paired.fastq
+Approx 65% complete for SRR6819015_1_paired.fastq
+Approx 70% complete for SRR6819015_1_paired.fastq
+Approx 75% complete for SRR6819015_1_paired.fastq
+Approx 80% complete for SRR6819015_1_paired.fastq
+Approx 85% complete for SRR6819015_1_paired.fastq
+Approx 90% complete for SRR6819015_1_paired.fastq
+Approx 95% complete for SRR6819015_1_paired.fastq
+Approx 100% complete for SRR6819015_1_paired.fastq
+Analysis complete for SRR6819015_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819015_2_paired.fastq
+Approx 5% complete for SRR6819015_2_paired.fastq
+Approx 10% complete for SRR6819015_2_paired.fastq
+Approx 15% complete for SRR6819015_2_paired.fastq
+Approx 20% complete for SRR6819015_2_paired.fastq
+Approx 25% complete for SRR6819015_2_paired.fastq
+Approx 30% complete for SRR6819015_2_paired.fastq
+Approx 35% complete for SRR6819015_2_paired.fastq
+Approx 40% complete for SRR6819015_2_paired.fastq
+Approx 45% complete for SRR6819015_2_paired.fastq
+Approx 50% complete for SRR6819015_2_paired.fastq
+Approx 55% complete for SRR6819015_2_paired.fastq
+Approx 60% complete for SRR6819015_2_paired.fastq
+Approx 65% complete for SRR6819015_2_paired.fastq
+Approx 70% complete for SRR6819015_2_paired.fastq
+Approx 75% complete for SRR6819015_2_paired.fastq
+Approx 80% complete for SRR6819015_2_paired.fastq
+Approx 85% complete for SRR6819015_2_paired.fastq
+Approx 90% complete for SRR6819015_2_paired.fastq
+Approx 95% complete for SRR6819015_2_paired.fastq
+Approx 100% complete for SRR6819015_2_paired.fastq
+Analysis complete for SRR6819015_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819016_1.fastq SRR6819016_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819016_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819016_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819016_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819016_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 27988456 Both Surviving: 22548483 (80.56%) Forward Only Surviving: 1562503 (5.58%) Reverse Only Surviving: 1083915 (3.87%) Dropped: 2793555 (9.98%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819016_1_paired.fastq
+Approx 5% complete for SRR6819016_1_paired.fastq
+Approx 10% complete for SRR6819016_1_paired.fastq
+Approx 15% complete for SRR6819016_1_paired.fastq
+Approx 20% complete for SRR6819016_1_paired.fastq
+Approx 25% complete for SRR6819016_1_paired.fastq
+Approx 30% complete for SRR6819016_1_paired.fastq
+Approx 35% complete for SRR6819016_1_paired.fastq
+Approx 40% complete for SRR6819016_1_paired.fastq
+Approx 45% complete for SRR6819016_1_paired.fastq
+Approx 50% complete for SRR6819016_1_paired.fastq
+Approx 55% complete for SRR6819016_1_paired.fastq
+Approx 60% complete for SRR6819016_1_paired.fastq
+Approx 65% complete for SRR6819016_1_paired.fastq
+Approx 70% complete for SRR6819016_1_paired.fastq
+Approx 75% complete for SRR6819016_1_paired.fastq
+Approx 80% complete for SRR6819016_1_paired.fastq
+Approx 85% complete for SRR6819016_1_paired.fastq
+Approx 90% complete for SRR6819016_1_paired.fastq
+Approx 95% complete for SRR6819016_1_paired.fastq
+Approx 100% complete for SRR6819016_1_paired.fastq
+Analysis complete for SRR6819016_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819016_2_paired.fastq
+Approx 5% complete for SRR6819016_2_paired.fastq
+Approx 10% complete for SRR6819016_2_paired.fastq
+Approx 15% complete for SRR6819016_2_paired.fastq
+Approx 20% complete for SRR6819016_2_paired.fastq
+Approx 25% complete for SRR6819016_2_paired.fastq
+Approx 30% complete for SRR6819016_2_paired.fastq
+Approx 35% complete for SRR6819016_2_paired.fastq
+Approx 40% complete for SRR6819016_2_paired.fastq
+Approx 45% complete for SRR6819016_2_paired.fastq
+Approx 50% complete for SRR6819016_2_paired.fastq
+Approx 55% complete for SRR6819016_2_paired.fastq
+Approx 60% complete for SRR6819016_2_paired.fastq
+Approx 65% complete for SRR6819016_2_paired.fastq
+Approx 70% complete for SRR6819016_2_paired.fastq
+Approx 75% complete for SRR6819016_2_paired.fastq
+Approx 80% complete for SRR6819016_2_paired.fastq
+Approx 85% complete for SRR6819016_2_paired.fastq
+Approx 90% complete for SRR6819016_2_paired.fastq
+Approx 95% complete for SRR6819016_2_paired.fastq
+Approx 100% complete for SRR6819016_2_paired.fastq
+Analysis complete for SRR6819016_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819017_1.fastq SRR6819017_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819017_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819017_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819017_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819017_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 23813819 Both Surviving: 19287364 (80.99%) Forward Only Surviving: 1332996 (5.60%) Reverse Only Surviving: 880614 (3.70%) Dropped: 2312845 (9.71%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819017_1_paired.fastq
+Approx 5% complete for SRR6819017_1_paired.fastq
+Approx 10% complete for SRR6819017_1_paired.fastq
+Approx 15% complete for SRR6819017_1_paired.fastq
+Approx 20% complete for SRR6819017_1_paired.fastq
+Approx 25% complete for SRR6819017_1_paired.fastq
+Approx 30% complete for SRR6819017_1_paired.fastq
+Approx 35% complete for SRR6819017_1_paired.fastq
+Approx 40% complete for SRR6819017_1_paired.fastq
+Approx 45% complete for SRR6819017_1_paired.fastq
+Approx 50% complete for SRR6819017_1_paired.fastq
+Approx 55% complete for SRR6819017_1_paired.fastq
+Approx 60% complete for SRR6819017_1_paired.fastq
+Approx 65% complete for SRR6819017_1_paired.fastq
+Approx 70% complete for SRR6819017_1_paired.fastq
+Approx 75% complete for SRR6819017_1_paired.fastq
+Approx 80% complete for SRR6819017_1_paired.fastq
+Approx 85% complete for SRR6819017_1_paired.fastq
+Approx 90% complete for SRR6819017_1_paired.fastq
+Approx 95% complete for SRR6819017_1_paired.fastq
+Approx 100% complete for SRR6819017_1_paired.fastq
+Analysis complete for SRR6819017_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819017_2_paired.fastq
+Approx 5% complete for SRR6819017_2_paired.fastq
+Approx 10% complete for SRR6819017_2_paired.fastq
+Approx 15% complete for SRR6819017_2_paired.fastq
+Approx 20% complete for SRR6819017_2_paired.fastq
+Approx 25% complete for SRR6819017_2_paired.fastq
+Approx 30% complete for SRR6819017_2_paired.fastq
+Approx 35% complete for SRR6819017_2_paired.fastq
+Approx 40% complete for SRR6819017_2_paired.fastq
+Approx 45% complete for SRR6819017_2_paired.fastq
+Approx 50% complete for SRR6819017_2_paired.fastq
+Approx 55% complete for SRR6819017_2_paired.fastq
+Approx 60% complete for SRR6819017_2_paired.fastq
+Approx 65% complete for SRR6819017_2_paired.fastq
+Approx 70% complete for SRR6819017_2_paired.fastq
+Approx 75% complete for SRR6819017_2_paired.fastq
+Approx 80% complete for SRR6819017_2_paired.fastq
+Approx 85% complete for SRR6819017_2_paired.fastq
+Approx 90% complete for SRR6819017_2_paired.fastq
+Approx 95% complete for SRR6819017_2_paired.fastq
+Approx 100% complete for SRR6819017_2_paired.fastq
+Analysis complete for SRR6819017_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819018_1.fastq SRR6819018_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819018_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819018_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819018_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819018_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 33298213 Both Surviving: 26596982 (79.88%) Forward Only Surviving: 2275114 (6.83%) Reverse Only Surviving: 1002182 (3.01%) Dropped: 3423935 (10.28%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819018_1_paired.fastq
+Approx 5% complete for SRR6819018_1_paired.fastq
+Approx 10% complete for SRR6819018_1_paired.fastq
+Approx 15% complete for SRR6819018_1_paired.fastq
+Approx 20% complete for SRR6819018_1_paired.fastq
+Approx 25% complete for SRR6819018_1_paired.fastq
+Approx 30% complete for SRR6819018_1_paired.fastq
+Approx 35% complete for SRR6819018_1_paired.fastq
+Approx 40% complete for SRR6819018_1_paired.fastq
+Approx 45% complete for SRR6819018_1_paired.fastq
+Approx 50% complete for SRR6819018_1_paired.fastq
+Approx 55% complete for SRR6819018_1_paired.fastq
+Approx 60% complete for SRR6819018_1_paired.fastq
+Approx 65% complete for SRR6819018_1_paired.fastq
+Approx 70% complete for SRR6819018_1_paired.fastq
+Approx 75% complete for SRR6819018_1_paired.fastq
+Approx 80% complete for SRR6819018_1_paired.fastq
+Approx 85% complete for SRR6819018_1_paired.fastq
+Approx 90% complete for SRR6819018_1_paired.fastq
+Approx 95% complete for SRR6819018_1_paired.fastq
+Approx 100% complete for SRR6819018_1_paired.fastq
+Analysis complete for SRR6819018_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819018_2_paired.fastq
+Approx 5% complete for SRR6819018_2_paired.fastq
+Approx 10% complete for SRR6819018_2_paired.fastq
+Approx 15% complete for SRR6819018_2_paired.fastq
+Approx 20% complete for SRR6819018_2_paired.fastq
+Approx 25% complete for SRR6819018_2_paired.fastq
+Approx 30% complete for SRR6819018_2_paired.fastq
+Approx 35% complete for SRR6819018_2_paired.fastq
+Approx 40% complete for SRR6819018_2_paired.fastq
+Approx 45% complete for SRR6819018_2_paired.fastq
+Approx 50% complete for SRR6819018_2_paired.fastq
+Approx 55% complete for SRR6819018_2_paired.fastq
+Approx 60% complete for SRR6819018_2_paired.fastq
+Approx 65% complete for SRR6819018_2_paired.fastq
+Approx 70% complete for SRR6819018_2_paired.fastq
+Approx 75% complete for SRR6819018_2_paired.fastq
+Approx 80% complete for SRR6819018_2_paired.fastq
+Approx 85% complete for SRR6819018_2_paired.fastq
+Approx 90% complete for SRR6819018_2_paired.fastq
+Approx 95% complete for SRR6819018_2_paired.fastq
+Approx 100% complete for SRR6819018_2_paired.fastq
+Analysis complete for SRR6819018_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819019_1.fastq SRR6819019_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819019_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819019_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819019_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819019_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 25957479 Both Surviving: 20997996 (80.89%) Forward Only Surviving: 1618402 (6.23%) Reverse Only Surviving: 798289 (3.08%) Dropped: 2542792 (9.80%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819019_1_paired.fastq
+Approx 5% complete for SRR6819019_1_paired.fastq
+Approx 10% complete for SRR6819019_1_paired.fastq
+Approx 15% complete for SRR6819019_1_paired.fastq
+Approx 20% complete for SRR6819019_1_paired.fastq
+Approx 25% complete for SRR6819019_1_paired.fastq
+Approx 30% complete for SRR6819019_1_paired.fastq
+Approx 35% complete for SRR6819019_1_paired.fastq
+Approx 40% complete for SRR6819019_1_paired.fastq
+Approx 45% complete for SRR6819019_1_paired.fastq
+Approx 50% complete for SRR6819019_1_paired.fastq
+Approx 55% complete for SRR6819019_1_paired.fastq
+Approx 60% complete for SRR6819019_1_paired.fastq
+Approx 65% complete for SRR6819019_1_paired.fastq
+Approx 70% complete for SRR6819019_1_paired.fastq
+Approx 75% complete for SRR6819019_1_paired.fastq
+Approx 80% complete for SRR6819019_1_paired.fastq
+Approx 85% complete for SRR6819019_1_paired.fastq
+Approx 90% complete for SRR6819019_1_paired.fastq
+Approx 95% complete for SRR6819019_1_paired.fastq
+Approx 100% complete for SRR6819019_1_paired.fastq
+Analysis complete for SRR6819019_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819019_2_paired.fastq
+Approx 5% complete for SRR6819019_2_paired.fastq
+Approx 10% complete for SRR6819019_2_paired.fastq
+Approx 15% complete for SRR6819019_2_paired.fastq
+Approx 20% complete for SRR6819019_2_paired.fastq
+Approx 25% complete for SRR6819019_2_paired.fastq
+Approx 30% complete for SRR6819019_2_paired.fastq
+Approx 35% complete for SRR6819019_2_paired.fastq
+Approx 40% complete for SRR6819019_2_paired.fastq
+Approx 45% complete for SRR6819019_2_paired.fastq
+Approx 50% complete for SRR6819019_2_paired.fastq
+Approx 55% complete for SRR6819019_2_paired.fastq
+Approx 60% complete for SRR6819019_2_paired.fastq
+Approx 65% complete for SRR6819019_2_paired.fastq
+Approx 70% complete for SRR6819019_2_paired.fastq
+Approx 75% complete for SRR6819019_2_paired.fastq
+Approx 80% complete for SRR6819019_2_paired.fastq
+Approx 85% complete for SRR6819019_2_paired.fastq
+Approx 90% complete for SRR6819019_2_paired.fastq
+Approx 95% complete for SRR6819019_2_paired.fastq
+Approx 100% complete for SRR6819019_2_paired.fastq
+Analysis complete for SRR6819019_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819020_1.fastq SRR6819020_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819020_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819020_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819020_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819020_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 21578004 Both Surviving: 17635037 (81.73%) Forward Only Surviving: 1110639 (5.15%) Reverse Only Surviving: 846113 (3.92%) Dropped: 1986215 (9.20%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819020_1_paired.fastq
+Approx 5% complete for SRR6819020_1_paired.fastq
+Approx 10% complete for SRR6819020_1_paired.fastq
+Approx 15% complete for SRR6819020_1_paired.fastq
+Approx 20% complete for SRR6819020_1_paired.fastq
+Approx 25% complete for SRR6819020_1_paired.fastq
+Approx 30% complete for SRR6819020_1_paired.fastq
+Approx 35% complete for SRR6819020_1_paired.fastq
+Approx 40% complete for SRR6819020_1_paired.fastq
+Approx 45% complete for SRR6819020_1_paired.fastq
+Approx 50% complete for SRR6819020_1_paired.fastq
+Approx 55% complete for SRR6819020_1_paired.fastq
+Approx 60% complete for SRR6819020_1_paired.fastq
+Approx 65% complete for SRR6819020_1_paired.fastq
+Approx 70% complete for SRR6819020_1_paired.fastq
+Approx 75% complete for SRR6819020_1_paired.fastq
+Approx 80% complete for SRR6819020_1_paired.fastq
+Approx 85% complete for SRR6819020_1_paired.fastq
+Approx 90% complete for SRR6819020_1_paired.fastq
+Approx 95% complete for SRR6819020_1_paired.fastq
+Approx 100% complete for SRR6819020_1_paired.fastq
+Analysis complete for SRR6819020_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819020_2_paired.fastq
+Approx 5% complete for SRR6819020_2_paired.fastq
+Approx 10% complete for SRR6819020_2_paired.fastq
+Approx 15% complete for SRR6819020_2_paired.fastq
+Approx 20% complete for SRR6819020_2_paired.fastq
+Approx 25% complete for SRR6819020_2_paired.fastq
+Approx 30% complete for SRR6819020_2_paired.fastq
+Approx 35% complete for SRR6819020_2_paired.fastq
+Approx 40% complete for SRR6819020_2_paired.fastq
+Approx 45% complete for SRR6819020_2_paired.fastq
+Approx 50% complete for SRR6819020_2_paired.fastq
+Approx 55% complete for SRR6819020_2_paired.fastq
+Approx 60% complete for SRR6819020_2_paired.fastq
+Approx 65% complete for SRR6819020_2_paired.fastq
+Approx 70% complete for SRR6819020_2_paired.fastq
+Approx 75% complete for SRR6819020_2_paired.fastq
+Approx 80% complete for SRR6819020_2_paired.fastq
+Approx 85% complete for SRR6819020_2_paired.fastq
+Approx 90% complete for SRR6819020_2_paired.fastq
+Approx 95% complete for SRR6819020_2_paired.fastq
+Approx 100% complete for SRR6819020_2_paired.fastq
+Analysis complete for SRR6819020_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819021_1.fastq SRR6819021_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819021_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819021_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819021_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819021_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 32009903 Both Surviving: 26113897 (81.58%) Forward Only Surviving: 1659351 (5.18%) Reverse Only Surviving: 1259136 (3.93%) Dropped: 2977519 (9.30%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819021_1_paired.fastq
+Approx 5% complete for SRR6819021_1_paired.fastq
+Approx 10% complete for SRR6819021_1_paired.fastq
+Approx 15% complete for SRR6819021_1_paired.fastq
+Approx 20% complete for SRR6819021_1_paired.fastq
+Approx 25% complete for SRR6819021_1_paired.fastq
+Approx 30% complete for SRR6819021_1_paired.fastq
+Approx 35% complete for SRR6819021_1_paired.fastq
+Approx 40% complete for SRR6819021_1_paired.fastq
+Approx 45% complete for SRR6819021_1_paired.fastq
+Approx 50% complete for SRR6819021_1_paired.fastq
+Approx 55% complete for SRR6819021_1_paired.fastq
+Approx 60% complete for SRR6819021_1_paired.fastq
+Approx 65% complete for SRR6819021_1_paired.fastq
+Approx 70% complete for SRR6819021_1_paired.fastq
+Approx 75% complete for SRR6819021_1_paired.fastq
+Approx 80% complete for SRR6819021_1_paired.fastq
+Approx 85% complete for SRR6819021_1_paired.fastq
+Approx 90% complete for SRR6819021_1_paired.fastq
+Approx 95% complete for SRR6819021_1_paired.fastq
+Approx 100% complete for SRR6819021_1_paired.fastq
+Analysis complete for SRR6819021_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819021_2_paired.fastq
+Approx 5% complete for SRR6819021_2_paired.fastq
+Approx 10% complete for SRR6819021_2_paired.fastq
+Approx 15% complete for SRR6819021_2_paired.fastq
+Approx 20% complete for SRR6819021_2_paired.fastq
+Approx 25% complete for SRR6819021_2_paired.fastq
+Approx 30% complete for SRR6819021_2_paired.fastq
+Approx 35% complete for SRR6819021_2_paired.fastq
+Approx 40% complete for SRR6819021_2_paired.fastq
+Approx 45% complete for SRR6819021_2_paired.fastq
+Approx 50% complete for SRR6819021_2_paired.fastq
+Approx 55% complete for SRR6819021_2_paired.fastq
+Approx 60% complete for SRR6819021_2_paired.fastq
+Approx 65% complete for SRR6819021_2_paired.fastq
+Approx 70% complete for SRR6819021_2_paired.fastq
+Approx 75% complete for SRR6819021_2_paired.fastq
+Approx 80% complete for SRR6819021_2_paired.fastq
+Approx 85% complete for SRR6819021_2_paired.fastq
+Approx 90% complete for SRR6819021_2_paired.fastq
+Approx 95% complete for SRR6819021_2_paired.fastq
+Approx 100% complete for SRR6819021_2_paired.fastq
+Analysis complete for SRR6819021_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819022_1.fastq SRR6819022_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819022_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819022_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819022_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819022_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 25193444 Both Surviving: 20559906 (81.61%) Forward Only Surviving: 1275941 (5.06%) Reverse Only Surviving: 1017476 (4.04%) Dropped: 2340121 (9.29%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819022_1_paired.fastq
+Approx 5% complete for SRR6819022_1_paired.fastq
+Approx 10% complete for SRR6819022_1_paired.fastq
+Approx 15% complete for SRR6819022_1_paired.fastq
+Approx 20% complete for SRR6819022_1_paired.fastq
+Approx 25% complete for SRR6819022_1_paired.fastq
+Approx 30% complete for SRR6819022_1_paired.fastq
+Approx 35% complete for SRR6819022_1_paired.fastq
+Approx 40% complete for SRR6819022_1_paired.fastq
+Approx 45% complete for SRR6819022_1_paired.fastq
+Approx 50% complete for SRR6819022_1_paired.fastq
+Approx 55% complete for SRR6819022_1_paired.fastq
+Approx 60% complete for SRR6819022_1_paired.fastq
+Approx 65% complete for SRR6819022_1_paired.fastq
+Approx 70% complete for SRR6819022_1_paired.fastq
+Approx 75% complete for SRR6819022_1_paired.fastq
+Approx 80% complete for SRR6819022_1_paired.fastq
+Approx 85% complete for SRR6819022_1_paired.fastq
+Approx 90% complete for SRR6819022_1_paired.fastq
+Approx 95% complete for SRR6819022_1_paired.fastq
+Approx 100% complete for SRR6819022_1_paired.fastq
+Analysis complete for SRR6819022_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819022_2_paired.fastq
+Approx 5% complete for SRR6819022_2_paired.fastq
+Approx 10% complete for SRR6819022_2_paired.fastq
+Approx 15% complete for SRR6819022_2_paired.fastq
+Approx 20% complete for SRR6819022_2_paired.fastq
+Approx 25% complete for SRR6819022_2_paired.fastq
+Approx 30% complete for SRR6819022_2_paired.fastq
+Approx 35% complete for SRR6819022_2_paired.fastq
+Approx 40% complete for SRR6819022_2_paired.fastq
+Approx 45% complete for SRR6819022_2_paired.fastq
+Approx 50% complete for SRR6819022_2_paired.fastq
+Approx 55% complete for SRR6819022_2_paired.fastq
+Approx 60% complete for SRR6819022_2_paired.fastq
+Approx 65% complete for SRR6819022_2_paired.fastq
+Approx 70% complete for SRR6819022_2_paired.fastq
+Approx 75% complete for SRR6819022_2_paired.fastq
+Approx 80% complete for SRR6819022_2_paired.fastq
+Approx 85% complete for SRR6819022_2_paired.fastq
+Approx 90% complete for SRR6819022_2_paired.fastq
+Approx 95% complete for SRR6819022_2_paired.fastq
+Approx 100% complete for SRR6819022_2_paired.fastq
+Analysis complete for SRR6819022_2_paired.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 6 -phred33 SRR6819023_1.fastq SRR6819023_2.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819023_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819023_1_unpaired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819023_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819023_2_unpaired.fastq ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TTTTTTTTTTAATGATACGGCGACCACCGAGATCTACAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Medium Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+Skipping duplicate Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'TTTTTTTTTTCAAGCAGAAGACGGCATACGA'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+Skipping duplicate Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Skipping duplicate Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCCGATCT'
+ILLUMINACLIP: Using 0 prefix pairs, 18 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Input Read Pairs: 37262034 Both Surviving: 30243340 (81.16%) Forward Only Surviving: 2061894 (5.53%) Reverse Only Surviving: 1362579 (3.66%) Dropped: 3594221 (9.65%)
+TrimmomaticPE: Completed successfully
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819023_1_paired.fastq
+Approx 5% complete for SRR6819023_1_paired.fastq
+Approx 10% complete for SRR6819023_1_paired.fastq
+Approx 15% complete for SRR6819023_1_paired.fastq
+Approx 20% complete for SRR6819023_1_paired.fastq
+Approx 25% complete for SRR6819023_1_paired.fastq
+Approx 30% complete for SRR6819023_1_paired.fastq
+Approx 35% complete for SRR6819023_1_paired.fastq
+Approx 40% complete for SRR6819023_1_paired.fastq
+Approx 45% complete for SRR6819023_1_paired.fastq
+Approx 50% complete for SRR6819023_1_paired.fastq
+Approx 55% complete for SRR6819023_1_paired.fastq
+Approx 60% complete for SRR6819023_1_paired.fastq
+Approx 65% complete for SRR6819023_1_paired.fastq
+Approx 70% complete for SRR6819023_1_paired.fastq
+Approx 75% complete for SRR6819023_1_paired.fastq
+Approx 80% complete for SRR6819023_1_paired.fastq
+Approx 85% complete for SRR6819023_1_paired.fastq
+Approx 90% complete for SRR6819023_1_paired.fastq
+Approx 95% complete for SRR6819023_1_paired.fastq
+Approx 100% complete for SRR6819023_1_paired.fastq
+Analysis complete for SRR6819023_1_paired.fastq
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819023_2_paired.fastq
+Approx 5% complete for SRR6819023_2_paired.fastq
+Approx 10% complete for SRR6819023_2_paired.fastq
+Approx 15% complete for SRR6819023_2_paired.fastq
+Approx 20% complete for SRR6819023_2_paired.fastq
+Approx 25% complete for SRR6819023_2_paired.fastq
+Approx 30% complete for SRR6819023_2_paired.fastq
+Approx 35% complete for SRR6819023_2_paired.fastq
+Approx 40% complete for SRR6819023_2_paired.fastq
+Approx 45% complete for SRR6819023_2_paired.fastq
+Approx 50% complete for SRR6819023_2_paired.fastq
+Approx 55% complete for SRR6819023_2_paired.fastq
+Approx 60% complete for SRR6819023_2_paired.fastq
+Approx 65% complete for SRR6819023_2_paired.fastq
+Approx 70% complete for SRR6819023_2_paired.fastq
+Approx 75% complete for SRR6819023_2_paired.fastq
+Approx 80% complete for SRR6819023_2_paired.fastq
+Approx 85% complete for SRR6819023_2_paired.fastq
+Approx 90% complete for SRR6819023_2_paired.fastq
+Approx 95% complete for SRR6819023_2_paired.fastq
+Approx 100% complete for SRR6819023_2_paired.fastq
+Analysis complete for SRR6819023_2_paired.fastq
+tar: Removing leading `/' from member names
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819014_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819015_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819016_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819017_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819018_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819019_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819020_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819021_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819022_2_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_1_paired_fastqc.zip
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PostCleanQuality/SRR6819023_2_paired_fastqc.zip

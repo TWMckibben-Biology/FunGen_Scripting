@@ -50,15 +50,15 @@ set -x
 ## Replace the numbers in the brackets with Your specific information
   ## make variable for your ASC ID so the directories are automatically made in YOUR directory
   ## Replace the [#] with paths to define these variable
-MyID=[1]          ## Example: MyID=aubtss
+MyID=aubclsb0323          ## Example: MyID=aubtss
 
-WD=[2]                                                ## Example:/scratch/$MyID/PracticeRNAseq  
-CLEAND=[3]                                            ## Example:/scratch/$MyID/PracticeRNAseq/CleanData20   #   *** This is where the cleaned paired files are located
-REFD=[4]                                              ## Example:/scratch/$MyID/PracticeRNAseq/DaphniaRefGenome_6                      # this directory contains the indexed reference genome for the garter snake
-MAPD=[5]                                              ## Example:/scratch/$MyID/PracticeRNAseq/Map_HiSat2_6
-COUNTSD=[6]                                           ## Example:/scratch/$MyID/PracticeRNAseq/Counts_StringTie_6
+WD=/scratch/$MyID/Scripting                           ## Example:/scratch/$MyID/PracticeRNAseq  
+CLEAND=/scratch/$MyID/Scripting/CleanData2                      ## Example:/scratch/$MyID/PracticeRNAseq/CleanData20   #   *** This is where the cleaned paired files are located
+REFD=/scratch/$MyID/Scripting/DaphniaRefGenome_6      ## Example:/scratch/$MyID/PracticeRNAseq/DaphniaRefGenome_6                      # this directory contains the indexed reference genome for the garter snake
+MAPD=/scratch/$MyID/Scripting/Map_HiSat2_6            ## Example:/scratch/$MyID/PracticeRNAseq/Map_HiSat2_6
+COUNTSD=/scratch/$MyID/Scripting/Counts_StringTie_6   ## Example:/scratch/$MyID/PracticeRNAseq/Counts_StringTie_6
 
-RESULTSD=[7]                                          ## Example:/home/aubtss/PracticeRNAseq/Counts_H_S_6
+RESULTSD=/home/aubclsb0323/FunGen_Scripting/Counts_H_S_6     ## Example:/home/aubtss/PracticeRNAseq/Counts_H_S_6
 
 REF=DaphniaPulex_RefGenome_PA42_v3.0                  ## This is what the "easy name" will be for the genome reference
 
@@ -67,11 +67,12 @@ mkdir -p $REFD
 mkdir -p $MAPD
 mkdir -p $COUNTSD
 mkdir -p $RESULTSD
+mkdir -p $CLEAND
 
 ##################  Prepare the Reference Index for mapping with HiSat2   #############################
 cd $REFD
-cp /home/shared/schwartz_class/$REF.fasta .
-cp /home/shared/schwartz_class/$REF.gff3 .
+cp ~/class_shared/references/DaphniaPulex/PA42/$REF.fasta .
+cp ~/class_shared/references/DaphniaPulex/PA42/$REF.gff3 .
 
 ###  Identify exons and splice sites
 gffread $REF.gff3 -T -o $REF.gtf               ## gffread converts the annotation file from .gff3 to .gft formate for HiSat2 to use.
@@ -85,7 +86,7 @@ hisat2-build --ss $REF.ss --exon $REF.exon $REF.fasta DpulPA42_index
 
 # Move to the data directory
 cd $CLEAND  #### This is where our clean paired reads are located.
-
+cp /scratch/$MyID/Scripting/CleanData/*_paired.fastq .
 ## Create list of fastq files to map.    Example file format of your cleaned reads file names: SRR629651_1_paired.fastq SRR629651_2_paired.fastq
 ## grab all fastq files, cut on the underscore, use only the first of the cuts, sort, use unique put in list
 ls | grep ".fastq" |cut -d "_" -f 1| sort | uniq > list    #should list Example: SRR629651
@@ -94,7 +95,7 @@ ls | grep ".fastq" |cut -d "_" -f 1| sort | uniq > list    #should list Example:
 cd $MAPD
 
 ## move the list of unique ids from the original files to map
-mv $CLEAND/list  . 
+mv $CLEAND/list . 
 
 while read i;
 do
@@ -124,7 +125,7 @@ do
 mkdir "$COUNTSD"/"$i"
 stringtie -p 6 -e -B -G  "$REFD"/"$REF".gtf -o "$COUNTSD"/"$i"/"$i".gtf -l "$i"   "$MAPD"/"$i"_sorted.bam
 
-done<list
+done < list
 
 #####################  Copy Results to home Directory.  These will be the files you want to bring back to your computer.
 ### these are your stats files from Samtools

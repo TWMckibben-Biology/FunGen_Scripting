@@ -1,0 +1,50 @@
+setting dmc scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: mapper_trinity.sh
+  The time limit is 12:00:00 HH:MM:SS.
+  The target directory is: /home/aubclsb0323/FunGen_Scripting/Project_Scripting/Project_scripts
+  The working directory is:  /scratch-local/aubclsb0323.Script4_test5.1069777
+  The memory limit is: 12gb
+  The job will start running after: 2023-04-16T16:15:29
+  Job Name: Script4_test5
+  Virtual queue: class
+  QOS: --qos=class
+  Constraints: --constraint=dmc
+  Using  6  cores on master node  dmc78
+  Node list:  dmc78
+  Nodes:  dmc78 dmc78 dmc78 dmc78 dmc78 dmc78
+  Command typed:
+/apps/scripts/run_script mapper_trinity.sh     
+  Queue submit command:
+sbatch --qos=class -J Script4_test5 --begin=2023-04-16T16:15:29 --requeue --mail-user=twm0009@auburn.edu -o Script4_test5.o1069777 -t 12:00:00 -N 1-1 -n 6 --mem-per-cpu=2000mb --constraint=dmc 
+
+
+     ______  ____   ____  ____   ____  ______  __ __
+    |      ||    \ |    ||    \ |    ||      ||  |  |
+    |      ||  D  ) |  | |  _  | |  | |      ||  |  |
+    |_|  |_||    /  |  | |  |  | |  | |_|  |_||  ~  |
+      |  |  |    \  |  | |  |  | |  |   |  |  |___, |
+      |  |  |  .  \ |  | |  |  | |  |   |  |  |     |
+      |__|  |__|\_||____||__|__||____|  |__|  |____/
+
+    Trinity-v2.14.0
+
+
+
+Left read files: $VAR1 = [
+          '*_1_.fq'
+        ];
+Right read files: $VAR1 = [
+          '*_2_.fq'
+        ];
+Trinity version: Trinity-v2.14.0
+-ERROR: couldn't run the network check to confirm latest Trinity software version.
+
+Sunday, April 16, 2023: 16:16:15	CMD: java -Xmx64m -XX:ParallelGCThreads=2  -jar /usr/local/bin/util/support_scripts/ExitTester.jar 0
+Sunday, April 16, 2023: 16:16:16	CMD: java -Xmx4g -XX:ParallelGCThreads=2  -jar /usr/local/bin/util/support_scripts/ExitTester.jar 1
+Sunday, April 16, 2023: 16:16:16	CMD: mkdir -p /home/aubclsb0323/FunGen_Scripting/trinity
+Error, cannot locate file: *_1_.fq at /usr/local/bin/Trinity line 2848.
+	main::create_full_path(ARRAY(0x5615ea4e9800), 1) called at /usr/local/bin/Trinity line 1319

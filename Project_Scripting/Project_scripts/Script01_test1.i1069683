@@ -1,0 +1,19 @@
+ 
+============================================================
+=====     Queued job information at submit time        =====
+============================================================
+  The submitted file is: 0_1_downloadSRA_QualityCheck.sh
+  The time limit is 60:00:00 HH:MM:SS.
+  The target directory is: /home/aubclsb0323/FunGen_Scripting/Project_Scripting/Project_scripts
+  The memory limit is: 4gb
+  The job will start running after: 2023-04-15T20:26:55
+  Job Name: Script01_test1
+  Virtual queue: small
+  QOS: --qos=small
+  Constraints: --constraint=dmc
+  Command typed:
+/apps/scripts/run_script 0_1_downloadSRA_QualityCheck.sh     
+  Queue submit command:
+sbatch --qos=small -J Script01_test1 --begin=2023-04-15T20:26:55 --requeue --mail-user=twm0009@auburn.edu -o Script01_test1.o$SLURM_JOB_ID -t 60:00:00 -N 1-1 -n 8 --mem-per-cpu=500mb --constraint=dmc 
+  Job number: 1069683
+ 

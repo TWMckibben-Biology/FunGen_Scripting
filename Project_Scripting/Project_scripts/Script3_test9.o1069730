@@ -1,0 +1,633 @@
+setting dmc scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: mapper_hisat2.sh
+  The time limit is 12:00:00 HH:MM:SS.
+  The target directory is: /home/aubclsb0323/FunGen_Scripting/Project_Scripting/Project_scripts
+  The working directory is:  /scratch-local/aubclsb0323.Script3_test9.1069730
+  The memory limit is: 12gb
+  The job will start running after: 2023-04-16T14:13:19
+  Job Name: Script3_test9
+  Virtual queue: class
+  QOS: --qos=class
+  Constraints: --constraint=dmc
+  Using  6  cores on master node  dmc78
+  Node list:  dmc78
+  Nodes:  dmc78 dmc78 dmc78 dmc78 dmc78 dmc78
+  Command typed:
+/apps/scripts/run_script mapper_hisat2.sh     
+  Queue submit command:
+sbatch --qos=class -J Script3_test9 --begin=2023-04-16T14:13:19 --requeue --mail-user=twm0009@auburn.edu -o Script3_test9.o1069730 -t 12:00:00 -N 1-1 -n 6 --mem-per-cpu=2000mb --constraint=dmc 
+
+The following have been reloaded with a version change:
+  1) gcc/7.3.0 => gcc/6.1.0
+
+
+Lmod is automatically replacing "anaconda/2-2019.10" with "python/2.7.1".
+
+
+The following have been reloaded with a version change:
+  1) gcc/6.1.0 => gcc/4.5.2
+
+
+The following have been reloaded with a version change:
+  1) gcc/4.5.2 => gcc/9.3.0
+
+
+The following have been reloaded with a version change:
+  1) gcc/9.3.0 => gcc/4.5.2     2) samtools/1.13 => samtools/0.1.19
+
+
+The following have been reloaded with a version change:
+  1) gcc/4.5.2 => gcc/6.1.0
+
++ MyID=aubclsb0323
++ WD=/scratch/aubclsb0323/Scripting
++ CLEAND=/scratch/aubclsb0323/Scripting/CleanData2
++ REFD=/scratch/aubclsb0323/Scripting/DaphniaRefGenome_6
++ MAPD=/scratch/aubclsb0323/Scripting/Map_HiSat2_6
++ COUNTSD=/scratch/aubclsb0323/Scripting/Counts_StringTie_6
++ RESULTSD=/home/aubclsb0323/FunGen_Scripting/Counts_H_S_6
++ REF=DaphniaPulex_RefGenome_PA42_v3.0
++ mkdir -p /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6
++ mkdir -p /scratch/aubclsb0323/Scripting/Map_HiSat2_6
++ mkdir -p /scratch/aubclsb0323/Scripting/Counts_StringTie_6
++ mkdir -p /home/aubclsb0323/FunGen_Scripting/Counts_H_S_6
++ mkdir -p /scratch/aubclsb0323/Scripting/CleanData2
++ cd /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6
++ cp /home/aubclsb0323/class_shared/references/DaphniaPulex/PA42/DaphniaPulex_RefGenome_PA42_v3.0.fasta .
++ cp /home/aubclsb0323/class_shared/references/DaphniaPulex/PA42/DaphniaPulex_RefGenome_PA42_v3.0.gff3 .
++ gffread DaphniaPulex_RefGenome_PA42_v3.0.gff3 -T -o DaphniaPulex_RefGenome_PA42_v3.0.gtf
++ extract_splice_sites.py DaphniaPulex_RefGenome_PA42_v3.0.gtf
++ extract_exons.py DaphniaPulex_RefGenome_PA42_v3.0.gtf
++ hisat2-build --ss DaphniaPulex_RefGenome_PA42_v3.0.ss --exon DaphniaPulex_RefGenome_PA42_v3.0.exon DaphniaPulex_RefGenome_PA42_v3.0.fasta DpulPA42_index
+Settings:
+  Output files: "DpulPA42_index.*.ht2"
+  Line rate: 7 (line is 128 bytes)
+  Lines per side: 1 (side is 128 bytes)
+  Offset rate: 4 (one in 16)
+  FTable chars: 10
+  Strings: unpacked
+  Local offset rate: 3 (one in 8)
+  Local fTable chars: 6
+  Local sequence length: 57344
+  Local sequence overlap between two consecutive indexes: 1024
+  Endianness: little
+  Actual local endianness: little
+  Sanity checking: disabled
+  Assertions: disabled
+  Random seed: 0
+  Sizeofs: void*:8, int:4, long:8, size_t:8
+Input files DNA, FASTA:
+  DaphniaPulex_RefGenome_PA42_v3.0.fasta
+Reading reference sizes
+  Time reading reference sizes: 00:00:01
+Calculating joined length
+Writing header
+Reserving space for joined string
+Joining reference sequences
+  Time to join reference sequences: 00:00:01
+  Time to read SNPs and splice sites: 00:00:00
+Generation 0 (143059717 -> 143059717 nodes, 0 ranks
+COUNTED NEW NODES: 1
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 0
+Generation 1 (143155940 -> 143155940 nodes, 0 ranks
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 1
+RESIZED NODES: 0
+MADE NEW NODES: 0
+Generation 2 (143348396 -> 143348396 nodes, 0 ranks
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 1
+Generation 3 (143733427 -> 143733427 nodes, 0 ranks
+BUILT FROM_INDEX: 0
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 1
+RESIZE NODES: 1
+SORT NODES: 11
+MERGE, UPDATE RANK: 1
+Generation 4 (144504406 -> 144061064 nodes, 116807992 ranks
+ALLOCATE FROM_TABLE: 1
+BUILD TABLE: 4
+BUILD INDEX: 0
+COUNTED NEW NODES: 1
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 2
+MERGEUPDATERANK: 1
+TOTAL TIME: 9
+Generation 5 (144224770 -> 144100800 nodes, 133287740 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 1
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 1
+MERGEUPDATERANK: 2
+TOTAL TIME: 8
+Generation 6 (144194978 -> 144160993 nodes, 137555680 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 0
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 2
+MERGEUPDATERANK: 1
+TOTAL TIME: 7
+Generation 7 (144256134 -> 144228090 nodes, 139941961 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 0
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 1
+MERGEUPDATERANK: 1
+TOTAL TIME: 6
+Generation 8 (144330350 -> 144299682 nodes, 141382031 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 1
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 1
+MERGEUPDATERANK: 1
+TOTAL TIME: 7
+Generation 9 (144408065 -> 144362307 nodes, 142407559 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 0
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 1
+MERGEUPDATERANK: 1
+TOTAL TIME: 6
+Generation 10 (144477586 -> 144420805 nodes, 143197166 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 0
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 0
+MERGEUPDATERANK: 1
+TOTAL TIME: 6
+Generation 11 (144544667 -> 144486590 nodes, 143784111 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 1
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 0
+MERGEUPDATERANK: 1
+TOTAL TIME: 6
+Generation 12 (144604971 -> 144535203 nodes, 144191874 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 1
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 0
+MERGEUPDATERANK: 1
+TOTAL TIME: 6
+Generation 13 (144631614 -> 144577306 nodes, 144453123 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 1
+COUNTED NEW NODES: 0
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 0
+MERGEUPDATERANK: 1
+TOTAL TIME: 6
+Generation 14 (144622003 -> 144585004 nodes, 144555437 ranks
+ALLOCATE FROM_TABLE: 0
+BUILD TABLE: 4
+BUILD INDEX: 0
+COUNTED NEW NODES: 1
+COUNTED TEMP NODES: 0
+RESIZED NODES: 0
+RESIZED NODES: 0
+MADE NEW NODES: 0
+MERGEUPDATERANK: 1
+TOTAL TIME: 6
+Generation 15 (144596835 -> 144573811 nodes, 144573811 ranks
+Generating edges... 
+NODE.TO -> GENOME POS: 0
+BUILD FROM_INDEX 1
+COUNTED NEW EDGES: 1
+MADE NEW EDGES: 2
+SORTED NEW EDGES: 5
+RE-SORTED NODES: 4
+PROCESS EDGES: 0
+REMOVE Y: 1
+SORT, Make index: 4
+TOTAL: 18
+Allocating ftab, absorbFtab
+Entering GFM loop
+Exited GFM loop
+fchr[A]: 0
+fchr[C]: 42993943
+fchr[G]: 72371480
+fchr[T]: 101683509
+fchr[$]: 144670577
+Exiting GFM::buildToDisk()
+Returning from initFromVector
+Wrote 93369206 bytes to primary GFM file: DpulPA42_index.1.ht2
+Wrote 36143460 bytes to secondary GFM file: DpulPA42_index.2.ht2
+Re-opening _in1 and _in2 as input streams
+Returning from GFM constructor
+Returning from initFromVector
+Wrote 113951811 bytes to primary GFM file: DpulPA42_index.5.ht2
+Wrote 36468474 bytes to secondary GFM file: DpulPA42_index.6.ht2
+Re-opening _in5 and _in5 as input streams
+Returning from HierEbwt constructor
+Headers:
+    len: 142963408
+    gbwtLen: 144670578
+    nodes: 144573810
+    sz: 71481704
+    gbwtSz: 72335290
+    lineRate: 7
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 0
+    eftabSz: 0
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 9035864
+    offsSz: 36143456
+    lineSz: 128
+    sideSz: 128
+    sideGbwtSz: 104
+    sideGbwtLen: 208
+    numSides: 695532
+    numLines: 695532
+    gbwtTotLen: 89028096
+    gbwtTotSz: 89028096
+    reverse: 0
+    linearFM: No
+Total time for call to driver() for forward index: 00:05:34
++ cd /scratch/aubclsb0323/Scripting/CleanData2
++ cp /scratch/aubclsb0323/Scripting/CleanData/SRR6819014_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819014_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819015_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819015_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819016_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819016_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819017_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819017_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819018_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819018_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819019_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819019_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819020_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819020_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819021_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819021_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819022_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819022_2_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819023_1_paired.fastq /scratch/aubclsb0323/Scripting/CleanData/SRR6819023_2_paired.fastq .
++ ls
++ grep .fastq
++ cut -d _ -f 1
++ sort
++ uniq
++ cd /scratch/aubclsb0323/Scripting/Map_HiSat2_6
++ mv /scratch/aubclsb0323/Scripting/CleanData2/list .
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819014_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819014_2_paired.fastq -S SRR6819014.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+16556373 reads; of these:
+  16556373 (100.00%) were paired; of these:
+    7619618 (46.02%) aligned concordantly 0 times
+    6984010 (42.18%) aligned concordantly exactly 1 time
+    1952745 (11.79%) aligned concordantly >1 times
+    ----
+    7619618 pairs aligned concordantly 0 times; of these:
+      957949 (12.57%) aligned discordantly 1 time
+    ----
+    6661669 pairs aligned 0 times concordantly or discordantly; of these:
+      13323338 mates make up the pairs; of these:
+        11436391 (85.84%) aligned 0 times
+        1365966 (10.25%) aligned exactly 1 time
+        520981 (3.91%) aligned >1 times
+65.46% overall alignment rate
++ samtools view -@ 6 -bS SRR6819014.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819014.bam SRR6819014_sorted
+[bam_sort_core] merging from 18 files...
++ samtools flagstat SRR6819014_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819014
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819014/SRR6819014.gtf -l SRR6819014 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819014_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819015_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819015_2_paired.fastq -S SRR6819015.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+19869563 reads; of these:
+  19869563 (100.00%) were paired; of these:
+    8826033 (44.42%) aligned concordantly 0 times
+    8523837 (42.90%) aligned concordantly exactly 1 time
+    2519693 (12.68%) aligned concordantly >1 times
+    ----
+    8826033 pairs aligned concordantly 0 times; of these:
+      1452941 (16.46%) aligned discordantly 1 time
+    ----
+    7373092 pairs aligned 0 times concordantly or discordantly; of these:
+      14746184 mates make up the pairs; of these:
+        12130882 (82.26%) aligned 0 times
+        1846853 (12.52%) aligned exactly 1 time
+        768449 (5.21%) aligned >1 times
+69.47% overall alignment rate
++ samtools view -@ 6 -bS SRR6819015.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819015.bam SRR6819015_sorted
+[bam_sort_core] merging from 18 files...
++ samtools flagstat SRR6819015_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819015
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819015/SRR6819015.gtf -l SRR6819015 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819015_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819016_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819016_2_paired.fastq -S SRR6819016.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+22548483 reads; of these:
+  22548483 (100.00%) were paired; of these:
+    11729601 (52.02%) aligned concordantly 0 times
+    8643736 (38.33%) aligned concordantly exactly 1 time
+    2175146 (9.65%) aligned concordantly >1 times
+    ----
+    11729601 pairs aligned concordantly 0 times; of these:
+      1320047 (11.25%) aligned discordantly 1 time
+    ----
+    10409554 pairs aligned 0 times concordantly or discordantly; of these:
+      20819108 mates make up the pairs; of these:
+        18518970 (88.95%) aligned 0 times
+        1688071 (8.11%) aligned exactly 1 time
+        612067 (2.94%) aligned >1 times
+58.94% overall alignment rate
++ samtools view -@ 6 -bS SRR6819016.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819016.bam SRR6819016_sorted
+[bam_sort_core] merging from 24 files...
++ samtools flagstat SRR6819016_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819016
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819016/SRR6819016.gtf -l SRR6819016 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819016_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819017_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819017_2_paired.fastq -S SRR6819017.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+19287364 reads; of these:
+  19287364 (100.00%) were paired; of these:
+    9658380 (50.08%) aligned concordantly 0 times
+    7605635 (39.43%) aligned concordantly exactly 1 time
+    2023349 (10.49%) aligned concordantly >1 times
+    ----
+    9658380 pairs aligned concordantly 0 times; of these:
+      1336040 (13.83%) aligned discordantly 1 time
+    ----
+    8322340 pairs aligned 0 times concordantly or discordantly; of these:
+      16644680 mates make up the pairs; of these:
+        14521033 (87.24%) aligned 0 times
+        1505205 (9.04%) aligned exactly 1 time
+        618442 (3.72%) aligned >1 times
+62.36% overall alignment rate
++ samtools view -@ 6 -bS SRR6819017.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819017.bam SRR6819017_sorted
+[bam_sort_core] merging from 18 files...
++ samtools flagstat SRR6819017_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819017
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819017/SRR6819017.gtf -l SRR6819017 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819017_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819018_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819018_2_paired.fastq -S SRR6819018.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+26596982 reads; of these:
+  26596982 (100.00%) were paired; of these:
+    10445786 (39.27%) aligned concordantly 0 times
+    12517008 (47.06%) aligned concordantly exactly 1 time
+    3634188 (13.66%) aligned concordantly >1 times
+    ----
+    10445786 pairs aligned concordantly 0 times; of these:
+      1411854 (13.52%) aligned discordantly 1 time
+    ----
+    9033932 pairs aligned 0 times concordantly or discordantly; of these:
+      18067864 mates make up the pairs; of these:
+        14616921 (80.90%) aligned 0 times
+        2523484 (13.97%) aligned exactly 1 time
+        927459 (5.13%) aligned >1 times
+72.52% overall alignment rate
++ samtools view -@ 6 -bS SRR6819018.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819018.bam SRR6819018_sorted
+[bam_sort_core] merging from 24 files...
++ samtools flagstat SRR6819018_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819018
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819018/SRR6819018.gtf -l SRR6819018 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819018_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819019_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819019_2_paired.fastq -S SRR6819019.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+20997996 reads; of these:
+  20997996 (100.00%) were paired; of these:
+    8167443 (38.90%) aligned concordantly 0 times
+    10016265 (47.70%) aligned concordantly exactly 1 time
+    2814288 (13.40%) aligned concordantly >1 times
+    ----
+    8167443 pairs aligned concordantly 0 times; of these:
+      702228 (8.60%) aligned discordantly 1 time
+    ----
+    7465215 pairs aligned 0 times concordantly or discordantly; of these:
+      14930430 mates make up the pairs; of these:
+        12340481 (82.65%) aligned 0 times
+        1958631 (13.12%) aligned exactly 1 time
+        631318 (4.23%) aligned >1 times
+70.62% overall alignment rate
++ samtools view -@ 6 -bS SRR6819019.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819019.bam SRR6819019_sorted
+[bam_sort_core] merging from 24 files...
++ samtools flagstat SRR6819019_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819019
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819019/SRR6819019.gtf -l SRR6819019 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819019_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819020_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819020_2_paired.fastq -S SRR6819020.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+17635037 reads; of these:
+  17635037 (100.00%) were paired; of these:
+    7026705 (39.85%) aligned concordantly 0 times
+    8130027 (46.10%) aligned concordantly exactly 1 time
+    2478305 (14.05%) aligned concordantly >1 times
+    ----
+    7026705 pairs aligned concordantly 0 times; of these:
+      813550 (11.58%) aligned discordantly 1 time
+    ----
+    6213155 pairs aligned 0 times concordantly or discordantly; of these:
+      12426310 mates make up the pairs; of these:
+        10086693 (81.17%) aligned 0 times
+        1702224 (13.70%) aligned exactly 1 time
+        637393 (5.13%) aligned >1 times
+71.40% overall alignment rate
++ samtools view -@ 6 -bS SRR6819020.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819020.bam SRR6819020_sorted
+[bam_sort_core] merging from 18 files...
++ samtools flagstat SRR6819020_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819020
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819020/SRR6819020.gtf -l SRR6819020 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819020_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819021_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819021_2_paired.fastq -S SRR6819021.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+26113897 reads; of these:
+  26113897 (100.00%) were paired; of these:
+    10381819 (39.76%) aligned concordantly 0 times
+    12178495 (46.64%) aligned concordantly exactly 1 time
+    3553583 (13.61%) aligned concordantly >1 times
+    ----
+    10381819 pairs aligned concordantly 0 times; of these:
+      1372804 (13.22%) aligned discordantly 1 time
+    ----
+    9009015 pairs aligned 0 times concordantly or discordantly; of these:
+      18018030 mates make up the pairs; of these:
+        14673577 (81.44%) aligned 0 times
+        2403039 (13.34%) aligned exactly 1 time
+        941414 (5.22%) aligned >1 times
+71.90% overall alignment rate
++ samtools view -@ 6 -bS SRR6819021.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819021.bam SRR6819021_sorted
+[bam_sort_core] merging from 24 files...
++ samtools flagstat SRR6819021_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819021
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819021/SRR6819021.gtf -l SRR6819021 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819021_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819022_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819022_2_paired.fastq -S SRR6819022.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+20559906 reads; of these:
+  20559906 (100.00%) were paired; of these:
+    8176819 (39.77%) aligned concordantly 0 times
+    9503938 (46.23%) aligned concordantly exactly 1 time
+    2879149 (14.00%) aligned concordantly >1 times
+    ----
+    8176819 pairs aligned concordantly 0 times; of these:
+      1122453 (13.73%) aligned discordantly 1 time
+    ----
+    7054366 pairs aligned 0 times concordantly or discordantly; of these:
+      14108732 mates make up the pairs; of these:
+        11385690 (80.70%) aligned 0 times
+        1948368 (13.81%) aligned exactly 1 time
+        774674 (5.49%) aligned >1 times
+72.31% overall alignment rate
++ samtools view -@ 6 -bS SRR6819022.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819022.bam SRR6819022_sorted
+[bam_sort_core] merging from 18 files...
++ samtools flagstat SRR6819022_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819022
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819022/SRR6819022.gtf -l SRR6819022 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819022_sorted.bam
++ read i
++ hisat2 -p 6 --dta --phred33 -x /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DpulPA42_index -1 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819023_1_paired.fastq -2 /scratch/aubclsb0323/Scripting/CleanData2/SRR6819023_2_paired.fastq -S SRR6819023.sam
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+30243340 reads; of these:
+  30243340 (100.00%) were paired; of these:
+    12465531 (41.22%) aligned concordantly 0 times
+    13688373 (45.26%) aligned concordantly exactly 1 time
+    4089436 (13.52%) aligned concordantly >1 times
+    ----
+    12465531 pairs aligned concordantly 0 times; of these:
+      2149564 (17.24%) aligned discordantly 1 time
+    ----
+    10315967 pairs aligned 0 times concordantly or discordantly; of these:
+      20631934 mates make up the pairs; of these:
+        16583776 (80.38%) aligned 0 times
+        2813348 (13.64%) aligned exactly 1 time
+        1234810 (5.98%) aligned >1 times
+72.58% overall alignment rate
++ samtools view -@ 6 -bS SRR6819023.sam
+[samopen] SAM header is present: 1822 sequences.
++ samtools sort -@ 6 SRR6819023.bam SRR6819023_sorted
+[bam_sort_core] merging from 30 files...
++ samtools flagstat SRR6819023_sorted.bam
++ mkdir /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819023
++ stringtie -p 6 -e -B -G /scratch/aubclsb0323/Scripting/DaphniaRefGenome_6/DaphniaPulex_RefGenome_PA42_v3.0.gtf -o /scratch/aubclsb0323/Scripting/Counts_StringTie_6/SRR6819023/SRR6819023.gtf -l SRR6819023 /scratch/aubclsb0323/Scripting/Map_HiSat2_6/SRR6819023_sorted.bam
++ read i
++ cp SRR6819014_Stats.txt SRR6819015_Stats.txt SRR6819016_Stats.txt SRR6819017_Stats.txt SRR6819018_Stats.txt SRR6819019_Stats.txt SRR6819020_Stats.txt SRR6819021_Stats.txt SRR6819022_Stats.txt SRR6819023_Stats.txt list.txt /home/aubclsb0323/FunGen_Scripting/Counts_H_S_6
++ cd /scratch/aubclsb0323/Scripting/Counts_StringTie_6
++ python /home/aubclsb0323/class_shared/prepDE.py -i /scratch/aubclsb0323/Scripting/Counts_StringTie_6
+0 SRR6819014
+1 SRR6819015
+2 SRR6819016
+3 SRR6819017
+4 SRR6819018
+5 SRR6819019
+6 SRR6819020
+7 SRR6819021
+8 SRR6819022
+9 SRR6819023
++ cp gene_count_matrix.csv transcript_count_matrix.csv /home/aubclsb0323/FunGen_Scripting/Counts_H_S_6

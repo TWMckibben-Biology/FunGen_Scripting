@@ -1,0 +1,891 @@
+setting dmc scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: 0_1_downloadSRA_QualityCheck.sh
+  The time limit is 60:00:00 HH:MM:SS.
+  The target directory is: /home/aubclsb0323/FunGen_Scripting/Project_Scripting/Project_scripts
+  The working directory is:  /scratch-local/aubclsb0323.Script01_test1.1069683
+  The memory limit is: 4gb
+  The job will start running after: 2023-04-15T20:26:55
+  Job Name: Script01_test1
+  Virtual queue: small
+  QOS: --qos=small
+  Constraints: --constraint=dmc
+  Using  8  cores on master node  dmc204
+  Node list:  dmc204
+  Nodes:  dmc204 dmc204 dmc204 dmc204 dmc204 dmc204 dmc204 dmc204
+  Command typed:
+/apps/scripts/run_script 0_1_downloadSRA_QualityCheck.sh     
+  Queue submit command:
+sbatch --qos=small -J Script01_test1 --begin=2023-04-15T20:26:55 --requeue --mail-user=twm0009@auburn.edu -o Script01_test1.o1069683 -t 60:00:00 -N 1-1 -n 8 --mem-per-cpu=500mb --constraint=dmc 
+[2J[?25l[?1000h[?1002h[0m[38;5;8m[48;5;8m[3;2H [38;5;15m[3;3H[[38;5;8m[3;4H   [0m[1m[4m[38;5;9m[48;5;8m[3;7Hs[0m[38;5;15m[48;5;8m[3;8Have[38;5;8m[3;11H   [38;5;15m[3;14H][38;5;8m[3;15H 2023-04-16T01:27:16 vdb-config.2.10.9 fatal: SIGNAL - Segmentation fault 
+Read 21979294 spots for SRR6819014
+Written 21979294 spots for SRR6819014
+Read 24674550 spots for SRR6819015
+Written 24674550 spots for SRR6819015
+Read 27988456 spots for SRR6819016
+Written 27988456 spots for SRR6819016
+Read 23813819 spots for SRR6819017
+Written 23813819 spots for SRR6819017
+Read 33298213 spots for SRR6819018
+Written 33298213 spots for SRR6819018
+Read 25957479 spots for SRR6819019
+Written 25957479 spots for SRR6819019
+Read 21578004 spots for SRR6819020
+Written 21578004 spots for SRR6819020
+Read 32009903 spots for SRR6819021
+Written 32009903 spots for SRR6819021
+Read 25193444 spots for SRR6819022
+Written 25193444 spots for SRR6819022
+Read 37262034 spots for SRR6819023
+Written 37262034 spots for SRR6819023
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of SRR6819014_1.fastq
+Approx 5% complete for SRR6819014_1.fastq
+Approx 10% complete for SRR6819014_1.fastq
+Approx 15% complete for SRR6819014_1.fastq
+Approx 20% complete for SRR6819014_1.fastq
+Approx 25% complete for SRR6819014_1.fastq
+Approx 30% complete for SRR6819014_1.fastq
+Approx 35% complete for SRR6819014_1.fastq
+Approx 40% complete for SRR6819014_1.fastq
+Approx 45% complete for SRR6819014_1.fastq
+Approx 50% complete for SRR6819014_1.fastq
+Approx 55% complete for SRR6819014_1.fastq
+Approx 60% complete for SRR6819014_1.fastq
+Approx 65% complete for SRR6819014_1.fastq
+Approx 70% complete for SRR6819014_1.fastq
+Approx 75% complete for SRR6819014_1.fastq
+Approx 80% complete for SRR6819014_1.fastq
+Approx 85% complete for SRR6819014_1.fastq
+Approx 90% complete for SRR6819014_1.fastq
+Approx 95% complete for SRR6819014_1.fastq
+Approx 100% complete for SRR6819014_1.fastq
+Analysis complete for SRR6819014_1.fastq
+Started analysis of SRR6819014_2.fastq
+Approx 5% complete for SRR6819014_2.fastq
+Approx 10% complete for SRR6819014_2.fastq
+Approx 15% complete for SRR6819014_2.fastq
+Approx 20% complete for SRR6819014_2.fastq
+Approx 25% complete for SRR6819014_2.fastq
+Approx 30% complete for SRR6819014_2.fastq
+Approx 35% complete for SRR6819014_2.fastq
+Approx 40% complete for SRR6819014_2.fastq
+Approx 45% complete for SRR6819014_2.fastq
+Approx 50% complete for SRR6819014_2.fastq
+Approx 55% complete for SRR6819014_2.fastq
+Approx 60% complete for SRR6819014_2.fastq
+Approx 65% complete for SRR6819014_2.fastq
+Approx 70% complete for SRR6819014_2.fastq
+Approx 75% complete for SRR6819014_2.fastq
+Approx 80% complete for SRR6819014_2.fastq
+Approx 85% complete for SRR6819014_2.fastq
+Approx 90% complete for SRR6819014_2.fastq
+Approx 95% complete for SRR6819014_2.fastq
+Approx 100% complete for SRR6819014_2.fastq
+Analysis complete for SRR6819014_2.fastq
+Started analysis of SRR6819015_1.fastq
+Approx 5% complete for SRR6819015_1.fastq
+Approx 10% complete for SRR6819015_1.fastq
+Approx 15% complete for SRR6819015_1.fastq
+Approx 20% complete for SRR6819015_1.fastq
+Approx 25% complete for SRR6819015_1.fastq
+Approx 30% complete for SRR6819015_1.fastq
+Approx 35% complete for SRR6819015_1.fastq
+Approx 40% complete for SRR6819015_1.fastq
+Approx 45% complete for SRR6819015_1.fastq
+Approx 50% complete for SRR6819015_1.fastq
+Approx 55% complete for SRR6819015_1.fastq
+Approx 60% complete for SRR6819015_1.fastq
+Approx 65% complete for SRR6819015_1.fastq
+Approx 70% complete for SRR6819015_1.fastq
+Approx 75% complete for SRR6819015_1.fastq
+Approx 80% complete for SRR6819015_1.fastq
+Approx 85% complete for SRR6819015_1.fastq
+Approx 90% complete for SRR6819015_1.fastq
+Approx 95% complete for SRR6819015_1.fastq
+Approx 100% complete for SRR6819015_1.fastq
+Analysis complete for SRR6819015_1.fastq
+Started analysis of SRR6819015_2.fastq
+Approx 5% complete for SRR6819015_2.fastq
+Approx 10% complete for SRR6819015_2.fastq
+Approx 15% complete for SRR6819015_2.fastq
+Approx 20% complete for SRR6819015_2.fastq
+Approx 25% complete for SRR6819015_2.fastq
+Approx 30% complete for SRR6819015_2.fastq
+Approx 35% complete for SRR6819015_2.fastq
+Approx 40% complete for SRR6819015_2.fastq
+Approx 45% complete for SRR6819015_2.fastq
+Approx 50% complete for SRR6819015_2.fastq
+Approx 55% complete for SRR6819015_2.fastq
+Approx 60% complete for SRR6819015_2.fastq
+Approx 65% complete for SRR6819015_2.fastq
+Approx 70% complete for SRR6819015_2.fastq
+Approx 75% complete for SRR6819015_2.fastq
+Approx 80% complete for SRR6819015_2.fastq
+Approx 85% complete for SRR6819015_2.fastq
+Approx 90% complete for SRR6819015_2.fastq
+Approx 95% complete for SRR6819015_2.fastq
+Approx 100% complete for SRR6819015_2.fastq
+Analysis complete for SRR6819015_2.fastq
+Started analysis of SRR6819016_1.fastq
+Approx 5% complete for SRR6819016_1.fastq
+Approx 10% complete for SRR6819016_1.fastq
+Approx 15% complete for SRR6819016_1.fastq
+Approx 20% complete for SRR6819016_1.fastq
+Approx 25% complete for SRR6819016_1.fastq
+Approx 30% complete for SRR6819016_1.fastq
+Approx 35% complete for SRR6819016_1.fastq
+Approx 40% complete for SRR6819016_1.fastq
+Approx 45% complete for SRR6819016_1.fastq
+Approx 50% complete for SRR6819016_1.fastq
+Approx 55% complete for SRR6819016_1.fastq
+Approx 60% complete for SRR6819016_1.fastq
+Approx 65% complete for SRR6819016_1.fastq
+Approx 70% complete for SRR6819016_1.fastq
+Approx 75% complete for SRR6819016_1.fastq
+Approx 80% complete for SRR6819016_1.fastq
+Approx 85% complete for SRR6819016_1.fastq
+Approx 90% complete for SRR6819016_1.fastq
+Approx 95% complete for SRR6819016_1.fastq
+Approx 100% complete for SRR6819016_1.fastq
+Analysis complete for SRR6819016_1.fastq
+Started analysis of SRR6819016_2.fastq
+Approx 5% complete for SRR6819016_2.fastq
+Approx 10% complete for SRR6819016_2.fastq
+Approx 15% complete for SRR6819016_2.fastq
+Approx 20% complete for SRR6819016_2.fastq
+Approx 25% complete for SRR6819016_2.fastq
+Approx 30% complete for SRR6819016_2.fastq
+Approx 35% complete for SRR6819016_2.fastq
+Approx 40% complete for SRR6819016_2.fastq
+Approx 45% complete for SRR6819016_2.fastq
+Approx 50% complete for SRR6819016_2.fastq
+Approx 55% complete for SRR6819016_2.fastq
+Approx 60% complete for SRR6819016_2.fastq
+Approx 65% complete for SRR6819016_2.fastq
+Approx 70% complete for SRR6819016_2.fastq
+Approx 75% complete for SRR6819016_2.fastq
+Approx 80% complete for SRR6819016_2.fastq
+Approx 85% complete for SRR6819016_2.fastq
+Approx 90% complete for SRR6819016_2.fastq
+Approx 95% complete for SRR6819016_2.fastq
+Approx 100% complete for SRR6819016_2.fastq
+Analysis complete for SRR6819016_2.fastq
+Started analysis of SRR6819017_1.fastq
+Approx 5% complete for SRR6819017_1.fastq
+Approx 10% complete for SRR6819017_1.fastq
+Approx 15% complete for SRR6819017_1.fastq
+Approx 20% complete for SRR6819017_1.fastq
+Approx 25% complete for SRR6819017_1.fastq
+Approx 30% complete for SRR6819017_1.fastq
+Approx 35% complete for SRR6819017_1.fastq
+Approx 40% complete for SRR6819017_1.fastq
+Approx 45% complete for SRR6819017_1.fastq
+Approx 50% complete for SRR6819017_1.fastq
+Approx 55% complete for SRR6819017_1.fastq
+Approx 60% complete for SRR6819017_1.fastq
+Approx 65% complete for SRR6819017_1.fastq
+Approx 70% complete for SRR6819017_1.fastq
+Approx 75% complete for SRR6819017_1.fastq
+Approx 80% complete for SRR6819017_1.fastq
+Approx 85% complete for SRR6819017_1.fastq
+Approx 90% complete for SRR6819017_1.fastq
+Approx 95% complete for SRR6819017_1.fastq
+Approx 100% complete for SRR6819017_1.fastq
+Analysis complete for SRR6819017_1.fastq
+Started analysis of SRR6819017_2.fastq
+Approx 5% complete for SRR6819017_2.fastq
+Approx 10% complete for SRR6819017_2.fastq
+Approx 15% complete for SRR6819017_2.fastq
+Approx 20% complete for SRR6819017_2.fastq
+Approx 25% complete for SRR6819017_2.fastq
+Approx 30% complete for SRR6819017_2.fastq
+Approx 35% complete for SRR6819017_2.fastq
+Approx 40% complete for SRR6819017_2.fastq
+Approx 45% complete for SRR6819017_2.fastq
+Approx 50% complete for SRR6819017_2.fastq
+Approx 55% complete for SRR6819017_2.fastq
+Approx 60% complete for SRR6819017_2.fastq
+Approx 65% complete for SRR6819017_2.fastq
+Approx 70% complete for SRR6819017_2.fastq
+Approx 75% complete for SRR6819017_2.fastq
+Approx 80% complete for SRR6819017_2.fastq
+Approx 85% complete for SRR6819017_2.fastq
+Approx 90% complete for SRR6819017_2.fastq
+Approx 95% complete for SRR6819017_2.fastq
+Approx 100% complete for SRR6819017_2.fastq
+Analysis complete for SRR6819017_2.fastq
+Started analysis of SRR6819018_1.fastq
+Approx 5% complete for SRR6819018_1.fastq
+Approx 10% complete for SRR6819018_1.fastq
+Approx 15% complete for SRR6819018_1.fastq
+Approx 20% complete for SRR6819018_1.fastq
+Approx 25% complete for SRR6819018_1.fastq
+Approx 30% complete for SRR6819018_1.fastq
+Approx 35% complete for SRR6819018_1.fastq
+Approx 40% complete for SRR6819018_1.fastq
+Approx 45% complete for SRR6819018_1.fastq
+Approx 50% complete for SRR6819018_1.fastq
+Approx 55% complete for SRR6819018_1.fastq
+Approx 60% complete for SRR6819018_1.fastq
+Approx 65% complete for SRR6819018_1.fastq
+Approx 70% complete for SRR6819018_1.fastq
+Approx 75% complete for SRR6819018_1.fastq
+Approx 80% complete for SRR6819018_1.fastq
+Approx 85% complete for SRR6819018_1.fastq
+Approx 90% complete for SRR6819018_1.fastq
+Approx 95% complete for SRR6819018_1.fastq
+Approx 100% complete for SRR6819018_1.fastq
+Analysis complete for SRR6819018_1.fastq
+Started analysis of SRR6819018_2.fastq
+Approx 5% complete for SRR6819018_2.fastq
+Approx 10% complete for SRR6819018_2.fastq
+Approx 15% complete for SRR6819018_2.fastq
+Approx 20% complete for SRR6819018_2.fastq
+Approx 25% complete for SRR6819018_2.fastq
+Approx 30% complete for SRR6819018_2.fastq
+Approx 35% complete for SRR6819018_2.fastq
+Approx 40% complete for SRR6819018_2.fastq
+Approx 45% complete for SRR6819018_2.fastq
+Approx 50% complete for SRR6819018_2.fastq
+Approx 55% complete for SRR6819018_2.fastq
+Approx 60% complete for SRR6819018_2.fastq
+Approx 65% complete for SRR6819018_2.fastq
+Approx 70% complete for SRR6819018_2.fastq
+Approx 75% complete for SRR6819018_2.fastq
+Approx 80% complete for SRR6819018_2.fastq
+Approx 85% complete for SRR6819018_2.fastq
+Approx 90% complete for SRR6819018_2.fastq
+Approx 95% complete for SRR6819018_2.fastq
+Approx 100% complete for SRR6819018_2.fastq
+Analysis complete for SRR6819018_2.fastq
+Started analysis of SRR6819019_1.fastq
+Approx 5% complete for SRR6819019_1.fastq
+Approx 10% complete for SRR6819019_1.fastq
+Approx 15% complete for SRR6819019_1.fastq
+Approx 20% complete for SRR6819019_1.fastq
+Approx 25% complete for SRR6819019_1.fastq
+Approx 30% complete for SRR6819019_1.fastq
+Approx 35% complete for SRR6819019_1.fastq
+Approx 40% complete for SRR6819019_1.fastq
+Approx 45% complete for SRR6819019_1.fastq
+Approx 50% complete for SRR6819019_1.fastq
+Approx 55% complete for SRR6819019_1.fastq
+Approx 60% complete for SRR6819019_1.fastq
+Approx 65% complete for SRR6819019_1.fastq
+Approx 70% complete for SRR6819019_1.fastq
+Approx 75% complete for SRR6819019_1.fastq
+Approx 80% complete for SRR6819019_1.fastq
+Approx 85% complete for SRR6819019_1.fastq
+Approx 90% complete for SRR6819019_1.fastq
+Approx 95% complete for SRR6819019_1.fastq
+Approx 100% complete for SRR6819019_1.fastq
+Analysis complete for SRR6819019_1.fastq
+Started analysis of SRR6819019_2.fastq
+Approx 5% complete for SRR6819019_2.fastq
+Approx 10% complete for SRR6819019_2.fastq
+Approx 15% complete for SRR6819019_2.fastq
+Approx 20% complete for SRR6819019_2.fastq
+Approx 25% complete for SRR6819019_2.fastq
+Approx 30% complete for SRR6819019_2.fastq
+Approx 35% complete for SRR6819019_2.fastq
+Approx 40% complete for SRR6819019_2.fastq
+Approx 45% complete for SRR6819019_2.fastq
+Approx 50% complete for SRR6819019_2.fastq
+Approx 55% complete for SRR6819019_2.fastq
+Approx 60% complete for SRR6819019_2.fastq
+Approx 65% complete for SRR6819019_2.fastq
+Approx 70% complete for SRR6819019_2.fastq
+Approx 75% complete for SRR6819019_2.fastq
+Approx 80% complete for SRR6819019_2.fastq
+Approx 85% complete for SRR6819019_2.fastq
+Approx 90% complete for SRR6819019_2.fastq
+Approx 95% complete for SRR6819019_2.fastq
+Approx 100% complete for SRR6819019_2.fastq
+Analysis complete for SRR6819019_2.fastq
+Started analysis of SRR6819020_1.fastq
+Approx 5% complete for SRR6819020_1.fastq
+Approx 10% complete for SRR6819020_1.fastq
+Approx 15% complete for SRR6819020_1.fastq
+Approx 20% complete for SRR6819020_1.fastq
+Approx 25% complete for SRR6819020_1.fastq
+Approx 30% complete for SRR6819020_1.fastq
+Approx 35% complete for SRR6819020_1.fastq
+Approx 40% complete for SRR6819020_1.fastq
+Approx 45% complete for SRR6819020_1.fastq
+Approx 50% complete for SRR6819020_1.fastq
+Approx 55% complete for SRR6819020_1.fastq
+Approx 60% complete for SRR6819020_1.fastq
+Approx 65% complete for SRR6819020_1.fastq
+Approx 70% complete for SRR6819020_1.fastq
+Approx 75% complete for SRR6819020_1.fastq
+Approx 80% complete for SRR6819020_1.fastq
+Approx 85% complete for SRR6819020_1.fastq
+Approx 90% complete for SRR6819020_1.fastq
+Approx 95% complete for SRR6819020_1.fastq
+Approx 100% complete for SRR6819020_1.fastq
+Analysis complete for SRR6819020_1.fastq
+Started analysis of SRR6819020_2.fastq
+Approx 5% complete for SRR6819020_2.fastq
+Approx 10% complete for SRR6819020_2.fastq
+Approx 15% complete for SRR6819020_2.fastq
+Approx 20% complete for SRR6819020_2.fastq
+Approx 25% complete for SRR6819020_2.fastq
+Approx 30% complete for SRR6819020_2.fastq
+Approx 35% complete for SRR6819020_2.fastq
+Approx 40% complete for SRR6819020_2.fastq
+Approx 45% complete for SRR6819020_2.fastq
+Approx 50% complete for SRR6819020_2.fastq
+Approx 55% complete for SRR6819020_2.fastq
+Approx 60% complete for SRR6819020_2.fastq
+Approx 65% complete for SRR6819020_2.fastq
+Approx 70% complete for SRR6819020_2.fastq
+Approx 75% complete for SRR6819020_2.fastq
+Approx 80% complete for SRR6819020_2.fastq
+Approx 85% complete for SRR6819020_2.fastq
+Approx 90% complete for SRR6819020_2.fastq
+Approx 95% complete for SRR6819020_2.fastq
+Approx 100% complete for SRR6819020_2.fastq
+Analysis complete for SRR6819020_2.fastq
+Started analysis of SRR6819021_1.fastq
+Approx 5% complete for SRR6819021_1.fastq
+Approx 10% complete for SRR6819021_1.fastq
+Approx 15% complete for SRR6819021_1.fastq
+Approx 20% complete for SRR6819021_1.fastq
+Approx 25% complete for SRR6819021_1.fastq
+Approx 30% complete for SRR6819021_1.fastq
+Approx 35% complete for SRR6819021_1.fastq
+Approx 40% complete for SRR6819021_1.fastq
+Approx 45% complete for SRR6819021_1.fastq
+Approx 50% complete for SRR6819021_1.fastq
+Approx 55% complete for SRR6819021_1.fastq
+Approx 60% complete for SRR6819021_1.fastq
+Approx 65% complete for SRR6819021_1.fastq
+Approx 70% complete for SRR6819021_1.fastq
+Approx 75% complete for SRR6819021_1.fastq
+Approx 80% complete for SRR6819021_1.fastq
+Approx 85% complete for SRR6819021_1.fastq
+Approx 90% complete for SRR6819021_1.fastq
+Approx 95% complete for SRR6819021_1.fastq
+Approx 100% complete for SRR6819021_1.fastq
+Analysis complete for SRR6819021_1.fastq
+Started analysis of SRR6819021_2.fastq
+Approx 5% complete for SRR6819021_2.fastq
+Approx 10% complete for SRR6819021_2.fastq
+Approx 15% complete for SRR6819021_2.fastq
+Approx 20% complete for SRR6819021_2.fastq
+Approx 25% complete for SRR6819021_2.fastq
+Approx 30% complete for SRR6819021_2.fastq
+Approx 35% complete for SRR6819021_2.fastq
+Approx 40% complete for SRR6819021_2.fastq
+Approx 45% complete for SRR6819021_2.fastq
+Approx 50% complete for SRR6819021_2.fastq
+Approx 55% complete for SRR6819021_2.fastq
+Approx 60% complete for SRR6819021_2.fastq
+Approx 65% complete for SRR6819021_2.fastq
+Approx 70% complete for SRR6819021_2.fastq
+Approx 75% complete for SRR6819021_2.fastq
+Approx 80% complete for SRR6819021_2.fastq
+Approx 85% complete for SRR6819021_2.fastq
+Approx 90% complete for SRR6819021_2.fastq
+Approx 95% complete for SRR6819021_2.fastq
+Approx 100% complete for SRR6819021_2.fastq
+Analysis complete for SRR6819021_2.fastq
+Started analysis of SRR6819022_1.fastq
+Approx 5% complete for SRR6819022_1.fastq
+Approx 10% complete for SRR6819022_1.fastq
+Approx 15% complete for SRR6819022_1.fastq
+Approx 20% complete for SRR6819022_1.fastq
+Approx 25% complete for SRR6819022_1.fastq
+Approx 30% complete for SRR6819022_1.fastq
+Approx 35% complete for SRR6819022_1.fastq
+Approx 40% complete for SRR6819022_1.fastq
+Approx 45% complete for SRR6819022_1.fastq
+Approx 50% complete for SRR6819022_1.fastq
+Approx 55% complete for SRR6819022_1.fastq
+Approx 60% complete for SRR6819022_1.fastq
+Approx 65% complete for SRR6819022_1.fastq
+Approx 70% complete for SRR6819022_1.fastq
+Approx 75% complete for SRR6819022_1.fastq
+Approx 80% complete for SRR6819022_1.fastq
+Approx 85% complete for SRR6819022_1.fastq
+Approx 90% complete for SRR6819022_1.fastq
+Approx 95% complete for SRR6819022_1.fastq
+Approx 100% complete for SRR6819022_1.fastq
+Analysis complete for SRR6819022_1.fastq
+Started analysis of SRR6819022_2.fastq
+Approx 5% complete for SRR6819022_2.fastq
+Approx 10% complete for SRR6819022_2.fastq
+Approx 15% complete for SRR6819022_2.fastq
+Approx 20% complete for SRR6819022_2.fastq
+Approx 25% complete for SRR6819022_2.fastq
+Approx 30% complete for SRR6819022_2.fastq
+Approx 35% complete for SRR6819022_2.fastq
+Approx 40% complete for SRR6819022_2.fastq
+Approx 45% complete for SRR6819022_2.fastq
+Approx 50% complete for SRR6819022_2.fastq
+Approx 55% complete for SRR6819022_2.fastq
+Approx 60% complete for SRR6819022_2.fastq
+Approx 65% complete for SRR6819022_2.fastq
+Approx 70% complete for SRR6819022_2.fastq
+Approx 75% complete for SRR6819022_2.fastq
+Approx 80% complete for SRR6819022_2.fastq
+Approx 85% complete for SRR6819022_2.fastq
+Approx 90% complete for SRR6819022_2.fastq
+Approx 95% complete for SRR6819022_2.fastq
+Approx 100% complete for SRR6819022_2.fastq
+Analysis complete for SRR6819022_2.fastq
+Started analysis of SRR6819023_1.fastq
+Approx 5% complete for SRR6819023_1.fastq
+Approx 10% complete for SRR6819023_1.fastq
+Approx 15% complete for SRR6819023_1.fastq
+Approx 20% complete for SRR6819023_1.fastq
+Approx 25% complete for SRR6819023_1.fastq
+Approx 30% complete for SRR6819023_1.fastq
+Approx 35% complete for SRR6819023_1.fastq
+Approx 40% complete for SRR6819023_1.fastq
+Approx 45% complete for SRR6819023_1.fastq
+Approx 50% complete for SRR6819023_1.fastq
+Approx 55% complete for SRR6819023_1.fastq
+Approx 60% complete for SRR6819023_1.fastq
+Approx 65% complete for SRR6819023_1.fastq
+Approx 70% complete for SRR6819023_1.fastq
+Approx 75% complete for SRR6819023_1.fastq
+Approx 80% complete for SRR6819023_1.fastq
+Approx 85% complete for SRR6819023_1.fastq
+Approx 90% complete for SRR6819023_1.fastq
+Approx 95% complete for SRR6819023_1.fastq
+Approx 100% complete for SRR6819023_1.fastq
+Analysis complete for SRR6819023_1.fastq
+Started analysis of SRR6819023_2.fastq
+Approx 5% complete for SRR6819023_2.fastq
+Approx 10% complete for SRR6819023_2.fastq
+Approx 15% complete for SRR6819023_2.fastq
+Approx 20% complete for SRR6819023_2.fastq
+Approx 25% complete for SRR6819023_2.fastq
+Approx 30% complete for SRR6819023_2.fastq
+Approx 35% complete for SRR6819023_2.fastq
+Approx 40% complete for SRR6819023_2.fastq
+Approx 45% complete for SRR6819023_2.fastq
+Approx 50% complete for SRR6819023_2.fastq
+Approx 55% complete for SRR6819023_2.fastq
+Approx 60% complete for SRR6819023_2.fastq
+Approx 65% complete for SRR6819023_2.fastq
+Approx 70% complete for SRR6819023_2.fastq
+Approx 75% complete for SRR6819023_2.fastq
+Approx 80% complete for SRR6819023_2.fastq
+Approx 85% complete for SRR6819023_2.fastq
+Approx 90% complete for SRR6819023_2.fastq
+Approx 95% complete for SRR6819023_2.fastq
+Approx 100% complete for SRR6819023_2.fastq
+Analysis complete for SRR6819023_2.fastq
+tar: Removing leading `/' from member names
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819014_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819015_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819016_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819017_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819018_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819019_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819020_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819021_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819022_2_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_1_fastqc.zip
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/fastqc_report.html
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Icons/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Icons/tick.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Icons/error.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Icons/warning.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/summary.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/duplication_levels.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/per_base_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/per_base_n_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/kmer_profiles.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc/fastqc_data.txt
+/scratch/aubclsb0323/Scripting/PreCleanQuality/SRR6819023_2_fastqc.zip
