@@ -19,6 +19,17 @@ Step 2: Trim adapter sequences (specific to illumina adapters)
 
 Step 3: Alignment/Assembly and file compression
 
-Step 4: Differential gene expression
+Step 4: Post-CLI Analysis
+  
+      - Differential Gene Expression
+      - Functional Enrichment
+      
+## Required materials
 
-Step 5: Post-CLI analysis
+- All processes run on the Alabama Supercomputer (ASC) using a student account; this gives access to a higher performance cluster with reduced traffic
+- Reference genome provided within Dr. Tonia Schwartz's Functional Genomics class github repository
+    - Relative filepaths are dependent on having access to this repo. Create your own fork and clone it onto your ASC account
+- Sequence data is being downloaded by accession via NCBI; current run time is greater than 12 hours for all samples
+    - To reduce run time for reproducibility, delete all but 3 "SRR" numbers from script 0_1_DownloadSRA_QualityCheck.sh
+- All filepaths are currently set to my own account, but are referenced as the variable $MyID when possible. Simply change that variable to match your own account
+    - If you encounter problems, check further down the script to ensure that there arent any hardcoded references that need to be changed
