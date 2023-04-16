@@ -14,7 +14,11 @@ This project aims to provide the necessary scripts for testing a data set throug
 ## General Workflow:
 
 Step 1: Perform a quality check on your fastq files using fastQC
+
 Step 2: Trim adapter sequences (specific to illumina adapters)
+
 Step 3: Alignment/Assembly and file compression
+
 Step 4: Differential gene expression
+
 Step 5: Post-CLI analysis
