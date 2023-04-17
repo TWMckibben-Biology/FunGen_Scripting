@@ -20,6 +20,7 @@ library(DESeq2)
 library(clusterProfiler)
 library(AnnotationDbi)
 
+
 ###Read in count matrix data from mapper_hisat2.sh
 ###Manually load in your gene_count_matrix.csv with automatic headings and first column as row headers
 countdata <- read.csv(file.choose(), row.names = "X")
@@ -59,19 +60,11 @@ dds <- DESeq(dds)
 res <- results(dds)
 res
 
-###Reorder results by p value
-DGEresOrdered <- res[order(-res$pvalue),]
+###Reorder results by the adjusted p value
+DGEresOrdered <- res[order(res$padj),]
   DGEresOrdered
 
 ###Write your results to a file 
 ###This file can be used in the desktop version of GSEA
 write.csv(as.data.frame(DGEresOrdered), file="DGESeq_results.csv")  
 
-DGEinput = DGEresOrdered$pvalue
-names(DGEinput) = rownames(DGEresOrdered)
-DGEinput
-
-#####GSEA#####
-###We will use the "DGEinput" object as input for GSEA
-
-genexp = gseKEGG(DGEinput, organism = "dpz", keyType = "kegg")

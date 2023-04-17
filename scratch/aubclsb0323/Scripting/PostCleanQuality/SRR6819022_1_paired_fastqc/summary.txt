@@ -1,0 +1,11 @@
+PASS	Basic Statistics	SRR6819022_1_paired.fastq
+PASS	Per base sequence quality	SRR6819022_1_paired.fastq
+PASS	Per sequence quality scores	SRR6819022_1_paired.fastq
+PASS	Per base sequence content	SRR6819022_1_paired.fastq
+PASS	Per base GC content	SRR6819022_1_paired.fastq
+FAIL	Per sequence GC content	SRR6819022_1_paired.fastq
+PASS	Per base N content	SRR6819022_1_paired.fastq
+WARN	Sequence Length Distribution	SRR6819022_1_paired.fastq
+FAIL	Sequence Duplication Levels	SRR6819022_1_paired.fastq
+WARN	Overrepresented sequences	SRR6819022_1_paired.fastq
+WARN	Kmer Content	SRR6819022_1_paired.fastq
