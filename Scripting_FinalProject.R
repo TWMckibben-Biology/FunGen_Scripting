@@ -12,14 +12,9 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 
 BiocManager::install("DESeq2")
-BiocManager::install("clusterProfiler")
-BiocManager::install("AnnotationDbi")
 
 ## Load your packages 
 library(DESeq2)
-library(clusterProfiler)
-library(AnnotationDbi)
-
 
 ###Read in count matrix data from mapper_hisat2.sh
 ###Manually load in your gene_count_matrix.csv with automatic headings and first column as row headers
